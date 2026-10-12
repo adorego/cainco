@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cainco.com.py/sitemap.xml
