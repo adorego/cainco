@@ -24,6 +24,10 @@ const server = http.createServer((req, res) => {
 }).listen(0);
 const BASE = `http://127.0.0.1:${server.address().port}/`;
 console.log("sirviendo", BASE);
+// Datos de contacto: se leen de CAINCO_CONFIG (index.html), la misma fuente que usa el sitio
+const CFG = JSON.parse(fs.readFileSync(path.join(ROOT, "index.html"), "utf8").match(/\/\*CONFIG\*\/(\{[\s\S]*?\})\/\*\/CONFIG\*\//)[1]);
+const WA = CFG.whatsapp.valor, TEL = CFG.telefono.valor;
+console.log("WhatsApp", WA, "· tel", TEL);
 
 const browser = await chromium.launch();
 const problemas = [];
@@ -120,11 +124,39 @@ for (const perfil of ["hogar", "empresa"]) {
   const url = await page.evaluate(() => window.__abiertos[0] || "");
   const txt = decodeURIComponent((url.split("text=")[1] || ""));
   console.log("   " + txt.replace(/\n/g, "\n   "));
-  ok(url.startsWith("https://wa.me/595981429324?text="), "abre wa.me con el número de Cainco");
+  ok(url.startsWith(`https://wa.me/${WA}?text=`), `formulario abre wa.me/${WA}`);
   for (const s of ["Asunción, Villa Morra", "Ana Prueba", "0981 123 456", "3,20 m", "Prueba automática", "utm_source=instagram", "utm_medium=paid", `utm_campaign=prueba_${perfil}`, `perfil=${perfil}`, proy])
     ok(txt.includes(s), `mensaje incluye «${s}»`);
   if (perfil === "empresa") ok(txt.includes("ACME SA") && txt.includes("12 puestos"), "mensaje incluye empresa y cantidad");
   await page.screenshot({ path: path.join(OUT, `form-${perfil}-enviado.png`) });
+  // Resto de los enlaces de WhatsApp: el href estático y el que arma el JS al hacer clic
+  const estaticos = await page.evaluate(() => [...document.querySelectorAll('a[href*="wa.me"]')].map(a => a.getAttribute("href")));
+  ok(estaticos.length >= 3 && estaticos.every(h => h.startsWith(`https://wa.me/${WA}`)), `${estaticos.length} enlaces wa.me apuntan a ${WA}`);
+  const clics = await page.evaluate(() => {
+    document.addEventListener("click", e => { if (e.target.closest('a[href*="wa.me"]')) e.preventDefault(); }); // no navegar
+    return ["#wa-float", '[data-cta="cierre_wa"]', '[data-cta="footer_wa"]'].map(sel => { const a = document.querySelector(sel); a.click(); return [sel, a.href]; });
+  });
+  for (const [sel, href] of clics) {
+    const t = decodeURIComponent(href.split("text=")[1] || "");
+    ok(href.startsWith(`https://wa.me/${WA}?text=`) && t.startsWith("Hola Cainco") && t.includes(`perfil=${perfil}`) && t.includes("utm_source=instagram") && t.includes(`utm_campaign=prueba_${perfil}`),
+      `${sel} → wa.me/${WA} con saludo, perfil y UTM («${t.replace(/\n+/g, " ⏎ ")}»)`);
+  }
+  // Barra móvil y CTAs contextuales llevan al formulario, que termina en el mismo wa.me (probado arriba)
+  const destinos = await page.evaluate(() => ["#mbar a", "[data-cta=svc_cocina]", "[data-cta=svc_oficina]", "[data-cta=empresas]", "[data-cta=header]"].map(s => document.querySelector(s)?.getAttribute("href")));
+  ok(destinos.every(h => h === "#presupuesto"), `barra móvil y CTAs contextuales → #presupuesto (${destinos.join(", ")})`);
+  // tel: en móvil: formato internacional y área táctil cómoda
+  const tels = await page.evaluate(() => [...document.querySelectorAll('a[href^="tel:"]')].map(a => { a.scrollIntoView(); const r = a.getBoundingClientRect(); return [a.getAttribute("href"), Math.round(r.height), Math.round(r.width)]; }));
+  ok(tels.length >= 1 && tels.every(([h, alto]) => h === `tel:${TEL}` && alto >= 44), `enlaces tel: → ${TEL}, ≥44px de alto (${tels.map(t => t.join(" ")).join(" | ")})`);
+  const mapa = await page.locator("footer a", { hasText: "Cómo llegar" }).getAttribute("href");
+  ok(mapa === "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(CFG.direccion.valor), `«Cómo llegar» → ${mapa}`);
+  if (CFG.email.estado !== "confirmado") {
+    const donde = await page.evaluate(em => [
+      document.body.innerText.includes(em) && "texto visible",
+      [...document.querySelectorAll("[href]")].some(a => a.getAttribute("href").includes(em)) && "enlace",
+      [...document.querySelectorAll('script[type="application/ld+json"]')].some(s => s.textContent.includes(em)) && "JSON-LD"
+    ].filter(Boolean), CFG.email.valor);
+    ok(donde.length === 0, `email «${CFG.email.estado}» no se muestra ni va al JSON-LD ${donde.join(", ")}`);
+  }
   ok(errores.length === 0, `consola sin errores ${errores.join(" | ")}`);
   await ctx.close();
 }

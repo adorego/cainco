@@ -40,7 +40,7 @@
 
 <!-- Imagen del hero (LCP): la genera tools/actualizar_html.py -->
 <!--preload-hero-->
-<link rel="preload" as="image" type="image/avif" imagesrcset="img/bano-01-640.avif 640w, img/bano-01-1024.avif 1024w, img/bano-01-1600.avif 1600w" imagesizes="100vw" fetchpriority="high">
+<link rel="preload" as="image" type="image/avif" href="img/bano-01-1024.avif" imagesrcset="img/bano-01-640.avif 640w, img/bano-01-1024.avif 1024w, img/bano-01-1600.avif 1600w" imagesizes="100vw" fetchpriority="high">
 <!--/preload-hero-->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,12 +49,30 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=Karla:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=Karla:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"></noscript>
 
-<!-- ===================== MEDICIÓN =====================
-     Para activar, completá los IDs y descomentá los bloques.
-     Mientras estén vacíos, track() no hace nada y no rompe. -->
+<!-- ===================== CAINCO_CONFIG =====================
+     Datos del negocio. Estados:
+       "confirmado" → confirmado por el cliente: se publica.
+       "propuesto"  → valor tentativo: NO se muestra en el sitio ni en el JSON-LD hasta confirmarlo.
+       "pendiente"  → falta el dato.
+     El HTML estático (footer, JSON-LD, enlaces wa.me/tel:) se escribe a mano para que lo lean los buscadores;
+     tools/check-publicacion.sh controla que coincida con esta config y que nada "propuesto" se filtre.
+     El bloque entre /*CONFIG*/ y /*/CONFIG*/ tiene que ser JSON válido (lo lee ese script). -->
 <script>
-  window.CAINCO_GA4_ID = "";     // TODO_CAINCO: ID de Google Analytics 4, p. ej. "G-XXXXXXXXXX"
-  window.CAINCO_PIXEL_ID = "";   // TODO_CAINCO: ID de Meta Pixel, p. ej. "123456789012345"
+window.CAINCO_CONFIG = /*CONFIG*/{
+  "whatsapp":          { "valor": "595984301230", "estado": "confirmado", "nota": "formato wa.me: 595 + número sin el 0 inicial" },
+  "whatsapp_visible":  { "valor": "0984 301 230", "estado": "confirmado" },
+  "telefono":          { "valor": "+595984301230", "estado": "confirmado", "nota": "para tel: y JSON-LD" },
+  "telefono_visible":  { "valor": "0984 301 230", "estado": "confirmado" },
+  "direccion":         { "valor": "Av. Sacramento 2844 esq. Espíritu Santo, Asunción, Paraguay", "estado": "confirmado" },
+  "anios_trayectoria": { "valor": "+20 años", "estado": "confirmado", "nota": "sin año de fundación exacto: no usar foundingDate" },
+  "email":             { "valor": "info@cainco.com.py", "estado": "propuesto", "nota": "confirmar dirección exacta y que el correo funcione (el dominio todavía no resuelve)" },
+  "ga4_id":            { "valor": "", "estado": "pendiente", "nota": "TODO_CAINCO: ID de Google Analytics 4, p. ej. G-XXXXXXXXXX" },
+  "pixel_id":          { "valor": "", "estado": "pendiente", "nota": "TODO_CAINCO: ID de Meta Pixel, p. ej. 123456789012345" }
+}/*/CONFIG*/;
+/* Medición: para activar, completá ga4_id / pixel_id arriba y descomentá los bloques de abajo.
+   Mientras estén vacíos, track() no hace nada y no rompe. */
+window.CAINCO_GA4_ID = CAINCO_CONFIG.ga4_id.estado === "confirmado" ? CAINCO_CONFIG.ga4_id.valor : "";
+window.CAINCO_PIXEL_ID = CAINCO_CONFIG.pixel_id.estado === "confirmado" ? CAINCO_CONFIG.pixel_id.valor : "";
 </script>
 <!-- Google Analytics 4
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
@@ -94,7 +112,7 @@
       "@id": "https://cainco.com.py/#negocio",
       "name": "Cainco",
       "alternateName": "Cainco Muebles a medida",
-      "description": "Fábrica de muebles a medida en Asunción, Paraguay: diseño, fabricación en taller propio e instalación de cocinas, placares, vestidores, mobiliario de oficina, locales comerciales, lockers y muebles de baño para hogares y empresas.",
+      "description": "Fábrica de muebles a medida en Asunción, Paraguay, con más de 20 años de trayectoria: diseño, fabricación en taller propio e instalación de cocinas, placares, vestidores, mobiliario de oficina, locales comerciales, lockers y muebles de baño para hogares y empresas.",
       "url": "https://cainco.com.py/",
       "logo": "https://cainco.com.py/icon-512.png",
       "image": [
@@ -103,14 +121,14 @@
         "https://cainco.com.py/img/oficina-03.jpg",
         "https://cainco.com.py/img/cocina-01.jpg"
       ],
-      "telephone": "+595981429324",
-      "email": "contacto@cainco.com.py",
+      "telephone": "+595984301230",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "TODO_CAINCO calle y número",
+        "streetAddress": "Av. Sacramento 2844 esq. Espíritu Santo",
         "addressLocality": "Asunción",
         "addressCountry": "PY"
       },
+      "hasMap": "https://www.google.com/maps/search/?api=1&query=Av.%20Sacramento%202844%20esq.%20Esp%C3%ADritu%20Santo%2C%20Asunci%C3%B3n%2C%20Paraguay",
       "areaServed": [
         { "@type": "City", "name": "Asunción" },
         { "@type": "Country", "name": "Paraguay" }
@@ -336,9 +354,6 @@ main{display:flex;flex-direction:column}
 .cifras b{display:block;font-family:var(--display);font-size:clamp(28px,4vw,44px);font-weight:850;color:#fff}
 .cifras span{color:var(--on-stone-muted);font-size:15px}
 @media (max-width:560px){.cifras{grid-template-columns:minmax(0,1fr)}}
-.logos{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin-top:36px}
-.logos div{aspect-ratio:3/2;border:1px dashed #4a5053;border-radius:10px;display:grid;place-items:center;text-align:center;padding:6px}
-@media (max-width:700px){.logos{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .empresas .cta-row{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;margin-top:40px}
 .empresas .micro{color:var(--on-stone-muted)}
 .teaser-emp{border:1px solid var(--line);border-radius:16px;padding:20px 22px;display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:space-between;background:var(--card)}
@@ -432,6 +447,10 @@ input:focus,select:focus,textarea:focus{outline:3px solid var(--oak-soft);border
 .cierre h2{font-size:clamp(30px,5vw,58px);font-variation-settings:"wdth" 104;max-width:16em;margin-inline:auto}
 .cierre .lead{color:var(--on-stone-muted);margin:16px auto 28px}
 .cierre .ctas{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.cierre .tel-line{margin-top:20px;color:var(--on-stone-muted)}
+.cierre .tel-line a{color:var(--on-stone);font-weight:700;text-underline-offset:3px}
+a.tap{display:inline-flex;align-items:center;min-height:44px}
+footer address{font-style:normal;color:var(--on-stone);margin-bottom:2px}
 footer{background:var(--stone);color:var(--on-stone-muted);border-top:1px solid #2e3336;padding-block:40px calc(40px + var(--bar-h));font-size:15px}
 footer .cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
 footer h3{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#e8bd8c;font-weight:500;margin-bottom:10px}
@@ -503,7 +522,7 @@ body.bar-on .mbar{transform:none}
 -->
 <section class="hero" id="inicio" aria-labelledby="h1">
   <div class="hero-media">
-    <!--foto:HERO sizes="100vw" alt="HERO" hero--><picture><source type="image/avif" srcset="img/bano-01-640.avif 640w, img/bano-01-1024.avif 1024w, img/bano-01-1600.avif 1600w" sizes="100vw"><source type="image/webp" srcset="img/bano-01-640.webp 640w, img/bano-01-1024.webp 1024w, img/bano-01-1600.webp 1600w" sizes="100vw"><img src="img/bano-01-1024.jpg" srcset="img/bano-01-640.jpg 640w, img/bano-01-1024.jpg 1024w, img/bano-01-1600.jpg 1600w" sizes="100vw" width="1024" height="768" alt="Vanitory suspendido gris con nicho abierto y mesada blanca, mueble de baño a medida fabricado por Cainco" fetchpriority="high" decoding="async"></picture><!--/foto-->
+    <!--foto:HERO sizes="100vw" alt="HERO" hero--><picture><source type="image/avif" srcset="img/bano-01-640.avif 640w, img/bano-01-1024.avif 1024w, img/bano-01-1600.avif 1600w" sizes="100vw"><source type="image/webp" srcset="img/bano-01-640.webp 640w, img/bano-01-1024.webp 1024w, img/bano-01-1600.webp 1600w" sizes="100vw"><img src="img/bano-01-1024.jpg" srcset="img/bano-01-640.jpg 640w, img/bano-01-1024.jpg 1024w, img/bano-01-1600.jpg 1600w" sizes="100vw" width="1024" height="873" alt="Vanitory suspendido gris con nicho abierto y mesada blanca, mueble de baño a medida fabricado por Cainco" fetchpriority="high" decoding="async"></picture><!--/foto-->
   </div>
   <div class="wrap">
     <div class="hero-copy">
@@ -518,6 +537,7 @@ body.bar-on .mbar{transform:none}
       <p class="micro">Sin compromiso · Te respondemos por WhatsApp <span class="todo">TODO_CAINCO: ¿en el día?</span></p>
       <ul class="proofs">
         <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8.5l4 4 8-9"/></svg>Fabricación en taller propio</li>
+        <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8.5l4 4 8-9"/></svg>+20 años de trayectoria</li>
         <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8.5l4 4 8-9"/></svg>Medición en obra</li>
         <!-- TODO_CAINCO: confirmar que la instalación está incluida en el precio -->
         <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8.5l4 4 8-9"/></svg>Instalación incluida</li>
@@ -538,7 +558,7 @@ body.bar-on .mbar{transform:none}
         <span class="txt"><span class="t">Para mi casa</span><span class="d">Cocinas, placares, vestidores y baños hechos a la medida de tu hogar.</span><span class="go">Ver soluciones para el hogar</span></span>
       </button>
       <button type="button" class="perfil-card" data-perfil-set="empresa" aria-pressed="false">
-        <span class="ph"><!--foto:oficina-02 sizes="(max-width:560px) 46vw, 560px" alt="Puestos de trabajo en tono roble con divisores blancos, mobiliario de oficina de Cainco"--><!--/foto--></span>
+        <span class="ph"><!--foto:oficina-02 sizes="(max-width:560px) 46vw, 560px" alt="Puestos de trabajo en tono roble con divisores blancos, mobiliario de oficina de Cainco"--><picture><source type="image/avif" srcset="img/oficina-02-640.avif 640w, img/oficina-02-1024.avif 1024w, img/oficina-02-1600.avif 1600w" sizes="(max-width:560px) 46vw, 560px"><source type="image/webp" srcset="img/oficina-02-640.webp 640w, img/oficina-02-1024.webp 1024w, img/oficina-02-1600.webp 1600w" sizes="(max-width:560px) 46vw, 560px"><img src="img/oficina-02-1024.jpg" srcset="img/oficina-02-640.jpg 640w, img/oficina-02-1024.jpg 1024w, img/oficina-02-1600.jpg 1600w" sizes="(max-width:560px) 46vw, 560px" width="1024" height="832" alt="Puestos de trabajo en tono roble con divisores blancos, mobiliario de oficina de Cainco" loading="lazy" decoding="async"></picture><!--/foto--></span>
         <span class="txt"><span class="t">Para mi empresa</span><span class="d">Oficinas, locales comerciales, lockers y baños corporativos, en serie y con plazos claros.</span><span class="go">Ver soluciones para empresas</span></span>
       </button>
     </div>
@@ -582,27 +602,27 @@ body.bar-on .mbar{transform:none}
     </div>
     <div class="svcs">
       <article class="svc" data-seg="hogar">
-        <div class="ph"><!--foto:cocina-04 sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px" alt="Cocina blanca con isla y mesada de granito, hecha a medida"--><!--/foto--></div>
+        <div class="ph"><!--foto:cocina-04 sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px" alt="Cocina blanca con isla y mesada de granito, hecha a medida"--><picture><source type="image/avif" srcset="img/cocina-04-640.avif 640w, img/cocina-04-1024.avif 1024w, img/cocina-04-1600.avif 1600w" sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px"><source type="image/webp" srcset="img/cocina-04-640.webp 640w, img/cocina-04-1024.webp 1024w, img/cocina-04-1600.webp 1600w" sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px"><img src="img/cocina-04-1024.jpg" srcset="img/cocina-04-640.jpg 640w, img/cocina-04-1024.jpg 1024w, img/cocina-04-1600.jpg 1600w" sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px" width="1024" height="768" alt="Cocina blanca con isla y mesada de granito, hecha a medida" loading="lazy" decoding="async"></picture><!--/foto--></div>
         <div class="txt"><span class="tag-seg">Hogar</span><h3>Cocinas</h3><p>Más lugar de guardado y mesada en el mismo espacio: bajo mesadas, alacenas, islas y desayunadores.</p><a class="btn solid" href="#presupuesto" data-proyecto="Cocina" data-cta="svc_cocina">Cotizar mi cocina</a></div>
       </article>
       <article class="svc" data-seg="hogar">
-        <div class="ph"><!--foto:placard-02 sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px" alt="Pasillo vestidor con placares blancos enfrentados y piso de madera"--><!--/foto--></div>
+        <div class="ph"><!--foto:placard-02 sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px" alt="Pasillo vestidor con placares blancos enfrentados y piso de madera"--><picture><source type="image/avif" srcset="img/placard-02-640.avif 640w, img/placard-02-1024.avif 1024w, img/placard-02-1440.avif 1440w" sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px"><source type="image/webp" srcset="img/placard-02-640.webp 640w, img/placard-02-1024.webp 1024w, img/placard-02-1440.webp 1440w" sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px"><img src="img/placard-02-1024.jpg" srcset="img/placard-02-640.jpg 640w, img/placard-02-1024.jpg 1024w, img/placard-02-1440.jpg 1440w" sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px" width="1024" height="1820" alt="Pasillo vestidor con placares blancos enfrentados y piso de madera" loading="lazy" decoding="async"></picture><!--/foto--></div>
         <div class="txt"><span class="tag-seg">Hogar</span><h3>Placares y vestidores</h3><p>De piso a techo, en L o en U, con cajoneras, barrales y estantes donde los necesitás.</p><a class="btn solid" href="#presupuesto" data-proyecto="Placard o vestidor" data-cta="svc_placard">Cotizar mi placard</a></div>
       </article>
       <article class="svc" data-seg="ambos">
-        <div class="ph"><!--foto:bano-01 sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px" alt="Vanitory suspendido gris con nicho abierto, mueble de baño a medida"--><picture><source type="image/avif" srcset="img/bano-01-640.avif 640w, img/bano-01-1024.avif 1024w, img/bano-01-1600.avif 1600w" sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px"><source type="image/webp" srcset="img/bano-01-640.webp 640w, img/bano-01-1024.webp 1024w, img/bano-01-1600.webp 1600w" sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px"><img src="img/bano-01-1024.jpg" srcset="img/bano-01-640.jpg 640w, img/bano-01-1024.jpg 1024w, img/bano-01-1600.jpg 1600w" sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px" width="1024" height="768" alt="Vanitory suspendido gris con nicho abierto, mueble de baño a medida" loading="lazy" decoding="async"></picture><!--/foto--></div>
+        <div class="ph"><!--foto:bano-02 sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px" alt="Mueble bajo bacha con puertas en tono nogal y mesada oscura, mueble de baño a medida"--><picture><source type="image/avif" srcset="img/bano-02-640.avif 640w, img/bano-02-1024.avif 1024w, img/bano-02-1600.avif 1600w" sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px"><source type="image/webp" srcset="img/bano-02-640.webp 640w, img/bano-02-1024.webp 1024w, img/bano-02-1600.webp 1600w" sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px"><img src="img/bano-02-1024.jpg" srcset="img/bano-02-640.jpg 640w, img/bano-02-1024.jpg 1024w, img/bano-02-1600.jpg 1600w" sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px" width="1024" height="1365" alt="Mueble bajo bacha con puertas en tono nogal y mesada oscura, mueble de baño a medida" loading="lazy" decoding="async"></picture><!--/foto--></div>
         <div class="txt"><span class="tag-seg">Hogar y empresa</span><h3>Baños</h3><p>Vanitorys suspendidos o de piso y divisorias sanitarias, en materiales resistentes a la humedad.</p><a class="btn solid" href="#presupuesto" data-proyecto="Baño" data-cta="svc_bano">Cotizar mi baño</a></div>
       </article>
       <article class="svc" data-seg="empresa">
-        <div class="ph"><!--foto:oficina-01 sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px" alt="Puestos de trabajo tipo bench con divisores blancos, mobiliario de oficina a medida"--><!--/foto--></div>
+        <div class="ph"><!--foto:oficina-01 sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px" alt="Puestos de trabajo tipo bench con divisores blancos, mobiliario de oficina a medida"--><picture><source type="image/avif" srcset="img/oficina-01-640.avif 640w, img/oficina-01-1024.avif 1024w, img/oficina-01-1600.avif 1600w" sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px"><source type="image/webp" srcset="img/oficina-01-640.webp 640w, img/oficina-01-1024.webp 1024w, img/oficina-01-1600.webp 1600w" sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px"><img src="img/oficina-01-1024.jpg" srcset="img/oficina-01-640.jpg 640w, img/oficina-01-1024.jpg 1024w, img/oficina-01-1600.jpg 1600w" sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px" width="1024" height="832" alt="Puestos de trabajo tipo bench con divisores blancos, mobiliario de oficina a medida" loading="lazy" decoding="async"></picture><!--/foto--></div>
         <div class="txt"><span class="tag-seg">Empresa</span><h3>Oficinas</h3><p>Puestos de trabajo, recepciones, bibliotecas y archivos, iguales en cada piso.</p><a class="btn solid" href="#presupuesto" data-proyecto="Oficina" data-cta="svc_oficina">Cotizar mobiliario de oficina</a></div>
       </article>
       <article class="svc" data-seg="empresa">
-        <div class="ph"><!--foto:comercial-02 sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px" alt="Mesas exhibidoras de madera de distintas alturas en un local comercial"--><!--/foto--></div>
+        <div class="ph"><!--foto:comercial-02 sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px" alt="Mesas exhibidoras de madera de distintas alturas en un local comercial"--><picture><source type="image/avif" srcset="img/comercial-02-640.avif 640w, img/comercial-02-1024.avif 1024w, img/comercial-02-1600.avif 1600w" sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px"><source type="image/webp" srcset="img/comercial-02-640.webp 640w, img/comercial-02-1024.webp 1024w, img/comercial-02-1600.webp 1600w" sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px"><img src="img/comercial-02-1024.jpg" srcset="img/comercial-02-640.jpg 640w, img/comercial-02-1024.jpg 1024w, img/comercial-02-1600.jpg 1600w" sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px" width="1024" height="1361" alt="Mesas exhibidoras de madera de distintas alturas en un local comercial" loading="lazy" decoding="async"></picture><!--/foto--></div>
         <div class="txt"><span class="tag-seg">Empresa</span><h3>Locales comerciales</h3><p>Mostradores, exhibidores y muebles de pared que ordenan el recorrido y venden el producto.</p><a class="btn solid" href="#presupuesto" data-proyecto="Local comercial" data-cta="svc_comercial">Cotizar mi local</a></div>
       </article>
       <article class="svc" data-seg="empresa">
-        <div class="ph"><!--foto:locker-01 sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px" alt="Muro de lockers en madera oscura con cerradura en cada puerta"--><!--/foto--></div>
+        <div class="ph"><!--foto:locker-01 sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px" alt="Muro de lockers en madera oscura con cerradura en cada puerta"--><picture><source type="image/avif" srcset="img/locker-01-640.avif 640w, img/locker-01-1024.avif 1024w, img/locker-01-1600.avif 1600w" sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px"><source type="image/webp" srcset="img/locker-01-640.webp 640w, img/locker-01-1024.webp 1024w, img/locker-01-1600.webp 1600w" sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px"><img src="img/locker-01-1024.jpg" srcset="img/locker-01-640.jpg 640w, img/locker-01-1024.jpg 1024w, img/locker-01-1600.jpg 1600w" sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px" width="1024" height="1434" alt="Muro de lockers en madera oscura con cerradura en cada puerta" loading="lazy" decoding="async"></picture><!--/foto--></div>
         <div class="txt"><span class="tag-seg">Empresa</span><h3>Lockers</h3><p>Para personal, gimnasios, colegios y coworkings, con la cantidad de puertas que necesites.</p><a class="btn solid" href="#presupuesto" data-proyecto="Lockers" data-cta="svc_locker">Cotizar lockers</a></div>
       </article>
     </div>
@@ -626,8 +646,8 @@ body.bar-on .mbar{transform:none}
     <div class="casos">
       <article class="caso">
         <div class="fotos">
-          <figure><!--foto:taller-02 sizes="(max-width:820px) 46vw, 300px" alt="Instalación de un muro de lockers oscuros en obra"--><!--/foto--><figcaption>Durante</figcaption></figure>
-          <figure><!--foto:locker-01 sizes="(max-width:820px) 46vw, 300px" alt="Muro de lockers terminado en madera oscura"--><!--/foto--><figcaption>Terminado</figcaption></figure>
+          <figure><!--foto:taller-02 sizes="(max-width:820px) 46vw, 300px" alt="Instalación de un muro de lockers oscuros en obra"--><picture><source type="image/avif" srcset="img/taller-02-640.avif 640w, img/taller-02-1024.avif 1024w, img/taller-02-1600.avif 1600w" sizes="(max-width:820px) 46vw, 300px"><source type="image/webp" srcset="img/taller-02-640.webp 640w, img/taller-02-1024.webp 1024w, img/taller-02-1600.webp 1600w" sizes="(max-width:820px) 46vw, 300px"><img src="img/taller-02-1024.jpg" srcset="img/taller-02-640.jpg 640w, img/taller-02-1024.jpg 1024w, img/taller-02-1600.jpg 1600w" sizes="(max-width:820px) 46vw, 300px" width="1024" height="1202" alt="Instalación de un muro de lockers oscuros en obra" loading="lazy" decoding="async"></picture><!--/foto--><figcaption>Durante</figcaption></figure>
+          <figure><!--foto:locker-01 sizes="(max-width:820px) 46vw, 300px" alt="Muro de lockers terminado en madera oscura"--><picture><source type="image/avif" srcset="img/locker-01-640.avif 640w, img/locker-01-1024.avif 1024w, img/locker-01-1600.avif 1600w" sizes="(max-width:820px) 46vw, 300px"><source type="image/webp" srcset="img/locker-01-640.webp 640w, img/locker-01-1024.webp 1024w, img/locker-01-1600.webp 1600w" sizes="(max-width:820px) 46vw, 300px"><img src="img/locker-01-1024.jpg" srcset="img/locker-01-640.jpg 640w, img/locker-01-1024.jpg 1024w, img/locker-01-1600.jpg 1600w" sizes="(max-width:820px) 46vw, 300px" width="1024" height="1434" alt="Muro de lockers terminado en madera oscura" loading="lazy" decoding="async"></picture><!--/foto--><figcaption>Terminado</figcaption></figure>
         </div>
         <div class="txt">
           <span class="eyebrow">Caso destacado · Empresa</span>
@@ -642,7 +662,7 @@ body.bar-on .mbar{transform:none}
       <article class="caso">
         <div class="fotos">
           <figure><!--foto:comercial-01 sizes="(max-width:820px) 46vw, 300px" alt="Mesas exhibidoras de madera bajo una luminaria circular en un local comercial"--><picture><source type="image/avif" srcset="img/comercial-01-640.avif 640w, img/comercial-01-1024.avif 1024w, img/comercial-01-1600.avif 1600w" sizes="(max-width:820px) 46vw, 300px"><source type="image/webp" srcset="img/comercial-01-640.webp 640w, img/comercial-01-1024.webp 1024w, img/comercial-01-1600.webp 1600w" sizes="(max-width:820px) 46vw, 300px"><img src="img/comercial-01-1024.jpg" srcset="img/comercial-01-640.jpg 640w, img/comercial-01-1024.jpg 1024w, img/comercial-01-1600.jpg 1600w" sizes="(max-width:820px) 46vw, 300px" width="1024" height="1361" alt="Mesas exhibidoras de madera bajo una luminaria circular en un local comercial" loading="lazy" decoding="async"></picture><!--/foto--><figcaption>Sala de ventas</figcaption></figure>
-          <figure><!--foto:comercial-03 sizes="(max-width:820px) 46vw, 300px" alt="Exhibidores y mesa alta de madera para el mismo local"--><!--/foto--><figcaption>Detalle</figcaption></figure>
+          <figure><!--foto:comercial-03 sizes="(max-width:820px) 46vw, 300px" alt="Exhibidores y mesa alta de madera para el mismo local"--><picture><source type="image/avif" srcset="img/comercial-03-640.avif 640w, img/comercial-03-1024.avif 1024w, img/comercial-03-1600.avif 1600w" sizes="(max-width:820px) 46vw, 300px"><source type="image/webp" srcset="img/comercial-03-640.webp 640w, img/comercial-03-1024.webp 1024w, img/comercial-03-1600.webp 1600w" sizes="(max-width:820px) 46vw, 300px"><img src="img/comercial-03-1024.jpg" srcset="img/comercial-03-640.jpg 640w, img/comercial-03-1024.jpg 1024w, img/comercial-03-1600.jpg 1600w" sizes="(max-width:820px) 46vw, 300px" width="1024" height="1361" alt="Exhibidores y mesa alta de madera para el mismo local" loading="lazy" decoding="async"></picture><!--/foto--><figcaption>Detalle</figcaption></figure>
         </div>
         <div class="txt">
           <span class="eyebrow">Caso destacado · Local comercial</span>
@@ -682,16 +702,12 @@ body.bar-on .mbar{transform:none}
       <div><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M3 26h24M6 26V12l9-7 9 7v14M12 26v-8h6v8"/></svg><h3>Arquitectos y constructoras</h3><p>Fabricamos según el proyecto, verificamos medidas en obra y respetamos el cronograma de la obra.</p></div>
       <div><svg viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="10" r="5"/><path d="M5 27c1.5-6 5.5-9 10-9s8.5 3 10 9"/></svg><h3>Un solo interlocutor</h3><p>Una persona responsable de tu proyecto, que te responde rápido <span class="todo">TODO_CAINCO: confirmar</span></p></div>
     </div>
-    <!-- TODO_CAINCO: cifras reales (años, proyectos, unidades fabricadas). No publicar sin datos verificados. -->
+    <!-- Años: confirmado por Cainco (CAINCO_CONFIG.anios_trayectoria).
+         TODO_CAINCO: cifras reales de proyectos y empresas. No publicar sin datos verificados. -->
     <div class="cifras">
-      <div><b><span class="todo">TODO_CAINCO</span></b><span>años fabricando muebles</span></div>
+      <div><b>+20</b><span>años fabricando muebles a medida</span></div>
       <div><b><span class="todo">TODO_CAINCO</span></b><span>proyectos entregados</span></div>
       <div><b><span class="todo">TODO_CAINCO</span></b><span>empresas que ya nos eligieron</span></div>
-    </div>
-    <!-- TODO_CAINCO: logos de clientes (con autorización), en SVG o PNG monocromo -->
-    <div class="logos" role="group" aria-label="Logos de clientes">
-      <div><span class="todo">Logo cliente</span></div><div><span class="todo">Logo cliente</span></div><div><span class="todo">Logo cliente</span></div>
-      <div><span class="todo">Logo cliente</span></div><div><span class="todo">Logo cliente</span></div><div><span class="todo">Logo cliente</span></div>
     </div>
     <div class="cta-row">
       <a class="btn solid" href="#presupuesto" data-perfil-form="empresa" data-cta="empresas">Coordinar una visita técnica</a>
@@ -906,8 +922,9 @@ body.bar-on .mbar{transform:none}
     <p class="lead">Escribinos, contanos qué necesitás y coordinamos la medición.</p>
     <div class="ctas">
       <a class="btn solid" href="#presupuesto" data-cta="cierre">Pedir presupuesto sin cargo</a>
-      <a class="btn wa js-wa" href="https://wa.me/595981429324" target="_blank" rel="noopener" data-cta="cierre_wa" data-wa-msg="Hola Cainco, quiero consultar por un mueble a medida."><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>Escribir por WhatsApp</a>
+      <a class="btn wa js-wa" href="https://wa.me/595984301230" target="_blank" rel="noopener" data-cta="cierre_wa" data-wa-msg="Hola Cainco, quiero consultar por un mueble a medida."><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>Escribir por WhatsApp</a>
     </div>
+    <p class="tel-line">¿Preferís hablar? <a class="tap" href="tel:+595984301230" data-cta="cierre_tel">Llamanos&nbsp;al&nbsp;0984&nbsp;301&nbsp;230</a></p>
   </div>
 </section>
 </main>
@@ -925,18 +942,18 @@ body.bar-on .mbar{transform:none}
       <div>
         <h3>Contacto</h3>
         <ul>
-          <li><a class="js-wa" href="https://wa.me/595981429324" target="_blank" rel="noopener" data-cta="footer_wa" data-wa-msg="Hola Cainco, quiero hacer una consulta.">WhatsApp +595&nbsp;981&nbsp;429&nbsp;324</a></li>
-          <li>Llamar: <a href="tel:+595981429324" data-cta="footer_tel">+595&nbsp;981&nbsp;429&nbsp;324</a></li>
-          <li><a href="mailto:contacto@cainco.com.py">contacto@cainco.com.py</a></li>
+          <li><a class="tap js-wa" href="https://wa.me/595984301230" target="_blank" rel="noopener" data-cta="footer_wa" data-wa-msg="Hola Cainco, quiero hacer una consulta.">WhatsApp 0984&nbsp;301&nbsp;230</a></li>
+          <li><a class="tap" href="tel:+595984301230" data-cta="footer_tel">Llamar&nbsp;al&nbsp;0984&nbsp;301&nbsp;230</a></li>
+          <!-- el email está "propuesto" en CAINCO_CONFIG: no se muestra hasta confirmarlo -->
         </ul>
       </div>
       <div>
-        <h3>Horario y zona</h3>
+        <h3>Dónde estamos</h3>
+        <address>Av. Sacramento 2844 esq. Espíritu Santo<br>Asunción, Paraguay</address>
         <ul>
+          <li><a class="tap" href="https://www.google.com/maps/search/?api=1&amp;query=Av.%20Sacramento%202844%20esq.%20Esp%C3%ADritu%20Santo%2C%20Asunci%C3%B3n%2C%20Paraguay" target="_blank" rel="noopener" data-cta="footer_mapa">Cómo llegar<span class="sr"> (abre Google Maps)</span></a></li>
           <li>Lunes a viernes, 8:00 a 17:00</li>
-          <li>Asunción y alrededores</li>
-          <!-- TODO_CAINCO: dirección del taller o showroom (igual que en el JSON-LD) -->
-          <li><span class="todo">TODO_CAINCO: dirección del taller</span></li>
+          <li>Trabajamos en Asunción y alrededores</li>
         </ul>
       </div>
       <div>
@@ -954,7 +971,7 @@ body.bar-on .mbar{transform:none}
 </footer>
 
 <!-- WhatsApp flotante: el mensaje cambia según la sección visible -->
-<a class="wa-float" id="wa-float" href="https://wa.me/595981429324" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
+<a class="wa-float" id="wa-float" href="https://wa.me/595984301230" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
   <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
 </a>
 
@@ -975,8 +992,8 @@ body.bar-on .mbar{transform:none}
 <script>
 (() => {
 "use strict";
-// Número de WhatsApp de Cainco (formato internacional, sin "+" ni espacios)
-const WHATSAPP = "595981429324";
+// Número de WhatsApp de Cainco (formato internacional, sin "+" ni espacios), desde CAINCO_CONFIG
+const WHATSAPP = window.CAINCO_CONFIG.whatsapp.valor;
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const root = document.documentElement;
@@ -1024,7 +1041,7 @@ $("#theme").addEventListener("click", () => {
 
 /* ------------------------------ fotos ------------------------------- */
 // Dimensiones y anchos disponibles: los escribe tools/actualizar_html.py desde tools/fotos.json
-/*FOTOS*/const FOTOS = {"bano-01":{"w":2560,"h":1920,"widths":[640,1024,1600],"score":0.625},"cocina-01":{"w":1611,"h":1611,"widths":[640,1024,1600],"score":0.734},"cocina-06":{"w":1902,"h":1548,"widths":[640,1024,1600],"score":0.221},"comercial-01":{"w":1926,"h":2560,"widths":[640,1024,1600],"score":0.734},"placard-04":{"w":1720,"h":2381,"widths":[640,1024,1600],"score":0.822}};/*/FOTOS*/
+/*FOTOS*/const FOTOS = {"bano-01":{"w":2253,"h":1920,"widths":[640,1024,1600],"score":0.625},"bano-02":{"w":1920,"h":2560,"widths":[640,1024,1600],"score":0.539},"bano-03":{"w":2150,"h":1920,"widths":[640,1024,1600],"score":0.586},"bano-04":{"w":1756,"h":2560,"widths":[640,1024,1600],"score":0.631},"bano-05":{"w":1764,"h":2560,"widths":[640,1024,1600],"score":0.671},"bano-06":{"w":2384,"h":1920,"widths":[640,1024,1600],"score":0.675},"bano-07":{"w":2560,"h":1920,"widths":[640,1024,1600],"score":0.696},"cocina-01":{"w":1611,"h":1611,"widths":[640,1024,1600],"score":0.734},"cocina-03":{"w":2304,"h":1728,"widths":[640,1024,1600],"score":0.29},"cocina-04":{"w":2064,"h":1548,"widths":[640,1024,1600],"score":0.255},"cocina-05":{"w":1548,"h":2064,"widths":[640,1024,1548],"score":0.349},"cocina-06":{"w":1902,"h":1548,"widths":[640,1024,1600],"score":0.221},"cocina-07":{"w":1307,"h":2322,"widths":[640,1024,1307],"score":0.322},"comercial-01":{"w":1926,"h":2560,"widths":[640,1024,1600],"score":0.734},"comercial-02":{"w":1926,"h":2560,"widths":[640,1024,1600],"score":0.628},"comercial-03":{"w":1926,"h":2560,"widths":[640,1024,1600],"score":0.709},"comercial-05":{"w":2304,"h":1296,"widths":[640,1024,1600],"score":0.147},"comercial-06":{"w":2304,"h":1296,"widths":[640,1024,1600],"score":0.167},"locker-01":{"w":1828,"h":2560,"widths":[640,1024,1600],"score":0.873},"locker-02":{"w":1733,"h":2125,"widths":[640,1024,1600],"score":0.657},"oficina-01":{"w":1905,"h":1548,"widths":[640,1024,1600],"score":0.464},"oficina-02":{"w":1905,"h":1548,"widths":[640,1024,1600],"score":0.799},"oficina-03":{"w":1926,"h":2560,"widths":[640,1024,1600],"score":0.545},"oficina-04":{"w":1920,"h":2560,"widths":[640,1024,1600],"score":0.94},"oficina-05":{"w":1772,"h":2560,"widths":[640,1024,1600],"score":0.749},"oficina-06":{"w":2128,"h":1120,"widths":[640,1024,1600],"score":0.3},"placard-01":{"w":1299,"h":2560,"widths":[640,1024,1299],"score":0.547},"placard-02":{"w":1440,"h":2560,"widths":[640,1024,1440],"score":0.342},"placard-03":{"w":1768,"h":2560,"widths":[640,1024,1600],"score":0.72},"placard-04":{"w":1720,"h":2560,"widths":[640,1024,1600],"score":0.822},"placard-05":{"w":1440,"h":2560,"widths":[640,1024,1440],"score":0.369},"taller-01":{"w":1920,"h":2560,"widths":[640,1024,1600],"score":0.768},"taller-02":{"w":1920,"h":2253,"widths":[640,1024,1600],"score":0.952}};/*/FOTOS*/
 function picture(id, alt, sizes, lazy = true) {
   const f = FOTOS[id]; if (!f) return "";
   const set = ext => f.widths.map(w => `img/${id}-${w}.${ext} ${w}w`).join(", ");
@@ -1075,7 +1092,7 @@ const W = [
   ["comercial-06", "Mueble de pared con nichos, vista frontal"],
   ["cocina-07", "Bajo mesada y alacena compacta"],
   ["bano-07", "Interior de mueble bajo bacha"],
-  ["comercial-04", "Mesa exhibidora y atril"],
+  // ["comercial-04", "Mesa exhibidora y atril"],                       // TODO_CAINCO: pedir foto nueva de la mesa exhibidora y atril (la original se descartó: nocturna, borrosa y con objetos ajenos). Cuando llegue: procesarla con tools/hd.sh --ids comercial-04 (sacando "decision": "descartar" de fotos-ajustes.json) y descomentar esta línea
   ["taller-01", "Módulos en producción en nuestro taller"],
   ["taller-02", "Instalación de lockers en obra"]
 ].filter(([id]) => FOTOS[id]).map(([id, cap], i) => ({ id, cap, cat: id.split("-")[0], seg: SEG[id.split("-")[0]], q: (FOTOS[id].score || 0), i }));
