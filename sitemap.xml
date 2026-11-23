@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://cainco.com.py/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <image:image><image:loc>https://cainco.com.py/og-image.jpg</image:loc></image:image>
     <image:image><image:loc>https://cainco.com.py/img/bano-01.jpg</image:loc></image:image>
     <image:image><image:loc>https://cainco.com.py/img/bano-02.jpg</image:loc></image:image>
@@ -21,7 +21,6 @@
     <image:image><image:loc>https://cainco.com.py/img/comercial-01.jpg</image:loc></image:image>
     <image:image><image:loc>https://cainco.com.py/img/comercial-02.jpg</image:loc></image:image>
     <image:image><image:loc>https://cainco.com.py/img/comercial-03.jpg</image:loc></image:image>
-    <image:image><image:loc>https://cainco.com.py/img/comercial-04.jpg</image:loc></image:image>
     <image:image><image:loc>https://cainco.com.py/img/comercial-05.jpg</image:loc></image:image>
     <image:image><image:loc>https://cainco.com.py/img/comercial-06.jpg</image:loc></image:image>
     <image:image><image:loc>https://cainco.com.py/img/locker-01.jpg</image:loc></image:image>

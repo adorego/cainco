@@ -1,0 +1,10 @@
+# Originales de las fotos: no se publican (se conservan localmente y en el historial de git, rama main)
+img/_originales/
+# Caché de super-resolución
+tools/.cache-sr/
+tools/mejorar_fotos.log
+tools/fotos.tmp
+# Capturas de verificación (Playwright / Lighthouse)
+tools/.verificacion/
+__pycache__/
+node_modules/
