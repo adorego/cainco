@@ -81,6 +81,14 @@ for (const [nombre, vp] of [["movil", { width: 390, height: 844 }], ["escritorio
     ok(ancho <= 0, `sin scroll horizontal (sobra ${ancho}px)`);
     const ld = await page.evaluate(() => [...document.querySelectorAll('script[type="application/ld+json"]')].map(s => { try { JSON.parse(s.textContent); return "ok"; } catch (e) { return String(e); } }));
     ok(ld.length >= 2 && ld.every(x => x === "ok"), `JSON-LD válido (${ld.join(", ")})`);
+    // Página limpia: sin TODO, sin modo revisión y sin bloques de datos que faltan
+    const limpio = await page.evaluate(() => ({
+      todo: (document.body.innerText.match(/TODO_CAINCO/g) || []).length + document.querySelectorAll(".todo").length,
+      rev: document.querySelectorAll("[data-rev], .rev-bar").length,
+      faltan: [...document.querySelectorAll("[data-requires], [data-requires-any]")].filter(e => e.checkVisibility && e.checkVisibility()).map(e => e.dataset.requires || e.dataset.requiresAny)
+    }));
+    ok(limpio.todo === 0 && limpio.rev === 0, `sin TODO ni marcas de revisión visibles (${limpio.todo} TODO, ${limpio.rev} marcas)`);
+    ok(limpio.faltan.length === 0, `datos en "falta" ocultos (visibles: ${limpio.faltan.join(", ") || "ninguno"})`);
     // CTA visible: en móvil, después de bajar, la barra fija tiene que aparecer
     if (nombre === "movil") {
       await page.evaluate(() => window.scrollTo(0, document.querySelector("#servicios").offsetTop));
@@ -149,14 +157,36 @@ for (const perfil of ["hogar", "empresa"]) {
   ok(tels.length >= 1 && tels.every(([h, alto]) => h === `tel:${TEL}` && alto >= 44), `enlaces tel: → ${TEL}, ≥44px de alto (${tels.map(t => t.join(" ")).join(" | ")})`);
   const mapa = await page.locator("footer a", { hasText: "Cómo llegar" }).getAttribute("href");
   ok(mapa === "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(CFG.direccion.valor), `«Cómo llegar» → ${mapa}`);
-  if (CFG.email.estado !== "confirmado") {
-    const donde = await page.evaluate(em => [
-      document.body.innerText.includes(em) && "texto visible",
-      [...document.querySelectorAll("[href]")].some(a => a.getAttribute("href").includes(em)) && "enlace",
-      [...document.querySelectorAll('script[type="application/ld+json"]')].some(s => s.textContent.includes(em)) && "JSON-LD"
-    ].filter(Boolean), CFG.email.valor);
-    ok(donde.length === 0, `email «${CFG.email.estado}» no se muestra ni va al JSON-LD ${donde.join(", ")}`);
-  }
+  const fuente = await (await page.request.get(BASE)).text();   // el HTML servido ("ver código fuente")
+  ok(!/[\w.+-]+@cainco\.com\.py/i.test(fuente) && !(await page.evaluate(() => document.body.innerText.includes("@"))), "ningún email en el HTML servido ni en la página");
+  ok(errores.length === 0, `consola sin errores ${errores.join(" | ")}`);
+  await ctx.close();
+}
+
+// 2b) Modo revisión (?revision=1): textos propuestos subrayados con su clave
+for (const [nombre, vp] of [["movil", { width: 390, height: 844 }], ["escritorio", { width: 1440, height: 900 }]]) {
+  console.log(`\n== revisión · ${nombre}`);
+  const { ctx, page, errores } = await nueva(vp, "light");
+  await page.goto(BASE + "?revision=1", { waitUntil: "networkidle" });
+  const propuestos = Object.keys(CFG).filter(k => CFG[k].estado === "propuesto");
+  const r = await page.evaluate(() => ({
+    bar: !!document.querySelector(".rev-bar"),
+    marcas: [...document.querySelectorAll("[data-rev]")].map(e => e.dataset.cfg),
+    todo: (document.body.innerText.match(/TODO_CAINCO/g) || []).length
+  }));
+  ok(r.bar, "aparece el aviso de modo revisión");
+  const sinMarca = propuestos.filter(k => !r.marcas.includes(k));
+  ok(r.marcas.length > 0 && sinMarca.length === 0, `${r.marcas.length} textos marcados, todas las claves propuestas presentes (sin marca: ${sinMarca.join(", ") || "ninguna"})`);
+  ok(r.todo === 0, "sin TODO visibles en modo revisión");
+  await page.screenshot({ path: path.join(OUT, `rev-${nombre}-hero.png`) });
+  // tooltip: foco en un texto propuesto
+  const t = page.locator("#proceso [data-rev][tabindex]").first();
+  await t.scrollIntoViewIfNeeded(); await t.focus(); await page.waitForTimeout(150);
+  await page.locator("#proceso").screenshot({ path: path.join(OUT, `rev-${nombre}-proceso-tooltip.png`) });
+  for (const id of ["faq", "empresas"]) await page.locator("#" + id).screenshot({ path: path.join(OUT, `rev-${nombre}-${id}.png`) });
+  await page.locator("footer").screenshot({ path: path.join(OUT, `rev-${nombre}-footer.png`) });
+  const ancho = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+  ok(ancho <= 0, `sin scroll horizontal en revisión (sobra ${ancho}px)`);
   ok(errores.length === 0, `consola sin errores ${errores.join(" | ")}`);
   await ctx.close();
 }

@@ -26,7 +26,7 @@
 
 <!-- X / Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<!-- TODO_CAINCO: usuario de X, p. ej. <meta name="twitter:site" content="@cainco"> -->
+<!-- twitter:site: agregar cuando se confirme "redes" en CAINCO_CONFIG -->
 <meta name="twitter:title" content="Cainco – Muebles a medida en Asunción">
 <meta name="twitter:description" content="Cocinas, placares, oficinas y locales comerciales a medida. Diseño, fabricación en taller propio e instalación.">
 <meta name="twitter:image" content="https://cainco.com.py/og-image.jpg">
@@ -52,27 +52,53 @@
 <!-- ===================== CAINCO_CONFIG =====================
      Datos del negocio. Estados:
        "confirmado" → confirmado por el cliente: se publica.
-       "propuesto"  → valor tentativo: NO se muestra en el sitio ni en el JSON-LD hasta confirmarlo.
-       "pendiente"  → falta el dato.
-     El HTML estático (footer, JSON-LD, enlaces wa.me/tel:) se escribe a mano para que lo lean los buscadores;
-     tools/check-publicacion.sh controla que coincida con esta config y que nada "propuesto" se filtre.
-     El bloque entre /*CONFIG*/ y /*/CONFIG*/ tiene que ser JSON válido (lo lee ese script). -->
+       "propuesto"  → redactado por nosotros, a confirmar: se muestra, pero el sitio no se publica
+                      hasta que el cliente lo confirme (tools/check-publicacion.sh sale con 2).
+                      Con ?revision=1 cada texto propuesto se ve subrayado, con la clave.
+       "falta"      → dato de hecho que todavía no tenemos: los elementos con data-requires="clave"
+                      quedan ocultos (atributo hidden) y no se inventa nada.
+     Los textos se escriben en el HTML estático (para buscadores) y se marcan con data-cfg="clave".
+     Cuando llegue un dato "falta", se completa el valor acá, se pasa a "confirmado" y el JS
+     muestra y rellena los elementos data-requires (data-render / data-fill).
+     El bloque entre /*CONFIG*/ y /*/CONFIG*/ tiene que ser JSON válido (lo lee check-publicacion.sh). -->
 <script>
 window.CAINCO_CONFIG = /*CONFIG*/{
-  "whatsapp":          { "valor": "595984301230", "estado": "confirmado", "nota": "formato wa.me: 595 + número sin el 0 inicial" },
-  "whatsapp_visible":  { "valor": "0984 301 230", "estado": "confirmado" },
-  "telefono":          { "valor": "+595984301230", "estado": "confirmado", "nota": "para tel: y JSON-LD" },
-  "telefono_visible":  { "valor": "0984 301 230", "estado": "confirmado" },
-  "direccion":         { "valor": "Av. Sacramento 2844 esq. Espíritu Santo, Asunción, Paraguay", "estado": "confirmado" },
-  "anios_trayectoria": { "valor": "+20 años", "estado": "confirmado", "nota": "sin año de fundación exacto: no usar foundingDate" },
-  "email":             { "valor": "info@cainco.com.py", "estado": "propuesto", "nota": "confirmar dirección exacta y que el correo funcione (el dominio todavía no resuelve)" },
-  "ga4_id":            { "valor": "", "estado": "pendiente", "nota": "TODO_CAINCO: ID de Google Analytics 4, p. ej. G-XXXXXXXXXX" },
-  "pixel_id":          { "valor": "", "estado": "pendiente", "nota": "TODO_CAINCO: ID de Meta Pixel, p. ej. 123456789012345" }
+  "whatsapp":          { "estado": "confirmado", "valor": "595984301230", "nota": "formato wa.me: 595 + número sin el 0 inicial" },
+  "whatsapp_visible":  { "estado": "confirmado", "valor": "0984 301 230" },
+  "telefono":          { "estado": "confirmado", "valor": "+595984301230", "nota": "para tel: y JSON-LD" },
+  "telefono_visible":  { "estado": "confirmado", "valor": "0984 301 230" },
+  "direccion":         { "estado": "confirmado", "valor": "Av. Sacramento 2844 esq. Espíritu Santo, Asunción, Paraguay" },
+  "anios_trayectoria": { "estado": "confirmado", "valor": "+20 años", "nota": "sin año de fundación exacto: no usar foundingDate" },
+
+  "respuesta":         { "estado": "propuesto", "valor": "Te respondemos dentro de las 24 h hábiles" },
+  "horario":           { "estado": "propuesto", "valor": "Lunes a viernes de 8:00 a 17:00 · Sábados de 8:00 a 12:00" },
+  "cobertura":         { "estado": "propuesto", "valor": "Asunción y Gran Asunción (Central). Otras zonas, a consultar" },
+  "medicion":          { "estado": "propuesto", "valor": "Visita de medición sin cargo en Asunción y Gran Asunción" },
+  "presupuesto_plazo": { "estado": "propuesto", "valor": "Presupuesto en 3 a 5 días hábiles después de la medición" },
+  "diseno_previo":     { "estado": "propuesto", "valor": "Te mostramos un plano o render del mueble para aprobar antes de fabricar" },
+  "fabricacion_plazo": { "estado": "propuesto", "valor": "Entre 20 y 30 días hábiles desde la aprobación y la seña, según el proyecto" },
+  "pagos":             { "estado": "propuesto", "valor": "50% de seña y 50% contra entrega. Transferencia, efectivo o QR" },
+  "factura":           { "estado": "propuesto", "valor": "Emitimos factura legal" },
+  "garantia":          { "estado": "propuesto", "valor": "1 año de garantía en fabricación y herrajes" },
+  "postventa":         { "estado": "propuesto", "valor": "Si algo necesita ajuste después de la instalación, volvemos a revisarlo" },
+  "instalacion":       { "estado": "propuesto", "valor": "Instalación incluida en Asunción y Gran Asunción" },
+  "arquitectos":       { "estado": "propuesto", "valor": "Trabajamos con planos de tu arquitecto o interiorista" },
+  "rangos_inversion":  { "estado": "propuesto", "valor": ["Hasta Gs. 5 millones", "Gs. 5 a 15 millones", "Gs. 15 a 40 millones", "Más de Gs. 40 millones", "Prefiero no decir"] },
+
+  "email":             { "estado": "falta", "valor": "", "nota": "la propuesta está en PENDIENTES_CAINCO.md; no se publica hasta confirmar que el correo funciona" },
+  "testimonios":       { "estado": "falta", "valor": [], "nota": "[{ \"cita\": \"…\", \"nombre\": \"…\", \"proyecto\": \"…\" }], reales y con permiso" },
+  "cifra_proyectos":   { "estado": "falta", "valor": "", "nota": "cantidad de proyectos entregados (dato real)" },
+  "cifra_empresas":    { "estado": "falta", "valor": "", "nota": "cantidad de empresas clientes" },
+  "caso_lockers":      { "estado": "falta", "valor": {}, "nota": "{ \"titulo\", \"desafio\", \"solucion\" } del proyecto de lockers (fotos taller-02 y locker-01)" },
+  "caso_local":        { "estado": "falta", "valor": {}, "nota": "{ \"titulo\", \"desafio\", \"solucion\" } del local comercial (fotos comercial-01 y comercial-03)" },
+  "redes":             { "estado": "falta", "valor": {}, "nota": "{ \"instagram\": url, \"facebook\": url, \"linkedin\": url }; al confirmar, sumar sameAs al JSON-LD y twitter:site si hay X" },
+  "ga4_id":            { "estado": "falta", "valor": "", "nota": "ID de Google Analytics 4, p. ej. G-XXXXXXXXXX" },
+  "meta_pixel_id":     { "estado": "falta", "valor": "", "nota": "ID de Meta Pixel" }
 }/*/CONFIG*/;
-/* Medición: para activar, completá ga4_id / pixel_id arriba y descomentá los bloques de abajo.
-   Mientras estén vacíos, track() no hace nada y no rompe. */
+/* Medición: para activar, completá ga4_id / meta_pixel_id arriba y descomentá los bloques de abajo.
+   Mientras falten, track() no hace nada y no rompe. */
 window.CAINCO_GA4_ID = CAINCO_CONFIG.ga4_id.estado === "confirmado" ? CAINCO_CONFIG.ga4_id.valor : "";
-window.CAINCO_PIXEL_ID = CAINCO_CONFIG.pixel_id.estado === "confirmado" ? CAINCO_CONFIG.pixel_id.valor : "";
+window.CAINCO_PIXEL_ID = CAINCO_CONFIG.meta_pixel_id.estado === "confirmado" ? CAINCO_CONFIG.meta_pixel_id.valor : "";
 </script>
 <!-- Google Analytics 4
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
@@ -131,7 +157,7 @@ window.CAINCO_PIXEL_ID = CAINCO_CONFIG.pixel_id.estado === "confirmado" ? CAINCO
       "hasMap": "https://www.google.com/maps/search/?api=1&query=Av.%20Sacramento%202844%20esq.%20Esp%C3%ADritu%20Santo%2C%20Asunci%C3%B3n%2C%20Paraguay",
       "areaServed": [
         { "@type": "City", "name": "Asunción" },
-        { "@type": "Country", "name": "Paraguay" }
+        { "@type": "AdministrativeArea", "name": "Central, Paraguay" }
       ],
       "openingHoursSpecification": [
         {
@@ -139,16 +165,17 @@ window.CAINCO_PIXEL_ID = CAINCO_CONFIG.pixel_id.estado === "confirmado" ? CAINCO
           "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
           "opens": "08:00",
           "closes": "17:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "08:00",
+          "closes": "12:00"
         }
       ],
       "priceRange": "₲₲",
       "currenciesAccepted": "PYG",
       "knowsAbout": ["muebles a medida", "cocinas a medida", "placares y vestidores", "mobiliario de oficina", "mobiliario comercial", "lockers", "muebles de baño"],
-      "sameAs": [
-        "https://www.instagram.com/TODO_CAINCO",
-        "https://www.facebook.com/TODO_CAINCO",
-        "https://www.linkedin.com/company/TODO_CAINCO"
-      ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Muebles a medida",
@@ -349,11 +376,11 @@ main{display:flex;flex-direction:column}
 .b2b svg{width:30px;height:30px;stroke:#e8bd8c;fill:none;stroke-width:1.7}
 @media (max-width:900px){.b2b{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.b2b{grid-template-columns:minmax(0,1fr)}}
-.cifras{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:40px}
+/* auto-fit: si faltan cifras (data-requires ocultos), las que quedan no dejan columnas vacías */
+.cifras{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,320px));gap:16px 32px;margin-top:40px}
 .cifras div{border-top:2px solid #e8bd8c;padding-top:14px}
 .cifras b{display:block;font-family:var(--display);font-size:clamp(28px,4vw,44px);font-weight:850;color:#fff}
 .cifras span{color:var(--on-stone-muted);font-size:15px}
-@media (max-width:560px){.cifras{grid-template-columns:minmax(0,1fr)}}
 .empresas .cta-row{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;margin-top:40px}
 .empresas .micro{color:var(--on-stone-muted)}
 .teaser-emp{border:1px solid var(--line);border-radius:16px;padding:20px 22px;display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:space-between;background:var(--card)}
@@ -452,14 +479,22 @@ input:focus,select:focus,textarea:focus{outline:3px solid var(--oak-soft);border
 a.tap{display:inline-flex;align-items:center;min-height:44px}
 footer address{font-style:normal;color:var(--on-stone);margin-bottom:2px}
 footer{background:var(--stone);color:var(--on-stone-muted);border-top:1px solid #2e3336;padding-block:40px calc(40px + var(--bar-h));font-size:15px}
-footer .cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
+footer .cols{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:28px} /* tantas columnas como bloques visibles */
 footer h3{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#e8bd8c;font-weight:500;margin-bottom:10px}
 footer a{color:var(--on-stone);text-underline-offset:3px}
 footer ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
 footer .legal{margin-top:32px;padding-top:20px;border-top:1px solid #2e3336;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;font-size:14px}
 footer .logo .mark-b{fill:var(--on-stone)} footer .logo .mark-a{fill:#e8bd8c} footer .logo .tag{color:var(--on-stone-muted)}
-@media (max-width:860px){footer .cols{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:860px){footer .cols{grid-auto-flow:row;grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:480px){footer .cols{grid-template-columns:minmax(0,1fr)}}
+
+/* datos que faltan (data-requires) y modo revisión (?revision=1) */
+[hidden]{display:none!important}
+.rev-bar{background:#fff4d6;color:#3d2c00;border-bottom:1px solid #e8c873;font-size:14px;line-height:1.45;padding:10px 16px;text-align:center}
+.rev-bar b{font-weight:700}
+html[data-revision] [data-rev]{position:relative;cursor:help;border-radius:3px;background:color-mix(in srgb,#f5b301 18%,transparent);text-decoration:underline dotted 2px #c77c00;text-underline-offset:3px}
+html[data-revision] select[data-rev]{outline:2px dotted #c77c00;outline-offset:2px}
+html[data-revision] [data-rev]:is(:hover,:focus-visible)::after{content:attr(data-rev);position:absolute;left:0;bottom:calc(100% + 6px);z-index:60;width:max-content;max-width:min(320px,80vw);background:#1b1d1e;color:#fff;font:500 12px/1.35 var(--mono);letter-spacing:0;text-transform:none;padding:5px 8px;border-radius:6px;white-space:normal;text-align:left;pointer-events:none}
 
 /* WhatsApp flotante + barra móvil */
 .wa-float{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + var(--bar-h) + env(safe-area-inset-bottom,0px));z-index:40;width:58px;height:58px;border-radius:50%;background:var(--wa);color:#fff;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:bottom .25s,transform .2s,opacity .2s}
@@ -530,17 +565,15 @@ body.bar-on .mbar{transform:none}
       <h1 id="h1">Muebles a medida que aprovechan <em>cada centímetro</em> de tu espacio</h1>
       <p class="lead">Para hogares y empresas: cocinas, placares, oficinas, locales comerciales y lockers. Diseñamos, fabricamos en nuestro taller propio e instalamos. Un solo equipo, de la medición a la entrega.</p>
       <div class="ctas">
-        <a class="btn solid" href="#presupuesto" data-cta="hero_primario">Pedir presupuesto sin cargo</a>
+        <a class="btn solid" href="#presupuesto" data-cta="hero_primario"><span>Pedir presupuesto <span data-cfg="medicion">sin cargo</span></span></a>
         <a class="btn light" href="#trabajos" data-cta="hero_secundario">Ver trabajos</a>
       </div>
-      <!-- TODO_CAINCO: confirmar que el presupuesto es sin cargo y el tiempo real de respuesta -->
-      <p class="micro">Sin compromiso · Te respondemos por WhatsApp <span class="todo">TODO_CAINCO: ¿en el día?</span></p>
+      <p class="micro"><span>Sin compromiso · <span data-cfg="respuesta">Te respondemos dentro de las 24 h hábiles</span></span></p>
       <ul class="proofs">
         <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8.5l4 4 8-9"/></svg>Fabricación en taller propio</li>
         <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8.5l4 4 8-9"/></svg>+20 años de trayectoria</li>
         <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8.5l4 4 8-9"/></svg>Medición en obra</li>
-        <!-- TODO_CAINCO: confirmar que la instalación está incluida en el precio -->
-        <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8.5l4 4 8-9"/></svg>Instalación incluida</li>
+        <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8.5l4 4 8-9"/></svg><span data-cfg="instalacion">Instalación incluida</span></li>
       </ul>
     </div>
   </div>
@@ -576,17 +609,14 @@ body.bar-on .mbar{transform:none}
       <div class="ps-col" data-solo="hogar">
         <h3>En tu casa</h3>
         <div class="ps-row"><p class="pain">El mueble de catálogo no entra, o deja huecos que no sirven para nada.</p><p class="fix">Medimos en obra y diseñamos al centímetro: piso a techo, rincones y columnas incluidos.</p></div>
-        <!-- TODO_CAINCO: confirmar que el plazo de entrega se fija por escrito en el presupuesto -->
-        <div class="ps-row"><p class="pain">El carpintero no cumple la fecha y la obra queda parada.</p><p class="fix">Te damos un plazo de entrega concreto antes de empezar <span class="todo">TODO_CAINCO: ¿por escrito?</span></p></div>
+        <div class="ps-row"><p class="pain">El carpintero no cumple la fecha y la obra queda parada.</p><p class="fix">Te damos un plazo concreto antes de empezar: <span data-cfg="fabricacion_plazo">entre 20 y 30 días hábiles desde la aprobación y la seña, según el proyecto</span>.</p></div>
         <div class="ps-row"><p class="pain">Cantos que se despegan, puertas que no cierran bien.</p><p class="fix">Canto ABS de 2 mm, bisagras con cierre suave y correderas telescópicas. Ajustamos todo al instalar.</p></div>
       </div>
       <div class="ps-col" data-solo="empresa">
         <h3>En tu empresa</h3>
-        <!-- TODO_CAINCO: confirmar que trabajan con plazos por contrato -->
-        <div class="ps-row"><p class="pain">El proveedor no llega a la fecha de apertura o de mudanza.</p><p class="fix">Planificamos la producción contra tu fecha de inauguración <span class="todo">TODO_CAINCO: ¿plazo por contrato?</span></p></div>
+        <div class="ps-row"><p class="pain">El proveedor no llega a la fecha de apertura o de mudanza.</p><p class="fix">Planificamos la producción contra tu fecha de inauguración y te confirmamos el plazo antes de empezar.</p></div>
         <div class="ps-row"><p class="pain">Puestos de trabajo o lockers que no salen iguales entre sí.</p><p class="fix">Producción en serie en taller propio: cada módulo repetido sale con las mismas medidas y terminaciones.</p></div>
-        <!-- TODO_CAINCO: confirmar que hay un responsable de proyecto único y servicio de postventa -->
-        <div class="ps-row"><p class="pain">Nadie responde después de la entrega.</p><p class="fix">Un interlocutor que te atiende por WhatsApp antes, durante y después <span class="todo">TODO_CAINCO: ¿postventa?</span></p></div>
+        <div class="ps-row"><p class="pain">Nadie responde después de la entrega.</p><p class="fix">Seguimos en el mismo chat de WhatsApp después de instalar. <span data-cfg="postventa">Si algo necesita ajuste después de la instalación, volvemos a revisarlo.</span></p></div>
       </div>
     </div>
   </div>
@@ -641,39 +671,40 @@ body.bar-on .mbar{transform:none}
     <div class="grid" id="grid" aria-live="polite"></div>
     <div class="more"><button type="button" class="btn" id="more" hidden>Ver más trabajos</button></div>
 
-    <!-- Casos destacados: estructura "el desafío / la solución". Reemplazar textos TODO_CAINCO con casos reales. -->
+    <!-- Casos destacados ("el desafío / la solución"): ocultos mientras caso_lockers / caso_local estén en "falta".
+         Los textos salen de CAINCO_CONFIG (data-fill); no se inventa nada. -->
+    <div class="casos-wrap" data-requires-any="caso_lockers caso_local" hidden>
     <h3 class="sr">Casos destacados</h3>
     <div class="casos">
-      <article class="caso">
+      <article class="caso" data-requires="caso_lockers" hidden>
         <div class="fotos">
           <figure><!--foto:taller-02 sizes="(max-width:820px) 46vw, 300px" alt="Instalación de un muro de lockers oscuros en obra"--><picture><source type="image/avif" srcset="img/taller-02-640.avif 640w, img/taller-02-1024.avif 1024w, img/taller-02-1600.avif 1600w" sizes="(max-width:820px) 46vw, 300px"><source type="image/webp" srcset="img/taller-02-640.webp 640w, img/taller-02-1024.webp 1024w, img/taller-02-1600.webp 1600w" sizes="(max-width:820px) 46vw, 300px"><img src="img/taller-02-1024.jpg" srcset="img/taller-02-640.jpg 640w, img/taller-02-1024.jpg 1024w, img/taller-02-1600.jpg 1600w" sizes="(max-width:820px) 46vw, 300px" width="1024" height="1202" alt="Instalación de un muro de lockers oscuros en obra" loading="lazy" decoding="async"></picture><!--/foto--><figcaption>Durante</figcaption></figure>
           <figure><!--foto:locker-01 sizes="(max-width:820px) 46vw, 300px" alt="Muro de lockers terminado en madera oscura"--><picture><source type="image/avif" srcset="img/locker-01-640.avif 640w, img/locker-01-1024.avif 1024w, img/locker-01-1600.avif 1600w" sizes="(max-width:820px) 46vw, 300px"><source type="image/webp" srcset="img/locker-01-640.webp 640w, img/locker-01-1024.webp 1024w, img/locker-01-1600.webp 1600w" sizes="(max-width:820px) 46vw, 300px"><img src="img/locker-01-1024.jpg" srcset="img/locker-01-640.jpg 640w, img/locker-01-1024.jpg 1024w, img/locker-01-1600.jpg 1600w" sizes="(max-width:820px) 46vw, 300px" width="1024" height="1434" alt="Muro de lockers terminado en madera oscura" loading="lazy" decoding="async"></picture><!--/foto--><figcaption>Terminado</figcaption></figure>
         </div>
         <div class="txt">
           <span class="eyebrow">Caso destacado · Empresa</span>
-          <!-- TODO_CAINCO: confirmar que ambas fotos son del mismo proyecto, nombre/rubro del cliente (si autoriza) y datos reales -->
-          <h3>Muro de lockers para <span class="todo">TODO_CAINCO: cliente / rubro</span></h3>
+          <h3 data-fill="caso_lockers.titulo">Muro de lockers para una empresa</h3>
           <dl>
-            <div><dt>El desafío</dt><dd><span class="todo">TODO_CAINCO: qué necesitaba el cliente (cantidad de lockers, espacio disponible, plazo)</span></dd></div>
-            <div><dt>La solución</dt><dd><span class="todo">TODO_CAINCO: qué se fabricó, material y cerraduras, cuánto tardó</span></dd></div>
+            <div><dt>El desafío</dt><dd data-fill="caso_lockers.desafio"></dd></div>
+            <div><dt>La solución</dt><dd data-fill="caso_lockers.solucion"></dd></div>
           </dl>
         </div>
       </article>
-      <article class="caso">
+      <article class="caso" data-requires="caso_local" hidden>
         <div class="fotos">
           <figure><!--foto:comercial-01 sizes="(max-width:820px) 46vw, 300px" alt="Mesas exhibidoras de madera bajo una luminaria circular en un local comercial"--><picture><source type="image/avif" srcset="img/comercial-01-640.avif 640w, img/comercial-01-1024.avif 1024w, img/comercial-01-1600.avif 1600w" sizes="(max-width:820px) 46vw, 300px"><source type="image/webp" srcset="img/comercial-01-640.webp 640w, img/comercial-01-1024.webp 1024w, img/comercial-01-1600.webp 1600w" sizes="(max-width:820px) 46vw, 300px"><img src="img/comercial-01-1024.jpg" srcset="img/comercial-01-640.jpg 640w, img/comercial-01-1024.jpg 1024w, img/comercial-01-1600.jpg 1600w" sizes="(max-width:820px) 46vw, 300px" width="1024" height="1361" alt="Mesas exhibidoras de madera bajo una luminaria circular en un local comercial" loading="lazy" decoding="async"></picture><!--/foto--><figcaption>Sala de ventas</figcaption></figure>
           <figure><!--foto:comercial-03 sizes="(max-width:820px) 46vw, 300px" alt="Exhibidores y mesa alta de madera para el mismo local"--><picture><source type="image/avif" srcset="img/comercial-03-640.avif 640w, img/comercial-03-1024.avif 1024w, img/comercial-03-1600.avif 1600w" sizes="(max-width:820px) 46vw, 300px"><source type="image/webp" srcset="img/comercial-03-640.webp 640w, img/comercial-03-1024.webp 1024w, img/comercial-03-1600.webp 1600w" sizes="(max-width:820px) 46vw, 300px"><img src="img/comercial-03-1024.jpg" srcset="img/comercial-03-640.jpg 640w, img/comercial-03-1024.jpg 1024w, img/comercial-03-1600.jpg 1600w" sizes="(max-width:820px) 46vw, 300px" width="1024" height="1361" alt="Exhibidores y mesa alta de madera para el mismo local" loading="lazy" decoding="async"></picture><!--/foto--><figcaption>Detalle</figcaption></figure>
         </div>
         <div class="txt">
           <span class="eyebrow">Caso destacado · Local comercial</span>
-          <!-- TODO_CAINCO: confirmar que ambas fotos son del mismo local y completar con datos reales -->
-          <h3>Mobiliario para <span class="todo">TODO_CAINCO: nombre del local</span></h3>
+          <h3 data-fill="caso_local.titulo">Mobiliario para un local comercial</h3>
           <dl>
-            <div><dt>El desafío</dt><dd><span class="todo">TODO_CAINCO: qué pedía la marca (recorrido, exhibición, fecha de apertura)</span></dd></div>
-            <div><dt>La solución</dt><dd><span class="todo">TODO_CAINCO: piezas fabricadas, terminación, plazo de entrega</span></dd></div>
+            <div><dt>El desafío</dt><dd data-fill="caso_local.desafio"></dd></div>
+            <div><dt>La solución</dt><dd data-fill="caso_local.solucion"></dd></div>
           </dl>
         </div>
       </article>
+    </div>
     </div>
   </div>
 </section>
@@ -696,18 +727,17 @@ body.bar-on .mbar{transform:none}
     </div>
     <div class="b2b">
       <div><svg viewBox="0 0 30 30" aria-hidden="true"><rect x="3" y="4" width="10" height="10"/><rect x="17" y="4" width="10" height="10"/><rect x="3" y="17" width="10" height="10"/><rect x="17" y="17" width="10" height="10"/></svg><h3>Producción en serie</h3><p>Puestos de trabajo, lockers o mostradores repetidos, todos iguales, fabricados en nuestro taller.</p></div>
-      <div><svg viewBox="0 0 30 30" aria-hidden="true"><rect x="4" y="6" width="22" height="20"/><path d="M4 12h22M10 3v6M20 3v6"/></svg><h3>Plazos por contrato</h3><p><span class="todo">TODO_CAINCO: confirmar si el plazo se firma en contrato u orden de compra</span></p></div>
-      <div><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M7 3h16v24l-3-2-3 2-2-2-3 2-2-2-3 2z"/><path d="M11 10h8M11 15h8"/></svg><h3>Factura legal</h3><p><span class="todo">TODO_CAINCO: confirmar emisión de factura legal (crédito fiscal)</span></p></div>
-      <div><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M18 4a6 6 0 0 0-5.6 8.2L4 20.6V26h5.4l8.4-8.4A6 6 0 1 0 18 4z"/></svg><h3>Mantenimiento y postventa</h3><p><span class="todo">TODO_CAINCO: qué cubre la postventa y por cuánto tiempo</span></p></div>
-      <div><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M3 26h24M6 26V12l9-7 9 7v14M12 26v-8h6v8"/></svg><h3>Arquitectos y constructoras</h3><p>Fabricamos según el proyecto, verificamos medidas en obra y respetamos el cronograma de la obra.</p></div>
-      <div><svg viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="10" r="5"/><path d="M5 27c1.5-6 5.5-9 10-9s8.5 3 10 9"/></svg><h3>Un solo interlocutor</h3><p>Una persona responsable de tu proyecto, que te responde rápido <span class="todo">TODO_CAINCO: confirmar</span></p></div>
+      <div><svg viewBox="0 0 30 30" aria-hidden="true"><rect x="4" y="6" width="22" height="20"/><path d="M4 12h22M10 3v6M20 3v6"/></svg><h3>Plazos claros</h3><p><span data-cfg="fabricacion_plazo">Entre 20 y 30 días hábiles desde la aprobación y la seña, según el proyecto</span>. Planificamos la producción contra la fecha de tu obra o apertura.</p></div>
+      <div><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M7 3h16v24l-3-2-3 2-2-2-3 2-2-2-3 2z"/><path d="M11 10h8M11 15h8"/></svg><h3>Factura legal</h3><p><span data-cfg="factura">Emitimos factura legal</span>. Pasanos los datos de facturación de tu empresa cuando pidas el presupuesto.</p></div>
+      <div><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M18 4a6 6 0 0 0-5.6 8.2L4 20.6V26h5.4l8.4-8.4A6 6 0 1 0 18 4z"/></svg><h3>Garantía y postventa</h3><p><span data-cfg="garantia">1 año de garantía en fabricación y herrajes</span>. <span data-cfg="postventa">Si algo necesita ajuste después de la instalación, volvemos a revisarlo.</span></p></div>
+      <div><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M3 26h24M6 26V12l9-7 9 7v14M12 26v-8h6v8"/></svg><h3>Arquitectos y constructoras</h3><p><span data-cfg="arquitectos">Trabajamos con planos de tu arquitecto o interiorista</span>, verificamos medidas en obra y respetamos el cronograma de la obra.</p></div>
+      <div><svg viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="10" r="5"/><path d="M5 27c1.5-6 5.5-9 10-9s8.5 3 10 9"/></svg><h3>Todo por WhatsApp</h3><p>Coordinás medidas, planos y avances en un mismo chat. <span data-cfg="respuesta">Te respondemos dentro de las 24 h hábiles</span>.</p></div>
     </div>
-    <!-- Años: confirmado por Cainco (CAINCO_CONFIG.anios_trayectoria).
-         TODO_CAINCO: cifras reales de proyectos y empresas. No publicar sin datos verificados. -->
+    <!-- Años: confirmado (anios_trayectoria). Proyectos y empresas: ocultos mientras falten (no inventar cifras). -->
     <div class="cifras">
       <div><b>+20</b><span>años fabricando muebles a medida</span></div>
-      <div><b><span class="todo">TODO_CAINCO</span></b><span>proyectos entregados</span></div>
-      <div><b><span class="todo">TODO_CAINCO</span></b><span>empresas que ya nos eligieron</span></div>
+      <div data-requires="cifra_proyectos" hidden><b data-fill="cifra_proyectos">–</b><span>proyectos entregados</span></div>
+      <div data-requires="cifra_empresas" hidden><b data-fill="cifra_empresas">–</b><span>empresas que ya nos eligieron</span></div>
     </div>
     <div class="cta-row">
       <a class="btn solid" href="#presupuesto" data-perfil-form="empresa" data-cta="empresas">Coordinar una visita técnica</a>
@@ -726,13 +756,13 @@ body.bar-on .mbar{transform:none}
     </div>
     <ol class="steps">
       <li class="step"><span class="num">01</span><h3>Nos contás tu espacio</h3><p>Nos escribís por WhatsApp con fotos, medidas aproximadas o el plano. Te respondemos y coordinamos la visita.</p>
-        <div class="meta"><b>Tiempo</b><span><span class="todo">TODO_CAINCO: tiempo de respuesta</span></span><b>Recibís</b><span>Una primera orientación y fecha de visita.</span></div></li>
+        <div class="meta"><b>Tiempo</b><span data-cfg="respuesta">Respuesta dentro de las 24 h hábiles</span><b>Recibís</b><span>Una primera orientación y fecha de visita.</span></div></li>
       <li class="step"><span class="num">02</span><h3>Medimos en obra</h3><p>Vamos al lugar, tomamos medidas exactas y vemos enchufes, cañerías, columnas y cómo vas a usar el mueble.</p>
-        <div class="meta"><b>Tiempo</b><span><span class="todo">TODO_CAINCO: duración de la visita / costo</span></span><b>Recibís</b><span>Relevamiento con las medidas reales.</span></div></li>
+        <div class="meta"><b>Tiempo</b><span>El día que acordemos. <span data-cfg="medicion">Sin cargo en Asunción y Gran Asunción</span>.</span><b>Recibís</b><span>Relevamiento con las medidas reales.</span></div></li>
       <li class="step"><span class="num">03</span><h3>Diseño y presupuesto</h3><p>Te proponemos el diseño con materiales, colores y herrajes, y un presupuesto detallado. Fabricamos recién cuando lo aprobás.</p>
-        <div class="meta"><b>Tiempo</b><span><span class="todo">TODO_CAINCO: días hasta el presupuesto</span></span><b>Recibís</b><span>Presupuesto detallado y <span class="todo">TODO_CAINCO: ¿plano o render 3D?</span></span></div></li>
+        <div class="meta"><b>Tiempo</b><span data-cfg="presupuesto_plazo">3 a 5 días hábiles después de la medición</span><b>Recibís</b><span>Presupuesto detallado y <span data-cfg="diseno_previo">un plano o render del mueble para aprobar antes de fabricar</span>.</span></div></li>
       <li class="step"><span class="num">04</span><h3>Fabricación e instalación</h3><p>Fabricamos en nuestro taller, instalamos, nivelamos, ajustamos puertas y cajones, y entregamos el espacio limpio.</p>
-        <div class="meta"><b>Tiempo</b><span><span class="todo">TODO_CAINCO: plazo típico (ej. cocina)</span></span><b>Recibís</b><span>Tu mueble instalado y <span class="todo">TODO_CAINCO: garantía</span></span></div></li>
+        <div class="meta"><b>Tiempo</b><span data-cfg="fabricacion_plazo">20 a 30 días hábiles desde la aprobación y la seña, según el proyecto</span><b>Recibís</b><span><span data-cfg="instalacion">Tu mueble instalado</span> y <span data-cfg="garantia">1 año de garantía en fabricación y herrajes</span>.</span></div></li>
     </ol>
   </div>
 </section>
@@ -757,18 +787,15 @@ body.bar-on .mbar{transform:none}
 </section>
 
 <!-- ============================ TESTIMONIOS ============================ -->
-<!-- TODO_CAINCO: testimonios reales con permiso del cliente (nombre, tipo de proyecto, cita). No inventar. -->
-<section class="sec alt" id="testimonios" aria-labelledby="tes-h">
+<!-- Testimonios reales con permiso: sección oculta mientras "testimonios" esté en "falta".
+     El JS arma cada <figure> desde CAINCO_CONFIG.testimonios.valor (cita, nombre, proyecto). No inventar. -->
+<section class="sec alt" id="testimonios" aria-labelledby="tes-h" data-requires="testimonios" hidden>
   <div class="wrap">
     <div class="head">
       <span class="eyebrow">Clientes</span>
       <h2 id="tes-h">Lo que dicen quienes ya tienen su mueble</h2>
     </div>
-    <div class="testis">
-      <figure class="testi"><blockquote><span class="todo">TODO_CAINCO: cita real del cliente</span></blockquote><figcaption><b><span class="todo">TODO_CAINCO: nombre</span></b>Proyecto: <span class="todo">TODO_CAINCO: cocina / placard / oficina…</span></figcaption></figure>
-      <figure class="testi"><blockquote><span class="todo">TODO_CAINCO: cita real del cliente</span></blockquote><figcaption><b><span class="todo">TODO_CAINCO: nombre</span></b>Proyecto: <span class="todo">TODO_CAINCO: tipo de proyecto</span></figcaption></figure>
-      <figure class="testi"><blockquote><span class="todo">TODO_CAINCO: cita real del cliente (idealmente una empresa)</span></blockquote><figcaption><b><span class="todo">TODO_CAINCO: nombre y empresa</span></b>Proyecto: <span class="todo">TODO_CAINCO: tipo de proyecto</span></figcaption></figure>
-    </div>
+    <div class="testis" data-render="testimonios"></div>
   </div>
 </section>
 
@@ -780,13 +807,14 @@ body.bar-on .mbar{transform:none}
       <h2 id="faq-h">Antes de pedir tu presupuesto</h2>
     </div>
     <div class="faq">
-      <details><summary>¿Cobran la visita o la medición?</summary><div class="a"><p><!-- TODO_CAINCO --><span class="todo">TODO_CAINCO: confirmar si la visita de medición es sin cargo y si cambia fuera de Asunción.</span></p></div></details>
-      <details><summary>¿Cuánto tarda un mueble a medida?</summary><div class="a"><p>Depende del tamaño y de los materiales. Te damos el plazo antes de empezar. Como referencia, una cocina lleva <span class="todo">TODO_CAINCO: X semanas</span> desde que aprobás el diseño hasta la instalación.</p></div></details>
-      <details><summary>¿Trabajan con los planos de mi arquitecto?</summary><div class="a"><p>Sí. Trabajamos con arquitectos, interioristas y constructoras: tomamos el plano como base, verificamos las medidas en obra y ajustamos los detalles antes de fabricar.</p></div></details>
-      <details><summary>¿Qué zonas cubren?</summary><div class="a"><p>Asunción y alrededores. <span class="todo">TODO_CAINCO: listar ciudades de Gran Asunción y si viajan al interior (con o sin costo).</span></p></div></details>
-      <details><summary>¿Cuáles son las formas de pago?</summary><div class="a"><p><span class="todo">TODO_CAINCO: seña/anticipo, cuotas, transferencia, tarjeta.</span></p></div></details>
-      <details><summary>¿Los muebles tienen garantía?</summary><div class="a"><p><span class="todo">TODO_CAINCO: plazo y qué cubre la garantía (herrajes, estructura, instalación).</span></p></div></details>
-      <details><summary>¿Hacen factura?</summary><div class="a"><p><span class="todo">TODO_CAINCO: confirmar factura legal (contado/crédito) para particulares y empresas.</span></p></div></details>
+      <details><summary>¿Cobran la visita o la medición?</summary><div class="a"><p><span data-cfg="medicion">La visita de medición es sin cargo en Asunción y Gran Asunción.</span> Si tu obra está en otra zona, consultanos antes de coordinar.</p></div></details>
+      <details><summary>¿Cuánto tarda un mueble a medida?</summary><div class="a"><p>Depende del tamaño y de los materiales. <span data-cfg="presupuesto_plazo">El presupuesto está listo en 3 a 5 días hábiles después de la medición</span>, y <span data-cfg="fabricacion_plazo">la fabricación lleva entre 20 y 30 días hábiles desde la aprobación y la seña, según el proyecto</span>. Te confirmamos el plazo exacto antes de empezar.</p></div></details>
+      <details><summary>¿Trabajan con los planos de mi arquitecto?</summary><div class="a"><p>Sí. <span data-cfg="arquitectos">Trabajamos con planos de tu arquitecto o interiorista</span>, y también con constructoras: tomamos el plano como base, verificamos las medidas en obra y ajustamos los detalles antes de fabricar.</p></div></details>
+      <details><summary>¿Me muestran el diseño antes de fabricar?</summary><div class="a"><p>Sí. <span data-cfg="diseno_previo">Te mostramos un plano o render del mueble para aprobar antes de fabricar</span>, con materiales, colores y herrajes. No fabricamos nada sin tu aprobación.</p></div></details>
+      <details><summary>¿Qué zonas cubren?</summary><div class="a"><p><span data-cfg="cobertura">Asunción y Gran Asunción (Central). Otras zonas, a consultar.</span> <span data-cfg="instalacion">La instalación está incluida en Asunción y Gran Asunción.</span></p></div></details>
+      <details><summary>¿Cuáles son las formas de pago?</summary><div class="a"><p><span data-cfg="pagos">50% de seña y 50% contra entrega. Podés pagar por transferencia, en efectivo o con QR.</span></p></div></details>
+      <details><summary>¿Los muebles tienen garantía?</summary><div class="a"><p>Sí: <span data-cfg="garantia">1 año de garantía en fabricación y herrajes</span>. <span data-cfg="postventa">Y si algo necesita ajuste después de la instalación, volvemos a revisarlo.</span></p></div></details>
+      <details><summary>¿Hacen factura?</summary><div class="a"><p>Sí, <span data-cfg="factura">emitimos factura legal</span>. Si es para tu empresa, pasanos los datos de facturación junto con el pedido de presupuesto.</p></div></details>
     </div>
   </div>
 </section>
@@ -795,13 +823,13 @@ body.bar-on .mbar{transform:none}
 <section class="sec alt form-sec" id="presupuesto" aria-labelledby="form-h">
   <div class="wrap grid2">
     <div class="form-aside">
-      <span class="eyebrow">Presupuesto sin cargo</span>
+      <span class="eyebrow">Presupuesto <span data-cfg="medicion">sin cargo</span></span>
       <h2 id="form-h">Contanos tu espacio y te diseñamos la solución</h2>
       <p class="lead">Tres pasos cortos. Al final se abre WhatsApp con tu mensaje listo para enviar a Cainco.</p>
       <ul class="checks">
         <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8.5l4 4 8-9"/></svg><span>Sin compromiso</span></li>
         <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8.5l4 4 8-9"/></svg><span>Medición en obra y diseño a tu medida</span></li>
-        <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8.5l4 4 8-9"/></svg><span>Te respondemos por WhatsApp <span class="todo">TODO_CAINCO: ¿en el día?</span></span></li>
+        <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8.5l4 4 8-9"/></svg><span data-cfg="respuesta">Te respondemos dentro de las 24 h hábiles</span></li>
       </ul>
     </div>
 
@@ -871,10 +899,9 @@ body.bar-on .mbar{transform:none}
         </div>
         <div class="field">
           <label for="q-inv">Inversión estimada <span class="opt">(opcional)</span></label>
-          <!-- TODO_CAINCO: definir con Cainco los rangos de inversión (en guaraníes) que sirven para calificar -->
-          <select id="q-inv" name="inversion">
-            <option value="">Prefiero no decir</option>
-            <option>TODO_CAINCO: rango 1</option><option>TODO_CAINCO: rango 2</option><option>TODO_CAINCO: rango 3</option><option>TODO_CAINCO: rango 4</option>
+          <select id="q-inv" name="inversion" data-cfg="rangos_inversion">
+            <option value="">Elegí una opción</option>
+            <option>Hasta Gs. 5 millones</option><option>Gs. 5 a 15 millones</option><option>Gs. 15 a 40 millones</option><option>Más de Gs. 40 millones</option><option>Prefiero no decir</option>
           </select>
         </div>
         <div class="field">
@@ -921,7 +948,7 @@ body.bar-on .mbar{transform:none}
     <h2 id="cierre-h">Tu espacio tiene medidas únicas. Tu mueble también debería.</h2>
     <p class="lead">Escribinos, contanos qué necesitás y coordinamos la medición.</p>
     <div class="ctas">
-      <a class="btn solid" href="#presupuesto" data-cta="cierre">Pedir presupuesto sin cargo</a>
+      <a class="btn solid" href="#presupuesto" data-cta="cierre"><span>Pedir presupuesto <span data-cfg="medicion">sin cargo</span></span></a>
       <a class="btn wa js-wa" href="https://wa.me/595984301230" target="_blank" rel="noopener" data-cta="cierre_wa" data-wa-msg="Hola Cainco, quiero consultar por un mueble a medida."><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>Escribir por WhatsApp</a>
     </div>
     <p class="tel-line">¿Preferís hablar? <a class="tap" href="tel:+595984301230" data-cta="cierre_tel">Llamanos&nbsp;al&nbsp;0984&nbsp;301&nbsp;230</a></p>
@@ -952,18 +979,14 @@ body.bar-on .mbar{transform:none}
         <address>Av. Sacramento 2844 esq. Espíritu Santo<br>Asunción, Paraguay</address>
         <ul>
           <li><a class="tap" href="https://www.google.com/maps/search/?api=1&amp;query=Av.%20Sacramento%202844%20esq.%20Esp%C3%ADritu%20Santo%2C%20Asunci%C3%B3n%2C%20Paraguay" target="_blank" rel="noopener" data-cta="footer_mapa">Cómo llegar<span class="sr"> (abre Google Maps)</span></a></li>
-          <li>Lunes a viernes, 8:00 a 17:00</li>
-          <li>Trabajamos en Asunción y alrededores</li>
+          <li data-cfg="horario">Lunes a viernes de 8:00 a 17:00 · Sábados de 8:00 a 12:00</li>
+          <li data-cfg="cobertura">Asunción y Gran Asunción (Central). Otras zonas, a consultar</li>
         </ul>
       </div>
-      <div>
+      <!-- Redes: oculto mientras "redes" esté en "falta"; el JS arma los enlaces desde CAINCO_CONFIG.redes.valor -->
+      <div data-requires="redes" hidden>
         <h3>Redes</h3>
-        <!-- TODO_CAINCO: URLs reales de Instagram, Facebook y LinkedIn (y actualizar sameAs en el JSON-LD) -->
-        <ul>
-          <li><span class="todo">TODO_CAINCO: Instagram</span></li>
-          <li><span class="todo">TODO_CAINCO: Facebook</span></li>
-          <li><span class="todo">TODO_CAINCO: LinkedIn</span></li>
-        </ul>
+        <ul data-render="redes"></ul>
       </div>
     </div>
     <div class="legal"><span>© <span id="yr">2026</span> Cainco · Muebles a medida en Asunción, Paraguay</span><span>Diseño · Fabricación · Instalación</span></div>
@@ -1031,6 +1054,42 @@ function origen(extra) {
 }
 function waUrl(texto) { return "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(texto); }
 
+/* ---------------- CAINCO_CONFIG: datos que faltan + modo revisión ---------------- */
+const CFG = window.CAINCO_CONFIG || {};
+const hay = k => !!CFG[k] && (CFG[k].estado === "confirmado" || CFG[k].estado === "propuesto");
+const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+const valorDe = ruta => ruta.split(".").reduce((o, k, i) => (o == null ? o : i ? o[k] : (CFG[k] || {}).valor), null);
+// data-fill="clave[.campo]": texto que llega de la config cuando el dato existe
+$$("[data-fill]").forEach(el => { const v = valorDe(el.dataset.fill); if (hay(el.dataset.fill.split(".")[0]) && v) el.textContent = v; });
+// data-render="clave": bloques que se arman con los datos (testimonios, redes)
+const REDES = { instagram: "Instagram", facebook: "Facebook", linkedin: "LinkedIn", x: "X", tiktok: "TikTok", youtube: "YouTube" };
+const RENDER = {
+  testimonios: v => v.map(t => `<figure class="testi"><blockquote>${esc(t.cita)}</blockquote><figcaption><b>${esc(t.nombre)}</b>${t.proyecto ? "Proyecto: " + esc(t.proyecto) : ""}</figcaption></figure>`).join(""),
+  redes: v => Object.entries(v).filter(([, u]) => /^https:\/\//.test(u)).map(([red, u]) => `<li><a class="tap" href="${esc(u)}" target="_blank" rel="noopener">${REDES[red] || esc(red)}</a></li>`).join("")
+};
+$$("[data-render]").forEach(el => { const k = el.dataset.render; if (hay(k) && RENDER[k]) el.innerHTML = RENDER[k](CFG[k].valor); });
+// data-requires="a b": visible solo si están todos; data-requires-any: si está alguno. En el HTML arrancan con hidden.
+$$("[data-requires]").forEach(el => { el.hidden = !el.dataset.requires.split(/\s+/).every(hay); });
+$$("[data-requires-any]").forEach(el => { el.hidden = !el.dataset.requiresAny.split(/\s+/).some(hay); });
+// ?revision=1: subraya cada texto que sale de un valor "propuesto", con la clave en un tooltip
+if (params.get("revision") === "1") {
+  root.dataset.revision = "";
+  const claves = e => Object.keys(CFG).filter(k => CFG[k].estado === e);
+  let n = 0;
+  $$("[data-cfg]").forEach(el => {
+    const k = el.dataset.cfg, c = CFG[k];
+    if (!c || c.estado !== "propuesto") return;
+    n++;
+    el.dataset.rev = `Propuesto · ${k}: «${Array.isArray(c.valor) ? c.valor.join(" / ") : c.valor}»`;
+    el.title = el.dataset.rev;
+    if (!el.closest("a, button, select")) el.tabIndex = 0;   // para ver el tooltip con el dedo o el teclado
+  });
+  const bar = document.createElement("div");
+  bar.className = "rev-bar"; bar.setAttribute("role", "note");
+  bar.innerHTML = `<b>Modo revisión.</b> Hay ${n} textos subrayados que son propuestas para confirmar (${claves("propuesto").length} datos). Pasá el mouse o tocá uno para ver cuál es. Ocultos hasta recibir el dato: ${claves("falta").join(", ")}.`;
+  document.body.prepend(bar);
+}
+
 /* --------------------------- tema claro/oscuro --------------------------- */
 try { const t = localStorage.getItem("cainco-tema"); if (t === "light" || t === "dark") root.dataset.theme = t; } catch (_) {}
 $("#theme").addEventListener("click", () => {
@@ -1059,10 +1118,10 @@ function bestSrc(id) {
 const CATS = { cocina: "Cocinas", placard: "Placares y vestidores", oficina: "Oficinas", comercial: "Locales comerciales", locker: "Lockers", bano: "Baños", taller: "Taller y obra" };
 const SEG = { cocina: "hogar", placard: "hogar", bano: "ambos", oficina: "empresa", comercial: "empresa", locker: "empresa", taller: "ambos" };
 const ALT = { cocina: "cocina a medida", placard: "placard a medida", oficina: "mueble de oficina a medida", comercial: "mobiliario comercial a medida", locker: "lockers a medida", bano: "mueble de baño a medida", taller: "taller de muebles Cainco" };
-// [id, pie de foto (ambiente + terminación visible)]. Materiales exactos: TODO_CAINCO (ver comentarios).
+// [id, pie de foto]: ambiente y lo que se ve en la foto, sin afirmar materiales no confirmados.
 const W = [
-  ["oficina-03", "Recepción con mostrador curvo listonado"],              // TODO_CAINCO: material del listonado
-  ["comercial-01", "Mesas exhibidoras de madera bajo luminaria circular"], // TODO_CAINCO: material / terminación
+  ["oficina-03", "Recepción con mostrador curvo listonado"],
+  ["comercial-01", "Mesas exhibidoras bajo luminaria circular"],
   ["bano-01", "Vanitory suspendido gris con nicho abierto"],
   ["locker-01", "Muro de lockers en tono madera oscura"],
   ["cocina-01", "Cocina en L blanca con mesada de granito negro"],
@@ -1077,11 +1136,11 @@ const W = [
   ["comercial-02", "Mesas exhibidoras de distintas alturas"],
   ["oficina-01", "Puestos de trabajo bench con divisores"],
   ["bano-03", "Vanitory suspendido tono nogal"],
-  ["placard-04", "Placard de piso a techo con puertas corredizas"],      // TODO_CAINCO: confirmar tipo de puertas
+  ["placard-04", "Placard de piso a techo"],
   ["cocina-03", "Cocina con columna de horno y mesada oscura"],
   ["oficina-04", "Escritorio curvo de atención, durante la instalación"],
   ["bano-06", "Cabinas sanitarias de altura completa"],
-  ["locker-02", "Lockers de 12 puertas en madera clara"],               // TODO_CAINCO: ¿OSB o melamina símil OSB?
+  ["locker-02", "Lockers de 12 puertas en tono madera clara"],
   ["cocina-06", "Bajo mesada con cajonera y granito"],
   ["placard-05", "Vestidor esquinero, vista completa"],
   ["bano-04", "Divisorias sanitarias en blanco"],

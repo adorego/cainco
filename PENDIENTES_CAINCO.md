@@ -1,103 +1,116 @@
 # Pendientes de Cainco
 
-Lo que falta que Cainco confirme o envíe para terminar el sitio. Cada punto tiene un `TODO_CAINCO` en `index.html`; con `grep -n TODO_CAINCO index.html` se ven todos.
+Lo que falta que Cainco confirme o nos envíe para publicar el sitio. Los datos viven en `CAINCO_CONFIG` (dentro de `index.html`), cada uno con un estado:
 
-## Fotos a pedir
+- **confirmado:** se publica tal cual.
+- **propuesto:** lo redactamos nosotros y ya se ve en la página, pero el sitio no se publica hasta que Cainco lo confirme.
+- **falta:** es un dato real que todavía no tenemos. Lo que depende de él está oculto y no se inventa nada.
 
-Conviene pedir los **originales sin comprimir**, enviados por WhatsApp como *Documento* (no como foto) o por Google Drive, o una **foto nueva** cuando el original no alcanza. El detalle técnico de cada foto está en `tools/reporte-fotos.md`.
+Para ver el estado del sitio: `bash tools/check-publicacion.sh`. Para que Cainco revise en pantalla los textos propuestos: abrir la página con `?revision=1`. Así cada texto propuesto aparece subrayado y muestra la clave al tocarlo.
 
-### Foto nueva (no se puede usar la actual)
+## Ya confirmado
 
-- [ ] `comercial-04` — **mesa exhibidora y atril**. Se descartó: es nocturna, con dominante verde fuerte, está borrada y tiene objetos ajenos (una silla y un balde). Está **fuera de la galería** y comentada en `index.html` con `TODO_CAINCO`. Cuando llegue la foto nueva:
-  1. Sacar `"decision": "descartar"` de `tools/fotos-ajustes.json`.
-  2. Correr `bash tools/hd.sh --ids comercial-04`.
-  3. Descomentar su línea en la galería.
-- [ ] `comercial-05` — la obra está sin terminar y la foto muy comprimida.
-- [ ] `comercial-06` — el piso salió quemado a blanco y no se recupera.
+- **WhatsApp y teléfono:** 0984 301 230, con `wa.me/595984301230` y `tel:+595984301230`.
+- **Dirección:** Av. Sacramento 2844 esq. Espíritu Santo, Asunción. Aparece en el footer, en el JSON-LD y en el enlace «Cómo llegar».
+- **Trayectoria:** +20 años. No va `foundingDate` porque falta el año exacto. Si nos lo pasan, se agrega.
 
-### Original sin comprimir (calidad de origen baja)
+## Para confirmar (sí / no)
 
-- [ ] `cocina-03`
-- [ ] `cocina-04` — la guarda de venecitas no admite super-resolución.
-- [ ] `cocina-05` — la guarda de venecitas no admite super-resolución.
-- [ ] `cocina-06`
-- [ ] `cocina-07` — el original mide solo 581 px de ancho.
-- [ ] `placard-02`
-- [ ] `placard-05`
-- [ ] `oficina-06`
-- [ ] `oficina-03` — blanda, sacada a través de un vidrio.
+Cada propuesta ya está escrita en la web. Alcanza con un «sí» o con la corrección.
 
-### Se usan, pero convendría repetirlas
+1. **respuesta:** «Te respondemos dentro de las 24 h hábiles». ¿Sí?
+2. **horario:** «Lunes a viernes de 8:00 a 17:00 · Sábados de 8:00 a 12:00». ¿Sí?
+3. **cobertura:** «Asunción y Gran Asunción (Central). Otras zonas, a consultar». ¿Sí?
+4. **medicion:** «Visita de medición sin cargo en Asunción y Gran Asunción». ¿Sí? Por eso los botones dicen «Pedir presupuesto sin cargo».
+5. **presupuesto_plazo:** «Presupuesto en 3 a 5 días hábiles después de la medición». ¿Sí?
+6. **diseno_previo:** «Te mostramos un plano o render del mueble para aprobar antes de fabricar». ¿Sí?
+7. **fabricacion_plazo:** «Entre 20 y 30 días hábiles desde la aprobación y la seña, según el proyecto». ¿Sí?
+8. **pagos:** «50% de seña y 50% contra entrega. Transferencia, efectivo o QR». ¿Sí?
+9. **factura:** «Emitimos factura legal». ¿Sí?
+10. **garantia:** «1 año de garantía en fabricación y herrajes». ¿Sí?
+11. **postventa:** «Si algo necesita ajuste después de la instalación, volvemos a revisarlo». ¿Sí?
+12. **instalacion:** «Instalación incluida en Asunción y Gran Asunción». ¿Sí?
+13. **arquitectos:** «Trabajamos con planos de tu arquitecto o interiorista». ¿Sí?
+14. **rangos_inversion** (opciones del formulario): «Hasta Gs. 5 millones / Gs. 5 a 15 millones / Gs. 15 a 40 millones / Más de Gs. 40 millones / Prefiero no decir». ¿Sí?
 
-- [ ] `placard-04` — tiene cables sueltos cruzando el frente.
-- [ ] `locker-02` — tiene una silla en primer plano.
+## Para enviarnos
 
-**Para las fotos nuevas:**
-- Luz de día, con las lámparas apagadas.
-- Celular a la altura del pecho y derecho, sin inclinar.
-- Ambiente ordenado.
-- Una toma general y algunos detalles de herrajes y terminaciones.
+Mientras estos datos falten, lo que depende de ellos queda oculto en la web.
 
-## Ya confirmado (en `CAINCO_CONFIG`, estado "confirmado")
+- **Email:** proponemos `info@cainco.com.py`. Hay que confirmar la dirección exacta y que el correo funcione, porque hoy el dominio no resuelve. Hasta entonces no aparece en el código publicado.
+- **Testimonios:** 2 o 3 clientes reales, con permiso, con una frase, el nombre (y la empresa, si corresponde) y el tipo de proyecto. Mientras falten, la sección «Clientes» completa está oculta.
+- **Cifras** (solo si las quieren mostrar): cantidad de proyectos entregados y de empresas clientes. Mientras falten, en Empresas se ve solo «+20 años».
+- **Redes:** links de Instagram, Facebook y LinkedIn, y de X si tienen. Mientras falten, la columna «Redes» del footer está oculta.
+- **Los 2 casos destacados:** para cada uno, fotos y una línea sobre el desafío (qué necesitaba el cliente) y la solución (qué se fabricó y en cuánto tiempo). Mientras falten, están ocultos.
+  - **Lockers para una empresa:** fotos `taller-02` (durante) y `locker-01` (terminado). ¿Son del mismo proyecto? ¿Podemos nombrar al cliente o el rubro?
+  - **Local comercial:** fotos `comercial-01` y `comercial-03`. ¿Son del mismo local? ¿Podemos nombrarlo?
+- **Medición** (lo configuramos nosotros cuando esté la cuenta): ID de Google Analytics 4 e ID de Meta Pixel.
 
-- WhatsApp y teléfono: 0984 301 230. Los enlaces usan `wa.me/595984301230` y `tel:+595984301230`.
-- Dirección: Av. Sacramento 2844 esq. Espíritu Santo, Asunción. Está en el footer, en el JSON-LD y en el enlace «Cómo llegar».
-- Trayectoria: +20 años. No se usa `foundingDate` porque falta el año exacto.
+### Fotos a reemplazar (11), por prioridad
 
-## Datos a confirmar
+Lo ideal es el **original del celular, mandado por WhatsApp como *Documento*** (clip → Documento), para que no se comprima, o por Google Drive. Si hay que sacarla de nuevo:
+- Con luz de día y las lámparas apagadas.
+- Con el celular a la altura del pecho y derecho.
+- Con el lugar ordenado.
+- Una toma general y algunas de detalle de herrajes y terminaciones.
 
-- **Email:** ¿la dirección es `info@cainco.com.py`? ¿Ya funciona? El dominio todavía no resuelve. Mientras no se confirme, está en estado "propuesto" y no se muestra ni va al JSON-LD.
-- **Año de fundación** (opcional): si nos lo pasan, se agrega `foundingDate` al JSON-LD.
-- **Redes:** URLs de Instagram, Facebook y LinkedIn (`sameAs` y footer), y el usuario de X.
-- **Medición:** ID de GA4 e ID de Meta Pixel.
-- **Promesas comerciales:**
-  - Presupuesto sin cargo y tiempo real de respuesta.
-  - Instalación incluida.
-  - Plazo de entrega por escrito o por contrato.
-  - Responsable de proyecto único y postventa: qué cubre y por cuánto tiempo.
-  - Factura legal.
-- **Proceso:**
-  - Tiempo de respuesta.
-  - Duración y costo de la visita.
-  - Días hasta el presupuesto.
-  - ¿Entregan plano o render 3D?
-  - Plazo típico de una cocina.
-- **Prueba social:**
-  - Cifras reales: proyectos entregados y empresas clientes.
-  - 3 testimonios reales, con permiso.
-  - Datos de los 2 casos destacados (lockers y local comercial).
-- **Preguntas frecuentes:** zonas de trabajo, formas de pago, garantía, factura y plazo típico.
-- **Formulario:** los rangos de inversión en guaraníes.
-- **Galería:**
-  - Material del listonado (`oficina-03`).
-  - Terminación (`comercial-01`).
-  - Tipo de puertas (`placard-04`).
-  - ¿OSB o melamina símil OSB? (`locker-02`).
+El detalle técnico de cada foto está en `tools/reporte-fotos.md`.
 
-Para ver el estado actualizado: `bash tools/check-publicacion.sh`.
+1. **Cocinas:**
+   - `cocina-03`: con columna de horno y mesada oscura.
+   - `cocina-04`: con isla y granito.
+   - `cocina-05`: bajo mesada y alacena blanca.
+   - `cocina-06`: bajo mesada con cajonera.
+   - `cocina-07`: bajo mesada y alacena compacta.
+   - En las cinco, la versión actual llegó muy comprimida. Las que tienen guarda de venecitas no se pueden mejorar más sin deformarla.
+2. **Comerciales:**
+   - `comercial-04`: mesa exhibidora y atril. **Hay que sacarla de nuevo**: es nocturna, está borrosa y tiene objetos ajenos. Hoy está fuera de la galería (comentada en `index.html`). Cuando llegue:
+     1. Sacar `"decision": "descartar"` de `tools/fotos-ajustes.json`.
+     2. Correr `bash tools/hd.sh --ids comercial-04`.
+     3. Descomentar su línea.
+   - `comercial-05`: mueble de pared con nichos gris grafito. La obra estaba sin terminar.
+   - `comercial-06`: el mismo mueble de frente. El piso salió quemado a blanco.
+3. **Placares y oficina:**
+   - `placard-02`: pasillo vestidor.
+   - `placard-05`: vestidor esquinero.
+   - `oficina-06`: archivo bajo con puertas corredizas.
 
-## Mensaje de WhatsApp para el cliente
+Opcional, si se puede repetir:
+- `oficina-03`: recepción listonada; salió blanda, a través de un vidrio.
+- `placard-04`: tiene cables cruzando el frente.
+- `locker-02`: tiene una silla delante.
 
-> Hola! Ya tenemos casi lista la web nueva de Cainco 🙌 Ya cargamos el WhatsApp, el teléfono, la dirección de Av. Sacramento y los +20 años. Para terminar nos faltan algunas cosas:
+## Mensaje de WhatsApp para Cainco (versión corta)
+
+> ¡Hola! 👋 La web nueva de Cainco ya está casi lista. Ya cargamos el WhatsApp, el teléfono, la dirección de Av. Sacramento y los +20 años.
 >
-> *1. Email:* ¿el correo es info@cainco.com.py? ¿Ya funciona? Hasta que nos confirmen no lo publicamos.
+> Para publicarla necesitamos que nos confirmes estas propuestas. Contestá con el número y *sí*, o con la corrección (ej.: «7: 30 a 45 días»):
 >
-> *2. Fotos:* necesitamos las fotos originales, sin pasar por WhatsApp porque las comprime. Mandalas como *Documento* (clip → Documento) o subilas a una carpeta de Google Drive. Las que más necesitamos:
-> • Cocinas: las 5 de cocinas con bajo mesada y granito (cocina-03 a 07)
-> • Placares: el pasillo vestidor y el vestidor esquinero (placard-02 y 05)
-> • Oficina: el archivo bajo con puertas corredizas y la recepción listonada
-> • Locales: la mesa exhibidora con atril (esa hay que sacarla de nuevo) y el mueble de pared con nichos gris grafito
+> 1. Te respondemos dentro de las 24 h hábiles
+> 2. Horario: lunes a viernes de 8 a 17 y sábados de 8 a 12
+> 3. Zona: Asunción y Gran Asunción (Central). Otras zonas, a consultar
+> 4. Visita de medición sin cargo en Asunción y Gran Asunción
+> 5. Presupuesto en 3 a 5 días hábiles después de medir
+> 6. Antes de fabricar mostramos un plano o render para aprobar
+> 7. Fabricación: 20 a 30 días hábiles desde la aprobación y la seña
+> 8. Pago: 50% de seña y 50% contra entrega. Transferencia, efectivo o QR
+> 9. Emitimos factura legal
+> 10. 1 año de garantía en fabricación y herrajes
+> 11. Si algo necesita ajuste después de instalar, volvemos a revisarlo
+> 12. Instalación incluida en Asunción y Gran Asunción
+> 13. Trabajamos con planos de tu arquitecto o interiorista
+> 14. Rangos de inversión del formulario: hasta Gs. 5 millones / 5 a 15 / 15 a 40 / más de 40 / prefiero no decir
 >
-> Si hay que sacar fotos nuevas: con luz de día y las lámparas apagadas, el celular a la altura del pecho y derecho, el lugar ordenado. Una foto general y algunas de detalle de herrajes y terminaciones.
+> Y cuando puedas, mandanos:
 >
-> *3. Datos para la web* (con lo que sepan alcanza, el resto lo completamos después):
-> • ¿El presupuesto y la visita de medición son sin cargo? ¿En cuánto tiempo responden?
-> • ¿La instalación está incluida? ¿El plazo de entrega va por escrito o por contrato?
-> • Garantía y postventa: qué cubre y por cuánto tiempo. ¿Emiten factura legal?
-> • Formas de pago y zonas donde trabajan (¿viajan al interior?)
-> • Plazo típico de una cocina y cuántos días tarda el presupuesto
-> • Links de Instagram, Facebook y LinkedIn
-> • 2 o 3 clientes contentos que nos dejen usar una frase con su nombre
-> • ¿Cuántos proyectos entregaron aprox.? ¿Para cuántas empresas trabajaron?
+> 15. *Email:* ¿es info@cainco.com.py? ¿Ya funciona? Hasta confirmarlo no lo publicamos
+> 16. *Testimonios:* 2 o 3 clientes que nos dejen usar una frase con su nombre
+> 17. *Cifras* (si las quieren mostrar): ¿cuántos proyectos entregados y cuántas empresas clientes, más o menos?
+> 18. *Redes:* links de Instagram, Facebook y LinkedIn
+> 19. *2 trabajos para destacar:* el muro de lockers y el local con las mesas exhibidoras. Una línea de cada uno: qué necesitaba el cliente y qué hicieron
+> 20. *Fotos originales:* mandalas por acá como *Documento* (clip → Documento), así no se comprimen. Si las sacás de nuevo, con luz de día, el celular derecho y el lugar ordenado. Por orden de importancia:
+>    • las 5 cocinas con mesada de granito
+>    • la mesa exhibidora con atril (esa hay que sacarla de nuevo) y el mueble de pared gris grafito
+>    • el pasillo vestidor, el vestidor esquinero y el archivo bajo con puertas corredizas
 >
-> ¡Gracias!
+> ¡Gracias! 🙌
