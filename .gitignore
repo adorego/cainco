@@ -2,6 +2,8 @@
 img/_originales/
 # Caché de super-resolución
 tools/.cache-sr/
+tools/mejorar_fotos.log
+tools/fotos.tmp
 # Capturas de verificación (Playwright / Lighthouse)
 tools/.verificacion/
 __pycache__/

@@ -221,6 +221,12 @@ def upscale(rgb: np.ndarray, ident: str, force: bool) -> tuple[np.ndarray, int]:
     h, w = rgb.shape[:2]
     small = max(h, w) < 1000 or w < 640
     scale = 4 if small else 2
+    if MANUAL.get(ident, {}).get("sr") is False:
+        # Sin super-resolución: en patrones finos y repetitivos (venecitas, guardas) el modelo
+        # inventa formas que no existen. Limpieza suave de bloques JPEG + Lanczos.
+        clean = cv2.fastNlMeansDenoisingColored(rgb, None, 3, 3, 7, 21)
+        f = 2.25 if small else 2.0
+        return cv2.resize(clean, (round(w * f), round(h * f)), interpolation=cv2.INTER_LANCZOS4), 0
     CACHE.mkdir(parents=True, exist_ok=True)
     digest = hashlib.sha1(rgb.tobytes()).hexdigest()[:10]
     cp = CACHE / f"{ident}-x{scale}-{digest}.png"
@@ -559,8 +565,8 @@ def main():
                 log(f"original resguardado: {dst.relative_to(ROOT)}")
 
     ids = sorted(p.stem for p in ORIG.glob("*.jpg"))
-    if args.ids:
-        ids = [i for i in ids if i in args.ids]
+    # El diagnóstico y el reporte cubren siempre todas las fotos; --ids sólo limita qué se reprocesa.
+    targets = [i for i in ids if not args.ids or i in args.ids]
 
     # 1) Diagnóstico
     rows = []
@@ -589,13 +595,31 @@ def main():
         write_report(rows, engine)
         return
 
-    # 2–6) Mejora + export
-    manifest = json.loads(MANIFEST.read_text()) if MANIFEST.exists() and args.ids else {}
+    # 2–6) Mejora + export. El manifiesto se guarda después de cada foto: si el proceso
+    # se corta (suspensión, cierre de sesión), lo ya hecho queda registrado.
+    manifest = json.loads(MANIFEST.read_text(encoding="utf-8")) if MANIFEST.exists() else {}
+    manifest = {k: v for k, v in manifest.items() if k in ids}
+
+    def save_manifest():
+        tmp = MANIFEST.with_suffix(".tmp")
+        tmp.write_text(json.dumps(manifest, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+        tmp.replace(MANIFEST)   # escritura atómica
+
     for d in rows:
         ident, cat = d["id"], d["id"].split("-")[0]
+        if ident not in targets:
+            m = manifest.get(ident, {})
+            d.update({k: m[k] for k in ("fw", "fh", "geo", "color", "lap_final") if k in m})
+            if ident in manifest:
+                manifest[ident].update(rec=d["rec"], score=round(d["score"], 3))
+            continue
         if d["rec"] == "descartar":
-            log(f"{ident}: descartada, no se exporta")
+            log(f"{ident}: descartada, no se exporta (se borran sus variantes publicadas)")
             manifest.pop(ident, None)
+            for p in IMG.glob(f"{ident}*.*"):
+                if p.stem == ident or p.stem.startswith(ident + "-"):
+                    p.unlink()
+            save_manifest()
             continue
         log(f"{ident}:")
         orig = load_rgb(ORIG / f"{ident}.jpg")
@@ -607,13 +631,17 @@ def main():
         d.update(fw=info["w"], fh=info["h"], geo=geo, color=cnote, lap_final=lap_var(col))
         before_after(orig, col, ident)
         manifest[ident] = dict(w=info["w"], h=info["h"], widths=info["widths"], rec=d["rec"],
-                               score=round(d["score"], 3))
-        log(f"  → {info['w']}x{info['h']} {geo} | {cnote} | 1600: "
-            + ", ".join(f"{k}={v // 1024}KB" for k, v in info["bytes"].items() if k.startswith("1600")))
-    # limpiar variantes viejas del esquema anterior (<id>.webp, <id>-640.webp)
-    for ident in manifest:
-        (IMG / f"{ident}.webp").unlink(missing_ok=True)
-    MANIFEST.write_text(json.dumps(manifest, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+                               score=round(d["score"], 3), fw=info["w"], fh=info["h"], geo=geo,
+                               color=cnote, lap_final=round(d["lap_final"], 1))
+        (IMG / f"{ident}.webp").unlink(missing_ok=True)   # variante del esquema anterior
+        save_manifest()
+        big = max(info["widths"])
+        log(f"  → {info['w']}x{info['h']} {geo} | {cnote} | {big}: "
+            + ", ".join(f"{k}={v // 1024}KB" for k, v in info["bytes"].items() if k.startswith(f"{big}.")))
+    save_manifest()
+    faltan = [i for i in ids if i not in manifest and MANUAL.get(i, {}).get("decision") != "descartar"]
+    if faltan:
+        log("ATENCIÓN: fotos sin procesar todavía: " + " ".join(faltan))
     write_report(rows, engine)
     contact_sheet(sorted(manifest, key=lambda i: -manifest[i]["score"]))
     log("listo.")
