@@ -1,0 +1,6 @@
+# Originales de las fotos: no se publican (se conservan localmente y en el historial de git, rama main)
+img/_originales/
+# Caché de super-resolución
+tools/.cache-sr/
+__pycache__/
+node_modules/
