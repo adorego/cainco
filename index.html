@@ -1,21 +1,21 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es-PY">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Cainco | Muebles a medida en Asunción – Cocinas y placares</title>
-<meta name="description" content="Fábrica de muebles a medida en Asunción: cocinas, placares, oficinas, locales comerciales y baños. Medimos, fabricamos e instalamos. ¡Pedí tu presupuesto!">
+<title>Muebles a medida en Asunción | Cocinas, placares y oficinas – Cainco</title>
+<meta name="description" content="Fábrica de muebles a medida en Asunción y Paraguay: cocinas, placares, mobiliario de oficina, locales comerciales, lockers y baños. Medimos en obra, fabricamos en taller propio e instalamos. Pedí tu presupuesto por WhatsApp.">
 <link rel="canonical" href="https://cainco.com.py/">
 <meta name="robots" content="index,follow,max-image-preview:large">
-<meta name="theme-color" content="#eff0ed" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#f3f1ec" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#141617" media="(prefers-color-scheme: dark)">
 
 <!-- Open Graph (WhatsApp, Facebook, LinkedIn, Instagram) -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_PY">
 <meta property="og:site_name" content="Cainco Muebles a medida">
-<meta property="og:title" content="Cainco – Muebles a medida en Asunción">
-<meta property="og:description" content="Cocinas, placares, oficinas y locales comerciales a medida. Diseño, fabricación en taller propio e instalación. Pedí tu presupuesto por WhatsApp.">
+<meta property="og:title" content="Cainco – Muebles a medida en Asunción para hogares y empresas">
+<meta property="og:description" content="Cocinas, placares, oficinas, locales comerciales y lockers a medida. Medición en obra, fabricación en taller propio e instalación. Pedí tu presupuesto por WhatsApp.">
 <meta property="og:url" content="https://cainco.com.py/">
 <meta property="og:image" content="https://cainco.com.py/og-image.jpg">
 <meta property="og:image:secure_url" content="https://cainco.com.py/og-image.jpg">
@@ -38,9 +38,44 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 
+<!-- Imagen del hero (LCP): la genera tools/actualizar_html.py -->
+<!--preload-hero-->
+<link rel="preload" as="image" type="image/avif" imagesrcset="img/bano-01-640.avif 640w, img/bano-01-1024.avif 1024w, img/bano-01-1600.avif 1600w" imagesizes="100vw" fetchpriority="high">
+<!--/preload-hero-->
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Karla:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=Karla:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=Karla:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=Karla:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"></noscript>
+
+<!-- ===================== MEDICIÓN =====================
+     Para activar, completá los IDs y descomentá los bloques.
+     Mientras estén vacíos, track() no hace nada y no rompe. -->
+<script>
+  window.CAINCO_GA4_ID = "";     // TODO_CAINCO: ID de Google Analytics 4, p. ej. "G-XXXXXXXXXX"
+  window.CAINCO_PIXEL_ID = "";   // TODO_CAINCO: ID de Meta Pixel, p. ej. "123456789012345"
+</script>
+<!-- Google Analytics 4
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', window.CAINCO_GA4_ID);
+</script>
+-->
+<!-- Meta Pixel
+<script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', window.CAINCO_PIXEL_ID);
+  fbq('track', 'PageView');
+</script>
+-->
 
 <script type="application/ld+json">
 {
@@ -52,16 +87,14 @@
       "url": "https://cainco.com.py/",
       "name": "Cainco Muebles a medida",
       "inLanguage": "es-PY",
-      "publisher": {
-        "@id": "https://cainco.com.py/#negocio"
-      }
+      "publisher": { "@id": "https://cainco.com.py/#negocio" }
     },
     {
-      "@type": "FurnitureStore",
+      "@type": ["FurnitureStore", "LocalBusiness"],
       "@id": "https://cainco.com.py/#negocio",
       "name": "Cainco",
       "alternateName": "Cainco Muebles a medida",
-      "description": "Fábrica de muebles a medida en Paraguay: diseño, fabricación en taller propio e instalación de cocinas, placares, vestidores, oficinas, locales comerciales, lockers y baños.",
+      "description": "Fábrica de muebles a medida en Asunción, Paraguay: diseño, fabricación en taller propio e instalación de cocinas, placares, vestidores, mobiliario de oficina, locales comerciales, lockers y muebles de baño para hogares y empresas.",
       "url": "https://cainco.com.py/",
       "logo": "https://cainco.com.py/icon-512.png",
       "image": [
@@ -78,26 +111,21 @@
         "addressLocality": "Asunción",
         "addressCountry": "PY"
       },
-      "areaServed": {
-        "@type": "Country",
-        "name": "Paraguay"
-      },
+      "areaServed": [
+        { "@type": "City", "name": "Asunción" },
+        { "@type": "Country", "name": "Paraguay" }
+      ],
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
-          "dayOfWeek": [
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday"
-          ],
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
           "opens": "08:00",
           "closes": "17:00"
         }
       ],
       "priceRange": "₲₲",
       "currenciesAccepted": "PYG",
+      "knowsAbout": ["muebles a medida", "cocinas a medida", "placares y vestidores", "mobiliario de oficina", "mobiliario comercial", "lockers", "muebles de baño"],
       "sameAs": [
         "https://www.instagram.com/TODO_CAINCO",
         "https://www.facebook.com/TODO_CAINCO",
@@ -107,264 +135,339 @@
         "@type": "OfferCatalog",
         "name": "Muebles a medida",
         "itemListElement": [
-          {
-            "@type": "Offer",
-            "position": 1,
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Cocinas a medida",
-              "description": "Bajo mesadas, alacenas, islas y desayunadores, con mesada de granito o cuarzo y armado de electrodomésticos.",
-              "serviceType": "Cocinas a medida",
-              "areaServed": {
-                "@type": "Country",
-                "name": "Paraguay"
-              },
-              "provider": {
-                "@id": "https://cainco.com.py/#negocio"
-              }
-            }
-          },
-          {
-            "@type": "Offer",
-            "position": 2,
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Placares y vestidores a medida",
-              "description": "Placares de piso a techo, vestidores en L o en U, cajoneras internas, barrales y estantes regulables.",
-              "serviceType": "Placares y vestidores a medida",
-              "areaServed": {
-                "@type": "Country",
-                "name": "Paraguay"
-              },
-              "provider": {
-                "@id": "https://cainco.com.py/#negocio"
-              }
-            }
-          },
-          {
-            "@type": "Offer",
-            "position": 3,
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Muebles de oficina a medida",
-              "description": "Puestos de trabajo tipo bench, escritorios, recepciones, bibliotecas, archivos y mesas de reunión.",
-              "serviceType": "Muebles de oficina a medida",
-              "areaServed": {
-                "@type": "Country",
-                "name": "Paraguay"
-              },
-              "provider": {
-                "@id": "https://cainco.com.py/#negocio"
-              }
-            }
-          },
-          {
-            "@type": "Offer",
-            "position": 4,
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Mobiliario para locales comerciales",
-              "description": "Mostradores, exhibidores, mesas de diferentes alturas, muebles de pared con nichos y góndolas.",
-              "serviceType": "Mobiliario para locales comerciales",
-              "areaServed": {
-                "@type": "Country",
-                "name": "Paraguay"
-              },
-              "provider": {
-                "@id": "https://cainco.com.py/#negocio"
-              }
-            }
-          },
-          {
-            "@type": "Offer",
-            "position": 5,
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Lockers a medida",
-              "description": "Muros de lockers para personal, gimnasios y espacios de coworking, con cerradura por puerta.",
-              "serviceType": "Lockers a medida",
-              "areaServed": {
-                "@type": "Country",
-                "name": "Paraguay"
-              },
-              "provider": {
-                "@id": "https://cainco.com.py/#negocio"
-              }
-            }
-          },
-          {
-            "@type": "Offer",
-            "position": 6,
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Muebles de baño a medida",
-              "description": "Vanitorys suspendidos o de piso, muebles bajo mesada y divisorias sanitarias para baños corporativos.",
-              "serviceType": "Muebles de baño a medida",
-              "areaServed": {
-                "@type": "Country",
-                "name": "Paraguay"
-              },
-              "provider": {
-                "@id": "https://cainco.com.py/#negocio"
-              }
-            }
-          }
+          { "@type": "Offer", "position": 1, "itemOffered": { "@type": "Service", "name": "Cocinas a medida en Asunción", "serviceType": "Cocinas a medida", "description": "Bajo mesadas, alacenas, islas y desayunadores, diseñados según las medidas de tu cocina.", "areaServed": { "@type": "Country", "name": "Paraguay" }, "provider": { "@id": "https://cainco.com.py/#negocio" } } },
+          { "@type": "Offer", "position": 2, "itemOffered": { "@type": "Service", "name": "Placares y vestidores a medida", "serviceType": "Placares y vestidores a medida", "description": "Placares de piso a techo y vestidores en L o en U con interiores organizados.", "areaServed": { "@type": "Country", "name": "Paraguay" }, "provider": { "@id": "https://cainco.com.py/#negocio" } } },
+          { "@type": "Offer", "position": 3, "itemOffered": { "@type": "Service", "name": "Mobiliario de oficina a medida en Paraguay", "serviceType": "Mobiliario de oficina", "description": "Puestos de trabajo, escritorios, recepciones, bibliotecas, archivos y mesas de reunión, en serie o a medida.", "areaServed": { "@type": "Country", "name": "Paraguay" }, "provider": { "@id": "https://cainco.com.py/#negocio" } } },
+          { "@type": "Offer", "position": 4, "itemOffered": { "@type": "Service", "name": "Mobiliario para locales comerciales", "serviceType": "Mobiliario comercial", "description": "Mostradores, exhibidores, mesas de distintas alturas y muebles de pared con nichos.", "areaServed": { "@type": "Country", "name": "Paraguay" }, "provider": { "@id": "https://cainco.com.py/#negocio" } } },
+          { "@type": "Offer", "position": 5, "itemOffered": { "@type": "Service", "name": "Lockers a medida", "serviceType": "Lockers", "description": "Muros de lockers para personal, gimnasios, colegios y coworkings, con cerradura por puerta.", "areaServed": { "@type": "Country", "name": "Paraguay" }, "provider": { "@id": "https://cainco.com.py/#negocio" } } },
+          { "@type": "Offer", "position": 6, "itemOffered": { "@type": "Service", "name": "Muebles de baño a medida", "serviceType": "Muebles de baño", "description": "Vanitorys suspendidos o de piso y divisorias sanitarias para baños corporativos.", "areaServed": { "@type": "Country", "name": "Paraguay" }, "provider": { "@id": "https://cainco.com.py/#negocio" } } }
         ]
       }
     }
   ]
 }
 </script>
+<!-- El JSON-LD de FAQPage se genera desde el acordeón (#faq) al cargar, para que nunca quede desincronizado. -->
 
-<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
 <style>
-/* Layout: taller-workshop grid — expanded display type on the left, photo stack on the right; gallery as a dense masonry wall */
 :root{
-  --bg:#eff0ed; --panel:#e2e4df; --ink:#1c2023; --muted:#5a615d; --line:#d0d3cd;
-  --oak:#8c5b2a; --oak-ink:#ffffff; --stone:#23272a;
+  --bg:#f3f1ec; --panel:#e8e5de; --card:#fbfaf7; --ink:#1c2023; --muted:#575e5a; --line:#d6d2c9;
+  --oak:#8a5826; --oak-ink:#ffffff; --oak-soft:#ead9c4; --stone:#1d2124; --on-stone:#ecebe5; --on-stone-muted:#b2b6b1;
+  --wa:#1b8a4a; --ok:#1b6e3d; --err:#a12a1c;
   --display:"Archivo","Arial Narrow",system-ui,sans-serif;
   --body:"Karla",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
-  --wrap:1180px;
+  --wrap:1200px; --gut:clamp(16px,4.5vw,48px);
+  --bar-h:0px;
+  color-scheme:light;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#141617; --panel:#1d2022; --ink:#ebeae4; --muted:#9ca19d; --line:#2d3133;
-  --oak:#d39b5e; --oak-ink:#17130e; --stone:#0d0f10; color-scheme:dark}}
+  --bg:#141617; --panel:#1b1e20; --card:#202426; --ink:#ebeae4; --muted:#a3a8a4; --line:#2f3436;
+  --oak:#d6a066; --oak-ink:#17130e; --oak-soft:#3a2c1e; --stone:#0d0f10; --ok:#5fd08e; --err:#ff8a7a; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#141617; --panel:#1d2022; --ink:#ebeae4; --muted:#9ca19d; --line:#2d3133;
-  --oak:#d39b5e; --oak-ink:#17130e; --stone:#0d0f10; color-scheme:dark}
+  --bg:#141617; --panel:#1b1e20; --card:#202426; --ink:#ebeae4; --muted:#a3a8a4; --line:#2f3436;
+  --oak:#d6a066; --oak-ink:#17130e; --oak-soft:#3a2c1e; --stone:#0d0f10; --ok:#5fd08e; --err:#ff8a7a; color-scheme:dark}
 
-*{box-sizing:border-box}
+*,*::before,*::after{box-sizing:border-box}
 [hidden]{display:none!important}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;padding-inline:clamp(16px,4vw,40px)}
-.wrap{max-width:var(--wrap);margin-inline:auto}
+html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;padding-bottom:var(--bar-h)}
+img{max-width:100%;display:block}
+picture{display:contents}
 a{color:inherit}
-:focus-visible{outline:2px solid var(--oak);outline-offset:3px}
-h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.02}
-.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--oak)}
-.btn{display:inline-flex;align-items:center;gap:.6em;font-family:var(--display);font-weight:700;font-variation-settings:"wdth" 110;font-size:15px;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;padding:.95em 1.4em;border:2px solid var(--ink);color:var(--ink);background:transparent;cursor:pointer;transition:background .2s,color .2s}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gut)}
+:focus-visible{outline:3px solid var(--oak);outline-offset:3px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.05;font-weight:800}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--oak);display:block}
+.lead{font-size:clamp(17px,1.5vw,20px);color:var(--muted);max-width:38em}
+.todo{background:repeating-linear-gradient(135deg,#ffe066 0 10px,#ffd43b 10px 20px);color:#1a1a1a;font-family:var(--mono);font-size:.82em;padding:.05em .4em;border-radius:3px;font-weight:500;letter-spacing:0;text-transform:none}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;font-family:var(--display);font-weight:700;font-variation-settings:"wdth" 108;font-size:15px;letter-spacing:.03em;text-decoration:none;padding:1em 1.5em;min-height:48px;border:2px solid var(--ink);border-radius:999px;color:var(--ink);background:transparent;cursor:pointer;transition:background .2s,color .2s,border-color .2s,transform .2s}
 .btn:hover{background:var(--ink);color:var(--bg)}
 .btn.solid{background:var(--oak);border-color:var(--oak);color:var(--oak-ink)}
 .btn.solid:hover{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.btn.light{border-color:rgba(255,255,255,.85);color:#fff}
+.btn.light:hover{background:#fff;color:#111}
+.btn.wa{background:var(--wa);border-color:var(--wa);color:#fff}
+.btn.wa:hover{filter:brightness(1.1);background:var(--wa);color:#fff}
+.btn svg{width:20px;height:20px;flex:none}
+.micro{font-size:14px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.micro::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ok);flex:none}
 
 /* header */
-header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line);margin-inline:calc(-1 * clamp(16px,4vw,40px));padding:12px clamp(16px,4vw,40px)}
-header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+header.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:64px}
 .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
-.logo svg{width:40px;height:40px;flex:none}
+.logo svg{width:38px;height:38px;flex:none}
 .logo .mark-a{fill:var(--oak)} .logo .mark-b{fill:var(--ink)}
 .logo .word{display:flex;flex-direction:column;line-height:1}
-.logo .name{font-family:var(--display);font-weight:850;font-variation-settings:"wdth" 125;font-size:22px;letter-spacing:.06em}
-.logo .tag{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--muted);margin-top:4px;text-transform:uppercase}
-nav.links{display:flex;gap:26px;font-size:15px;font-weight:500}
-nav.links a{text-decoration:none;color:var(--muted)}
-nav.links a:hover{color:var(--ink)}
-@media (max-width:820px){nav.links{display:none}}
-header .btn{padding:.7em 1em;font-size:13px;white-space:nowrap}
-.logo .tag{white-space:nowrap}
-@media (max-width:520px){header .btn .long{display:none}.logo .tag{display:none}}
+.logo .name{font-family:var(--display);font-weight:850;font-variation-settings:"wdth" 125;font-size:21px;letter-spacing:.06em}
+.logo .tag{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--muted);margin-top:4px;text-transform:uppercase;white-space:nowrap}
+.top-actions{display:flex;align-items:center;gap:8px}
+.icon-btn{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--ink);display:grid;place-items:center;cursor:pointer}
+.icon-btn svg{width:20px;height:20px}
+header .btn{padding:.6em 1.1em;min-height:44px;font-size:14px;white-space:nowrap}
+header .btn .short{display:none}
+@media (max-width:520px){.logo .tag{display:none} header .btn .long{display:none} header .btn .short{display:inline}}
 
 /* hero */
-.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(24px,4vw,56px);padding-block:clamp(40px,7vw,88px) clamp(40px,6vw,72px);align-items:center}
-.hero h1{font-weight:900;font-variation-settings:"wdth" 118;font-size:clamp(44px,7.4vw,96px);letter-spacing:-.01em;text-transform:uppercase}
-.hero h1 em{font-style:normal;color:var(--oak);display:block}
-.hero p.lead{font-size:clamp(17px,1.6vw,20px);color:var(--muted);max-width:34em;margin:24px 0 32px}
-.hero .ctas{display:flex;flex-wrap:wrap;gap:12px}
-.hero .facts{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:36px;padding-top:20px;border-top:1px solid var(--line);font-family:var(--mono);font-size:13px;color:var(--muted)}
-.hero .facts span::before{content:"■ ";color:var(--oak)}
-.stack{display:grid;grid-template-columns:1.4fr 1fr;grid-template-rows:1fr 1fr;gap:10px;aspect-ratio:1/1;max-width:100%;min-width:0}
-.stack figure{margin:0;overflow:hidden;background:var(--panel);position:relative}
-.stack figure:first-child{grid-row:1/3}
-.stack img{width:100%;height:100%;object-fit:cover;display:block}
-.stack figcaption{position:absolute;left:0;bottom:0;background:var(--stone);color:#ebeae4;font-family:var(--mono);font-size:11px;letter-spacing:.08em;padding:6px 10px;text-transform:uppercase}
-@media (max-width:860px){.hero{grid-template-columns:1fr}.stack{aspect-ratio:4/3}}
+.hero{position:relative;isolation:isolate;display:flex;align-items:flex-end;color:#fff;background:#1a1c1d}
+@media (min-width:900px){.hero{min-height:min(calc(100svh - 64px),780px)}}
+.hero-media{position:absolute;inset:0;z-index:-2;overflow:hidden}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:50% 45%}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,11,12,.25) 0%,rgba(10,11,12,.35) 35%,rgba(10,11,12,.88) 100%)}
+@media (min-width:900px){.hero::after{background:linear-gradient(90deg,rgba(10,11,12,.9) 0%,rgba(10,11,12,.65) 45%,rgba(10,11,12,.1) 85%)}.hero{align-items:center}}
+.hero .wrap{width:100%;padding-block:clamp(150px,30vw,260px) 32px}
+@media (min-width:900px){.hero .wrap{padding-block:56px}}
+.hero-copy{max-width:720px}
+.hero .eyebrow{color:#e8bd8c}
+.hero h1{font-size:clamp(32px,4.6vw,62px);font-weight:850;font-variation-settings:"wdth" 104;letter-spacing:-.015em;margin-top:14px}
+.hero h1 em{font-style:normal;color:#e8bd8c}
+.hero .lead{color:rgba(255,255,255,.88);margin:16px 0 24px;font-size:clamp(16px,1.4vw,19px)}
+@media (max-width:899px){.hero .btn{padding:.85em 1.2em}.hero .ctas .btn.solid{flex:1 1 100%}.hero .ctas .btn.light{flex:1 1 100%}}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.hero .micro{color:rgba(255,255,255,.82);margin-top:14px}
+.proofs{list-style:none;margin:28px 0 0;padding:20px 0 0;border-top:1px solid rgba(255,255,255,.22);display:flex;flex-wrap:wrap;gap:10px 24px;font-family:var(--mono);font-size:13px;letter-spacing:.02em;color:rgba(255,255,255,.9)}
+.proofs li{display:flex;align-items:center;gap:8px}
+.proofs svg{width:16px;height:16px;stroke:#e8bd8c;fill:none;stroke-width:2.4}
+.hero-cap{position:absolute;right:var(--gut);bottom:14px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+@media (max-width:899px){.hero-cap{display:none}}
 
-/* section scaffolding */
-section.block{padding-block:clamp(56px,8vw,104px);border-top:1px solid var(--line)}
-.head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 48px;align-items:end;margin-bottom:44px}
-.head h2{font-weight:850;font-variation-settings:"wdth" 112;font-size:clamp(34px,4.6vw,58px);text-transform:uppercase}
-.head p{color:var(--muted);margin:0;max-width:36em}
-@media (max-width:760px){.head{grid-template-columns:1fr}}
+/* secciones */
+main{display:flex;flex-direction:column}
+.sec{padding-block:clamp(64px,9vw,120px)}
+.sec.alt{background:var(--panel)}
+.head{display:grid;gap:16px;margin-bottom:clamp(32px,5vw,56px);max-width:760px}
+.head h2{font-size:clamp(30px,4.4vw,52px);font-variation-settings:"wdth" 104;letter-spacing:-.01em}
+.head.center{margin-inline:auto;text-align:center;justify-items:center}
 
-/* services */
-.services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
-.svc{background:var(--bg);padding:28px 26px 30px;display:flex;flex-direction:column;gap:10px;min-width:0}
-.svc h3{font-weight:800;font-variation-settings:"wdth" 108;font-size:22px;text-transform:uppercase;letter-spacing:.01em}
-.svc p{margin:0;color:var(--muted);font-size:16px}
-.svc .spec{margin-top:auto;padding-top:14px;font-family:var(--mono);font-size:12px;color:var(--oak);letter-spacing:.04em}
-.svc svg{width:34px;height:34px;stroke:var(--ink);fill:none;stroke-width:1.6}
-@media (max-width:900px){.services{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:560px){.services{grid-template-columns:1fr}}
+/* selector de perfil */
+.perfil{padding-block:clamp(48px,7vw,88px);border-bottom:1px solid var(--line)}
+.perfil h2{font-size:clamp(26px,3.4vw,40px);font-variation-settings:"wdth" 104;text-align:center}
+.perfil .sub{text-align:center;color:var(--muted);margin-top:10px}
+.perfil-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(12px,2vw,24px);margin-top:32px}
+.perfil-card{position:relative;display:grid;grid-template-rows:auto 1fr;text-align:left;font:inherit;color:inherit;background:var(--card);border:2px solid var(--line);border-radius:18px;overflow:hidden;cursor:pointer;padding:0;transition:border-color .2s,transform .2s,box-shadow .2s}
+.perfil-card:hover{border-color:var(--oak);transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.perfil-card[aria-pressed="true"]{border-color:var(--oak);box-shadow:0 0 0 3px var(--oak-soft)}
+.perfil-card .ph{display:block;aspect-ratio:16/9;overflow:hidden;background:var(--panel)}
+.perfil-card .ph img{width:100%;height:100%;object-fit:cover}
+.perfil-card .txt{padding:18px 20px 22px;display:grid;gap:6px}
+.perfil-card .t{font-family:var(--display);font-weight:800;line-height:1.1;font-size:clamp(20px,2.4vw,28px);font-variation-settings:"wdth" 106}
+.perfil-card .d{color:var(--muted);font-size:15px}
+.perfil-card .go{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--oak);margin-top:6px}
+.perfil-card[aria-pressed="true"] .go::before{content:"✓ Elegido · "}
+@media (max-width:560px){.perfil-cards{grid-template-columns:1fr 1fr;gap:10px}.perfil-card .txt{padding:12px 12px 16px}.perfil-card .d{display:none}.perfil-card .ph{aspect-ratio:4/3}}
 
-/* gallery */
-.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
-.filters button{font-family:var(--mono);font-size:13px;letter-spacing:.04em;padding:8px 14px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
+/* contenido por perfil: sin perfil se ve todo */
+[data-perfil="hogar"] [data-solo="empresa"],[data-perfil="empresa"] [data-solo="hogar"]{display:none!important}
+
+/* problema → solución */
+.ps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,3vw,32px)}
+[data-perfil="hogar"] .ps,[data-perfil="empresa"] .ps{grid-template-columns:minmax(0,1fr);max-width:820px}
+.ps-col{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:clamp(20px,3vw,32px)}
+.ps-col h3{font-size:22px;font-variation-settings:"wdth" 104;margin-bottom:18px}
+.ps-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px 20px;padding:16px 0;border-top:1px solid var(--line)}
+.ps-row .pain{color:var(--muted);text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--err) 60%,transparent);text-decoration-thickness:1.5px}
+.ps-row .fix{font-weight:500}
+.ps-row .fix::before{content:"→ ";color:var(--oak);font-weight:700}
+@media (max-width:820px){.ps{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:480px){.ps-row{grid-template-columns:minmax(0,1fr);gap:4px}}
+
+/* servicios */
+.svcs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,24px)}
+.svc{display:flex;flex-direction:column;background:var(--card);border-radius:16px;overflow:hidden;border:1px solid var(--line);min-width:0}
+.svc .ph{aspect-ratio:4/3;overflow:hidden;background:var(--panel)}
+.svc .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.svc:hover .ph img{transform:scale(1.03)}
+.svc .txt{padding:18px 20px 22px;display:flex;flex-direction:column;gap:8px;flex:1}
+.svc h3{font-size:22px;font-variation-settings:"wdth" 104}
+.svc p{color:var(--muted);font-size:16px}
+.svc .btn{margin-top:auto;align-self:flex-start;padding:.7em 1.1em;min-height:44px;font-size:14px}
+.svc .tag-seg{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--oak)}
+[data-perfil="empresa"] .svc[data-seg="hogar"],[data-perfil="hogar"] .svc[data-seg="empresa"]{order:2}
+@media (max-width:960px){.svcs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.svcs{grid-template-columns:minmax(0,1fr)}}
+
+/* galería */
+.filters{display:flex;gap:8px;margin-bottom:24px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+.filters button{flex:none;font-family:var(--mono);font-size:13px;letter-spacing:.02em;padding:10px 16px;min-height:44px;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--muted);cursor:pointer}
 .filters button:hover{color:var(--ink);border-color:var(--ink)}
 .filters button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
-.filters .n{opacity:.6;margin-left:6px}
-.grid{columns:3 260px;column-gap:12px}
-.tile{break-inside:avoid;margin:0 0 12px;position:relative;cursor:zoom-in;background:var(--panel);display:block;width:100%;padding:0;border:0;text-align:left;color:inherit;font:inherit}
-.tile img{width:100%;height:auto;display:block;transition:filter .3s}
-.tile .cap{display:flex;justify-content:space-between;gap:12px;padding:10px 2px 4px;background:var(--bg);font-size:14px;line-height:1.35}
-.tile .cap b{font-weight:500}
-.tile .cap i{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--oak);text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
-.tile:hover img{filter:brightness(1.06) contrast(1.04)}
+.filters .n{opacity:.7;margin-left:6px}
+.grid{columns:3 280px;column-gap:14px}
+.tile{break-inside:avoid;margin:0 0 14px;cursor:zoom-in;display:block;width:100%;padding:0;border:0;text-align:left;color:inherit;font:inherit;background:transparent}
+.tile .ph{background:var(--panel);border-radius:12px;overflow:hidden}
+.tile img{width:100%;height:auto;transition:transform .5s}
+.tile:hover img{transform:scale(1.02)}
+.tile .cap{display:block;padding:10px 2px 4px;font-size:15px;line-height:1.4}
+.tile .cap i{display:block;font-style:normal;font-family:var(--mono);font-size:11px;color:var(--oak);text-transform:uppercase;letter-spacing:.08em;margin-top:2px}
+.more{display:flex;justify-content:center;margin-top:20px}
 
-/* process */
-.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;counter-reset:s}
-.step{border-top:3px solid var(--ink);padding-top:18px;min-width:0}
-.step .num{font-family:var(--display);font-weight:900;font-variation-settings:"wdth" 120;font-size:48px;color:var(--oak);line-height:1}
-.step h3{font-weight:800;font-variation-settings:"wdth" 108;font-size:20px;text-transform:uppercase;margin:12px 0 8px}
-.step p{margin:0;color:var(--muted);font-size:16px}
-@media (max-width:900px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:520px){.steps{grid-template-columns:1fr}}
+/* casos */
+.casos{display:grid;gap:clamp(20px,3vw,32px);margin-top:clamp(48px,7vw,88px)}
+.caso{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.caso .fotos{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:var(--line)}
+.caso .fotos figure{margin:0;position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--panel)}
+.caso .fotos img{width:100%;height:100%;object-fit:cover}
+.caso .fotos figcaption{position:absolute;left:10px;top:10px;background:rgba(14,15,16,.78);color:#fff;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:4px 8px;border-radius:4px}
+.caso .txt{padding:clamp(20px,3vw,36px);display:grid;gap:14px;align-content:center}
+.caso h3{font-size:clamp(22px,2.6vw,30px);font-variation-settings:"wdth" 104}
+.caso dl{margin:0;display:grid;gap:12px}
+.caso dt{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--oak)}
+.caso dd{margin:2px 0 0;color:var(--muted)}
+@media (max-width:820px){.caso{grid-template-columns:minmax(0,1fr)}}
 
-/* materials band */
-.band{background:var(--stone);color:#ebeae4;margin-inline:calc(-1 * clamp(16px,4vw,40px));padding:clamp(56px,8vw,96px) clamp(16px,4vw,40px)}
-.band .eyebrow{color:#d39b5e}
-.band h2{font-weight:850;font-variation-settings:"wdth" 112;font-size:clamp(32px,4.4vw,54px);text-transform:uppercase;margin:12px 0 36px;max-width:16em}
-.mats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;border-top:1px solid #3a3f42}
-.mat{padding:20px 20px 22px 0;border-bottom:1px solid #3a3f42;display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}
-.sw{width:44px;height:44px;border:1px solid #4a5053}
-.mat h3{font-family:var(--body);font-weight:700;font-size:16px;line-height:1.3}
-.mat p{margin:4px 0 0;font-size:14px;color:#a7aca8}
-.mat code{font-family:var(--mono);font-size:12px;color:#d39b5e}
+/* empresas */
+.empresas{background:var(--stone);color:var(--on-stone)}
+.empresas .eyebrow{color:#e8bd8c}
+.empresas .lead{color:var(--on-stone-muted)}
+.b2b{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:#353a3d;border:1px solid #353a3d;border-radius:16px;overflow:hidden}
+.b2b div{background:var(--stone);padding:24px 22px 26px;display:grid;gap:8px;align-content:start}
+.b2b h3{font-size:19px;font-variation-settings:"wdth" 104;color:#fff}
+.b2b p{color:var(--on-stone-muted);font-size:15.5px}
+.b2b svg{width:30px;height:30px;stroke:#e8bd8c;fill:none;stroke-width:1.7}
+@media (max-width:900px){.b2b{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.b2b{grid-template-columns:minmax(0,1fr)}}
+.cifras{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:40px}
+.cifras div{border-top:2px solid #e8bd8c;padding-top:14px}
+.cifras b{display:block;font-family:var(--display);font-size:clamp(28px,4vw,44px);font-weight:850;color:#fff}
+.cifras span{color:var(--on-stone-muted);font-size:15px}
+@media (max-width:560px){.cifras{grid-template-columns:minmax(0,1fr)}}
+.logos{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin-top:36px}
+.logos div{aspect-ratio:3/2;border:1px dashed #4a5053;border-radius:10px;display:grid;place-items:center;text-align:center;padding:6px}
+@media (max-width:700px){.logos{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.empresas .cta-row{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;margin-top:40px}
+.empresas .micro{color:var(--on-stone-muted)}
+.teaser-emp{border:1px solid var(--line);border-radius:16px;padding:20px 22px;display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:space-between;background:var(--card)}
+[data-perfil="hogar"] #empresas{display:none}
+[data-perfil="empresa"] #empresas{order:-1}
+.teaser-wrap{padding-block:0 clamp(48px,7vw,80px)}
+html:not([data-perfil="hogar"]) .teaser-wrap{display:none}
 
-/* contact */
-.contact{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(28px,5vw,72px)}
-.contact h2{font-weight:900;font-variation-settings:"wdth" 118;font-size:clamp(38px,5.4vw,72px);text-transform:uppercase}
-.contact .info{display:flex;flex-direction:column;gap:18px;margin-top:28px}
-.info dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 20px}
-.info dt{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:3px}
-.info dd{margin:0;font-weight:500;user-select:all}
-form{display:grid;grid-template-columns:1fr 1fr;gap:16px;background:var(--panel);padding:clamp(20px,3vw,32px);align-content:start}
-form .full{grid-column:1/-1}
-label{display:flex;flex-direction:column;gap:6px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-input,select,textarea{font:inherit;font-family:var(--body);font-size:16px;letter-spacing:0;text-transform:none;color:var(--ink);background:var(--bg);border:1px solid var(--line);padding:12px;border-radius:0;width:100%}
-textarea{min-height:120px;resize:vertical}
-input:focus,select:focus,textarea:focus{outline:2px solid var(--oak);outline-offset:0;border-color:transparent}
-form .note{font-size:14px;color:var(--muted);margin:0}
-@media (max-width:820px){.contact{grid-template-columns:1fr}}
-@media (max-width:480px){form{grid-template-columns:1fr}}
+/* proceso */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,2.4vw,28px);list-style:none;margin:0;padding:0}
+.step{border-top:3px solid var(--ink);padding-top:18px;min-width:0;display:grid;gap:10px;align-content:start}
+.step .num{font-family:var(--display);font-weight:900;font-variation-settings:"wdth" 120;font-size:44px;color:var(--oak);line-height:1}
+.step h3{font-size:21px;font-variation-settings:"wdth" 104}
+.step p{color:var(--muted);font-size:16px}
+.step .meta{font-size:14.5px;display:grid;gap:4px;border-left:2px solid var(--oak-soft);padding-left:12px}
+.step .meta b{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--oak);font-weight:500}
+@media (max-width:960px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.steps{grid-template-columns:minmax(0,1fr)}}
 
-footer{border-top:1px solid var(--line);padding-block:28px 40px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-size:14px;color:var(--muted)}
+/* materiales */
+.mats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,22px)}
+.mat{display:grid;grid-template-columns:56px minmax(0,1fr);gap:16px;align-items:start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.sw{width:56px;height:56px;border-radius:10px;border:1px solid rgba(0,0,0,.12)}
+.mat h3{font-family:var(--body);font-weight:700;font-size:17px;line-height:1.3}
+.mat p{margin-top:4px;font-size:15px;color:var(--muted)}
+.mat .why{display:block;margin-top:6px;font-size:14.5px;color:var(--ink)}
+.mat code{font-family:var(--mono);font-size:12px;color:var(--oak)}
+@media (max-width:900px){.mats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.mats{grid-template-columns:minmax(0,1fr)}}
+
+/* testimonios */
+.testis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,24px)}
+.testi{margin:0;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;display:grid;gap:14px;align-content:start}
+.testi blockquote{margin:0;font-size:18px;line-height:1.5}
+.testi figcaption{font-size:14px;color:var(--muted)}
+.testi figcaption b{display:block;color:var(--ink);font-size:15px}
+@media (max-width:900px){.testis{grid-template-columns:minmax(0,1fr)}}
+
+/* FAQ */
+.faq{max-width:860px;margin-inline:auto;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 4px;font-family:var(--display);font-weight:700;font-variation-settings:"wdth" 102;font-size:clamp(17px,2vw,20px);min-height:44px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--mono);font-size:24px;color:var(--oak);flex:none;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .a{padding:0 4px 22px;color:var(--muted);max-width:68ch}
+
+/* formulario */
+.form-sec .grid2{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,72px);align-items:start}
+@media (max-width:860px){.form-sec .grid2{grid-template-columns:minmax(0,1fr)}}
+.form-aside h2{font-size:clamp(32px,4.8vw,56px);font-variation-settings:"wdth" 104}
+.form-aside .lead{margin-top:16px}
+.checks{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:10px}
+.checks li{display:flex;gap:10px;align-items:flex-start}
+.checks svg{width:20px;height:20px;flex:none;stroke:var(--oak);fill:none;stroke-width:2.4;margin-top:3px}
+form.quote{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:clamp(20px,3.4vw,36px);box-shadow:0 20px 50px rgba(0,0,0,.06)}
+.progress{display:grid;gap:8px;margin-bottom:24px}
+.progress .lbl{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.progress .track{height:6px;background:var(--panel);border-radius:6px;overflow:hidden}
+.progress .bar{height:100%;width:33.3%;background:var(--oak);border-radius:6px;transition:width .35s}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+legend{font-family:var(--display);font-weight:800;font-variation-settings:"wdth" 104;font-size:22px;margin-bottom:16px;padding:0}
+.q-step{display:grid;gap:20px}
+.field{display:grid;gap:8px;min-width:0}
+.field>label,.field .flabel{font-weight:700;font-size:15px}
+.field .hint{font-size:13.5px;color:var(--muted);font-weight:400}
+.opt{font-weight:400;color:var(--muted);font-size:13px}
+input[type=text],input[type=tel],select,textarea{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;width:100%;min-height:48px}
+textarea{min-height:96px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:3px solid var(--oak-soft);border-color:var(--oak)}
+[aria-invalid="true"]{border-color:var(--err)!important}
+.err{color:var(--err);font-size:14px;font-weight:500}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;width:1px;height:1px}
+.chip span{display:inline-flex;align-items:center;min-height:44px;padding:10px 16px;border:1.5px solid var(--line);border-radius:999px;cursor:pointer;font-size:15px;background:var(--bg);transition:border-color .15s,background .15s}
+.chip input:checked+span{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.chip input:focus-visible+span{outline:3px solid var(--oak);outline-offset:2px}
+.chips.big .chip span{min-height:52px;padding:12px 20px;font-weight:700}
+.row2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+@media (max-width:520px){.row2{grid-template-columns:minmax(0,1fr)}}
+.q-nav{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-top:8px}
+.q-nav .btn{flex:1 1 auto}
+.q-nav .back{flex:0 0 auto;border-color:var(--line)}
+.note{font-size:14px;color:var(--muted);background:var(--panel);border-radius:10px;padding:12px 14px}
+.done{display:grid;gap:12px;text-align:center;justify-items:center;padding:16px 0}
+.done h3{font-size:24px}
+
+/* cierre + footer */
+.cierre{background:var(--stone);color:var(--on-stone);text-align:center}
+.cierre h2{font-size:clamp(30px,5vw,58px);font-variation-settings:"wdth" 104;max-width:16em;margin-inline:auto}
+.cierre .lead{color:var(--on-stone-muted);margin:16px auto 28px}
+.cierre .ctas{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+footer{background:var(--stone);color:var(--on-stone-muted);border-top:1px solid #2e3336;padding-block:40px calc(40px + var(--bar-h));font-size:15px}
+footer .cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
+footer h3{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#e8bd8c;font-weight:500;margin-bottom:10px}
+footer a{color:var(--on-stone);text-underline-offset:3px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+footer .legal{margin-top:32px;padding-top:20px;border-top:1px solid #2e3336;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;font-size:14px}
+footer .logo .mark-b{fill:var(--on-stone)} footer .logo .mark-a{fill:#e8bd8c} footer .logo .tag{color:var(--on-stone-muted)}
+@media (max-width:860px){footer .cols{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){footer .cols{grid-template-columns:minmax(0,1fr)}}
+
+/* WhatsApp flotante + barra móvil */
+.wa-float{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + var(--bar-h) + env(safe-area-inset-bottom,0px));z-index:40;width:58px;height:58px;border-radius:50%;background:var(--wa);color:#fff;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:bottom .25s,transform .2s,opacity .2s}
+.wa-float:hover{transform:scale(1.06)}
+.wa-float svg{width:30px;height:30px}
+.wa-float.off{opacity:0;pointer-events:none;transform:scale(.8)}
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:35;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));display:flex;gap:10px;align-items:center;transform:translateY(110%);transition:transform .25s}
+.mbar .btn{flex:1;min-height:48px;padding:.8em 1em}
+.mbar small{font-size:12.5px;color:var(--muted);line-height:1.3;max-width:9.5em}
+body.bar-on .mbar{transform:none}
+@media (min-width:900px){.mbar{display:none}}
 
 /* lightbox */
-.lb{position:fixed;inset:0;z-index:50;background:rgba(10,11,12,.94);display:grid;grid-template-rows:1fr auto;padding:calc(env(safe-area-inset-top,0px) + 56px) 16px calc(env(safe-area-inset-bottom,0px) + 16px)}
-.lb img{width:auto;height:auto;max-width:100%;max-height:100%;margin:auto;object-fit:contain;display:block;min-height:0}
-.lb .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;color:#ebeae4;padding-top:14px;max-width:var(--wrap);width:100%;margin-inline:auto}
-.lb .bar p{margin:0;font-size:15px}
-.lb .bar span{font-family:var(--mono);font-size:12px;color:#a7aca8}
-.lb button{background:transparent;border:1px solid #4a5053;color:#ebeae4;width:44px;height:44px;cursor:pointer;font-size:20px}
-.lb button:hover{border-color:#d39b5e;color:#d39b5e}
+.lb{position:fixed;inset:0;z-index:60;background:rgba(10,11,12,.95);display:grid;grid-template-rows:minmax(0,1fr) auto;padding:calc(env(safe-area-inset-top,0px) + 64px) 16px calc(env(safe-area-inset-bottom,0px) + 16px)}
+.lb img{width:auto;height:auto;max-width:100%;max-height:100%;margin:auto;object-fit:contain;min-height:0}
+.lb .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;color:#ecebe5;padding-top:14px;max-width:var(--wrap);width:100%;margin-inline:auto}
+.lb .bar p{font-size:15px}
+.lb .bar span{font-family:var(--mono);font-size:12px;color:#b2b6b1}
+.lb button{background:transparent;border:1px solid #5a6063;color:#ecebe5;width:48px;height:48px;border-radius:50%;cursor:pointer;font-size:20px}
+.lb button:hover{border-color:#e8bd8c;color:#e8bd8c}
 .lb .close{position:absolute;top:calc(env(safe-area-inset-top,0px) + 8px);right:16px}
 .lb .nav{display:flex;gap:8px}
 
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
-.skip{position:absolute;left:16px;top:-60px;z-index:60;background:var(--ink);color:var(--bg);padding:10px 14px;text-decoration:none}
+.skip{position:absolute;left:16px;top:-60px;z-index:70;background:var(--ink);color:var(--bg);padding:10px 14px;text-decoration:none;border-radius:8px}
 .skip:focus{top:12px}
-.stack picture{display:contents}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
@@ -372,7 +475,7 @@ footer{border-top:1px solid var(--line);padding-block:28px 40px;display:flex;fle
 
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="#inicio" aria-label="Cainco, inicio">
+    <a class="logo" href="#inicio" aria-label="Cainco, ir al inicio">
       <svg viewBox="0 0 48 48" aria-hidden="true">
         <rect class="mark-b" x="4" y="4" width="40" height="8"/>
         <rect class="mark-b" x="4" y="4" width="8" height="40"/>
@@ -381,260 +484,815 @@ footer{border-top:1px solid var(--line);padding-block:28px 40px;display:flex;fle
       </svg>
       <span class="word"><span class="name">CAINCO</span><span class="tag">Muebles a medida</span></span>
     </a>
-    <nav class="links" aria-label="Secciones">
-      <a href="#servicios">Servicios</a>
-      <a href="#trabajos">Trabajos</a>
-      <a href="#proceso">Cómo trabajamos</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
-    <a class="btn solid" href="#contacto"><span class="long">Pedir </span>Presupuesto</a>
+    <div class="top-actions">
+      <button class="icon-btn" id="theme" type="button" aria-label="Cambiar entre modo claro y oscuro">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <a class="btn solid" href="#presupuesto" data-cta="header"><span class="long">Pedir presupuesto</span><span class="short">Presupuesto</span></a>
+    </div>
   </div>
 </header>
 
 <main id="main">
-<div class="wrap">
-  <section class="hero" id="inicio">
-    <div>
-      <div class="eyebrow">Fábrica de muebles en Paraguay · Diseño, producción e instalación</div>
-      <h1 style="margin-top:18px">Muebles hechos a la medida <em>de cada espacio</em></h1>
-      <p class="lead">En Cainco diseñamos, fabricamos e instalamos muebles a medida para hogares, oficinas y comercios en Asunción y todo Paraguay. Cocinas, placares, recepciones, lockers y baños, medidos en obra y producidos en nuestro propio taller.</p>
-      <div class="ctas">
-        <a class="btn solid" href="#trabajos">Ver trabajos realizados</a>
-        <a class="btn" href="#contacto">Contanos tu proyecto</a>
-      </div>
-      <div class="facts"><span>Medición en obra</span><span>Taller propio</span><span>Instalación incluida</span></div>
-    </div>
-    <div class="stack">
-      <figure><picture><source type="image/webp" srcset="img/comercial-01-640.webp 640w, img/comercial-01.webp 963w" sizes="(max-width: 860px) 58vw, 330px"><img src="img/comercial-01.jpg" width="963" height="1280" fetchpriority="high" decoding="async" alt="Mesas exhibidoras de madera a medida para un local comercial, bajo una luminaria circular"></picture><figcaption>Local comercial</figcaption></figure>
-      <figure><picture><source type="image/webp" srcset="img/oficina-03-640.webp 640w, img/oficina-03.webp 963w" sizes="(max-width: 860px) 42vw, 240px"><img src="img/oficina-03.jpg" width="963" height="1280" loading="lazy" decoding="async" alt="Mostrador de recepción curvo en madera listonada, mueble de oficina a medida"></picture><figcaption>Recepción</figcaption></figure>
-      <figure><picture><source type="image/webp" srcset="img/cocina-01-640.webp 640w, img/cocina-01.webp 716w" sizes="(max-width: 860px) 42vw, 240px"><img src="img/cocina-01.jpg" width="716" height="716" loading="lazy" decoding="async" alt="Cocina a medida en L, blanca, con mesada de granito negro"></picture><figcaption>Cocina</figcaption></figure>
-    </div>
-  </section>
 
-  <section class="block" id="servicios">
-    <div class="head">
-      <div><div class="eyebrow">Servicios</div><h2 style="margin-top:12px">Lo que fabricamos</h2></div>
-      <p>Trabajamos para casas particulares, empresas, arquitectos y constructoras. Cada pieza se diseña para el lugar donde va a quedar: medidas, uso diario y estética del ambiente.</p>
-    </div>
-    <div class="services">
-      <article class="svc">
-        <svg viewBox="0 0 34 34" aria-hidden="true"><rect x="3" y="15" width="28" height="15"/><path d="M3 15h28M17 15v15M5 4h24v7H5z"/><path d="M12 22h2M20 22h2"/></svg>
-        <h3>Cocinas</h3>
-        <p>Bajo mesadas, alacenas, islas y desayunadores. Coordinamos la mesada de granito o cuarzo y el armado de electrodomésticos.</p>
-        <div class="spec">Melamina · MDF laqueado · Granito</div>
-      </article>
-      <article class="svc">
-        <svg viewBox="0 0 34 34" aria-hidden="true"><rect x="4" y="3" width="26" height="28"/><path d="M17 3v28M8 9h5M8 14h5M21 17h5M21 22h5"/></svg>
-        <h3>Placares y vestidores</h3>
-        <p>Placares de piso a techo, vestidores en L o en U, cajoneras internas, barrales y estantes regulables.</p>
-        <div class="spec">Puertas batientes o corredizas</div>
-      </article>
-      <article class="svc">
-        <svg viewBox="0 0 34 34" aria-hidden="true"><path d="M3 14h28M6 14v15M28 14v15M3 14v-4h12v4M19 14v-4h12v4"/></svg>
-        <h3>Oficinas</h3>
-        <p>Puestos de trabajo tipo bench, escritorios, recepciones, bibliotecas, archivos y mesas de reunión.</p>
-        <div class="spec">Estructura metálica + tablero</div>
-      </article>
-      <article class="svc">
-        <svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="7" r="4"/><path d="M5 31V19h10v12M19 31V23h10v8"/></svg>
-        <h3>Locales comerciales</h3>
-        <p>Mostradores, exhibidores, mesas de diferentes alturas, muebles de pared con nichos y góndolas.</p>
-        <div class="spec">Llave en mano para retail</div>
-      </article>
-      <article class="svc">
-        <svg viewBox="0 0 34 34" aria-hidden="true"><rect x="3" y="3" width="28" height="28"/><path d="M12.3 3v28M21.6 3v28M3 12.3h28M3 21.6h28"/></svg>
-        <h3>Lockers</h3>
-        <p>Muros de lockers para personal, gimnasios y espacios de coworking, con la cantidad de puertas que necesites.</p>
-        <div class="spec">Cerradura por puerta</div>
-      </article>
-      <article class="svc">
-        <svg viewBox="0 0 34 34" aria-hidden="true"><path d="M3 13h28v6H3zM6 19v8h22v-8M15 9h4v4"/></svg>
-        <h3>Baños</h3>
-        <p>Vanitorys suspendidos o de piso, muebles bajo mesada y divisorias sanitarias para baños corporativos.</p>
-        <div class="spec">Materiales resistentes a la humedad</div>
-      </article>
-    </div>
-  </section>
-
-  <section class="block" id="trabajos">
-    <div class="head">
-      <div><div class="eyebrow">Portafolio</div><h2 style="margin-top:12px">Trabajos realizados</h2></div>
-      <p>Una selección de proyectos entregados e instalados. Tocá cualquier foto para verla en grande.</p>
-    </div>
-    <div class="filters" role="group" aria-label="Filtrar por tipo de trabajo" id="filters"></div>
-    <div class="grid" id="grid"></div>
-  </section>
-
-  <section class="block" id="proceso">
-    <div class="head">
-      <div><div class="eyebrow">Cómo trabajamos</div><h2 style="margin-top:12px">De la medida a la instalación</h2></div>
-      <p>Un solo equipo se encarga de todo el recorrido, así el mueble que se diseña es el mismo que se instala.</p>
-    </div>
-    <div class="steps">
-      <div class="step"><div class="num">01</div><h3>Relevamiento</h3><p>Visitamos el lugar, tomamos medidas exactas y escuchamos qué necesitás guardar, exhibir o usar.</p></div>
-      <div class="step"><div class="num">02</div><h3>Diseño y presupuesto</h3><p>Proponemos el diseño con materiales, colores y herrajes, y te enviamos un presupuesto detallado.</p></div>
-      <div class="step"><div class="num">03</div><h3>Fabricación</h3><p>Cortamos, enchapamos y armamos cada módulo en nuestro taller, con control de calidad antes de salir.</p></div>
-      <div class="step"><div class="num">04</div><h3>Instalación</h3><p>Montamos en obra, nivelamos, ajustamos puertas y cajones, y entregamos el espacio limpio.</p></div>
-    </div>
-  </section>
-</div>
-
-<section class="band" aria-labelledby="mat-h">
+<!-- ============================ HERO ============================
+  Variantes de titular para que elija Cainco:
+   A) "Muebles a medida que aprovechan cada centímetro de tu espacio"   ← en uso
+   B) "El mueble exacto para tu espacio: lo diseñamos, lo fabricamos y lo instalamos"
+   C) "Tu espacio resuelto a medida, de la medición a la instalación"
+-->
+<section class="hero" id="inicio" aria-labelledby="h1">
+  <div class="hero-media">
+    <!--foto:HERO sizes="100vw" alt="HERO" hero--><picture><source type="image/avif" srcset="img/bano-01-640.avif 640w, img/bano-01-1024.avif 1024w, img/bano-01-1600.avif 1600w" sizes="100vw"><source type="image/webp" srcset="img/bano-01-640.webp 640w, img/bano-01-1024.webp 1024w, img/bano-01-1600.webp 1600w" sizes="100vw"><img src="img/bano-01-1024.jpg" srcset="img/bano-01-640.jpg 640w, img/bano-01-1024.jpg 1024w, img/bano-01-1600.jpg 1600w" sizes="100vw" width="1024" height="768" alt="Vanitory suspendido gris con nicho abierto y mesada blanca, mueble de baño a medida fabricado por Cainco" fetchpriority="high" decoding="async"></picture><!--/foto-->
+  </div>
   <div class="wrap">
-    <div class="eyebrow">Materiales y terminaciones</div>
-    <h2 id="mat-h">Elegimos el material según el uso de cada mueble</h2>
-    <div class="mats">
-      <div class="mat"><div class="sw" style="background:#f4f3ef"></div><div><h3>Melamina blanca</h3><p>Limpia y luminosa, ideal para cocinas y placares. <code>18 mm</code></p></div></div>
-      <div class="mat"><div class="sw" style="background:linear-gradient(90deg,#c69a68,#b58553 40%,#c69a68)"></div><div><h3>Melamina símil roble</h3><p>Calidez de la madera con mantenimiento mínimo. <code>18 mm</code></p></div></div>
-      <div class="mat"><div class="sw" style="background:linear-gradient(90deg,#4a3326,#5d4130 50%,#4a3326)"></div><div><h3>Nogal oscuro</h3><p>Para recepciones, vanitorys y lockers de alto tránsito. <code>18 mm</code></p></div></div>
-      <div class="mat"><div class="sw" style="background:#7a7d7c"></div><div><h3>Gris grafito</h3><p>Muebles de pared y exhibidores con estética sobria. <code>18 mm</code></p></div></div>
-      <div class="mat"><div class="sw" style="background:radial-gradient(circle at 30% 30%,#2b2d2e,#0e0f10)"></div><div><h3>Granito negro</h3><p>Mesadas de cocina y baño resistentes al calor y al uso diario. <code>2 cm</code></p></div></div>
-      <div class="mat"><div class="sw" style="background:repeating-linear-gradient(90deg,#3a3f42 0 3px,#22262a 3px 9px)"></div><div><h3>Herrajes y cantos</h3><p>Correderas telescópicas, bisagras con cierre suave y canto ABS. <code>2 mm</code></p></div></div>
+    <div class="hero-copy">
+      <span class="eyebrow">Fábrica de muebles a medida · Asunción, Paraguay</span>
+      <h1 id="h1">Muebles a medida que aprovechan <em>cada centímetro</em> de tu espacio</h1>
+      <p class="lead">Para hogares y empresas: cocinas, placares, oficinas, locales comerciales y lockers. Diseñamos, fabricamos en nuestro taller propio e instalamos. Un solo equipo, de la medición a la entrega.</p>
+      <div class="ctas">
+        <a class="btn solid" href="#presupuesto" data-cta="hero_primario">Pedir presupuesto sin cargo</a>
+        <a class="btn light" href="#trabajos" data-cta="hero_secundario">Ver trabajos</a>
+      </div>
+      <!-- TODO_CAINCO: confirmar que el presupuesto es sin cargo y el tiempo real de respuesta -->
+      <p class="micro">Sin compromiso · Te respondemos por WhatsApp <span class="todo">TODO_CAINCO: ¿en el día?</span></p>
+      <ul class="proofs">
+        <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8.5l4 4 8-9"/></svg>Fabricación en taller propio</li>
+        <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8.5l4 4 8-9"/></svg>Medición en obra</li>
+        <!-- TODO_CAINCO: confirmar que la instalación está incluida en el precio -->
+        <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8.5l4 4 8-9"/></svg>Instalación incluida</li>
+      </ul>
+    </div>
+  </div>
+  <span class="hero-cap" id="hero-cap">Vanitory suspendido · trabajo real</span>
+</section>
+
+<!-- ======================= SELECTOR DE PERFIL ======================= -->
+<section class="perfil" id="perfil" aria-labelledby="perfil-h">
+  <div class="wrap">
+    <h2 id="perfil-h">¿Para dónde es el mueble?</h2>
+    <p class="sub">Elegí una opción y te mostramos los trabajos y beneficios que te sirven.</p>
+    <div class="perfil-cards" role="group" aria-label="Tipo de cliente">
+      <button type="button" class="perfil-card" data-perfil-set="hogar" aria-pressed="false">
+        <span class="ph"><!--foto:cocina-01 sizes="(max-width:560px) 46vw, 560px" alt="Cocina en L blanca con mesada oscura, hecha a medida por Cainco"--><picture><source type="image/avif" srcset="img/cocina-01-640.avif 640w, img/cocina-01-1024.avif 1024w, img/cocina-01-1600.avif 1600w" sizes="(max-width:560px) 46vw, 560px"><source type="image/webp" srcset="img/cocina-01-640.webp 640w, img/cocina-01-1024.webp 1024w, img/cocina-01-1600.webp 1600w" sizes="(max-width:560px) 46vw, 560px"><img src="img/cocina-01-1024.jpg" srcset="img/cocina-01-640.jpg 640w, img/cocina-01-1024.jpg 1024w, img/cocina-01-1600.jpg 1600w" sizes="(max-width:560px) 46vw, 560px" width="1024" height="1024" alt="Cocina en L blanca con mesada oscura, hecha a medida por Cainco" loading="lazy" decoding="async"></picture><!--/foto--></span>
+        <span class="txt"><span class="t">Para mi casa</span><span class="d">Cocinas, placares, vestidores y baños hechos a la medida de tu hogar.</span><span class="go">Ver soluciones para el hogar</span></span>
+      </button>
+      <button type="button" class="perfil-card" data-perfil-set="empresa" aria-pressed="false">
+        <span class="ph"><!--foto:oficina-02 sizes="(max-width:560px) 46vw, 560px" alt="Puestos de trabajo en tono roble con divisores blancos, mobiliario de oficina de Cainco"--><!--/foto--></span>
+        <span class="txt"><span class="t">Para mi empresa</span><span class="d">Oficinas, locales comerciales, lockers y baños corporativos, en serie y con plazos claros.</span><span class="go">Ver soluciones para empresas</span></span>
+      </button>
     </div>
   </div>
 </section>
 
-<div class="wrap">
-  <section class="block" id="contacto" style="border-top:0">
-    <div class="contact">
-      <div>
-        <div class="eyebrow">Contacto</div>
-        <h2 style="margin-top:12px">¿Tenés un espacio para amueblar?</h2>
-        <p style="color:var(--muted);max-width:30em;margin-top:18px">Contanos qué necesitás y, si podés, mandanos fotos o un plano del lugar. Te respondemos con una propuesta y coordinamos la visita para medir.</p>
-        <div class="info">
+<!-- ======================= PROBLEMA → SOLUCIÓN ======================= -->
+<section class="sec" id="solucion" aria-labelledby="ps-h">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Por qué a medida</span>
+      <h2 id="ps-h">Lo que suele salir mal, y cómo lo resolvemos</h2>
+    </div>
+    <div class="ps">
+      <div class="ps-col" data-solo="hogar">
+        <h3>En tu casa</h3>
+        <div class="ps-row"><p class="pain">El mueble de catálogo no entra, o deja huecos que no sirven para nada.</p><p class="fix">Medimos en obra y diseñamos al centímetro: piso a techo, rincones y columnas incluidos.</p></div>
+        <!-- TODO_CAINCO: confirmar que el plazo de entrega se fija por escrito en el presupuesto -->
+        <div class="ps-row"><p class="pain">El carpintero no cumple la fecha y la obra queda parada.</p><p class="fix">Te damos un plazo de entrega concreto antes de empezar <span class="todo">TODO_CAINCO: ¿por escrito?</span></p></div>
+        <div class="ps-row"><p class="pain">Cantos que se despegan, puertas que no cierran bien.</p><p class="fix">Canto ABS de 2 mm, bisagras con cierre suave y correderas telescópicas. Ajustamos todo al instalar.</p></div>
+      </div>
+      <div class="ps-col" data-solo="empresa">
+        <h3>En tu empresa</h3>
+        <!-- TODO_CAINCO: confirmar que trabajan con plazos por contrato -->
+        <div class="ps-row"><p class="pain">El proveedor no llega a la fecha de apertura o de mudanza.</p><p class="fix">Planificamos la producción contra tu fecha de inauguración <span class="todo">TODO_CAINCO: ¿plazo por contrato?</span></p></div>
+        <div class="ps-row"><p class="pain">Puestos de trabajo o lockers que no salen iguales entre sí.</p><p class="fix">Producción en serie en taller propio: cada módulo repetido sale con las mismas medidas y terminaciones.</p></div>
+        <!-- TODO_CAINCO: confirmar que hay un responsable de proyecto único y servicio de postventa -->
+        <div class="ps-row"><p class="pain">Nadie responde después de la entrega.</p><p class="fix">Un interlocutor que te atiende por WhatsApp antes, durante y después <span class="todo">TODO_CAINCO: ¿postventa?</span></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ SERVICIOS ============================ -->
+<section class="sec alt" id="servicios" aria-labelledby="svc-h">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Qué fabricamos</span>
+      <h2 id="svc-h">Soluciones por ambiente</h2>
+      <p class="lead">Cada mueble se diseña para el lugar donde va a quedar: medidas, uso diario y estética del ambiente.</p>
+    </div>
+    <div class="svcs">
+      <article class="svc" data-seg="hogar">
+        <div class="ph"><!--foto:cocina-04 sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px" alt="Cocina blanca con isla y mesada de granito, hecha a medida"--><!--/foto--></div>
+        <div class="txt"><span class="tag-seg">Hogar</span><h3>Cocinas</h3><p>Más lugar de guardado y mesada en el mismo espacio: bajo mesadas, alacenas, islas y desayunadores.</p><a class="btn solid" href="#presupuesto" data-proyecto="Cocina" data-cta="svc_cocina">Cotizar mi cocina</a></div>
+      </article>
+      <article class="svc" data-seg="hogar">
+        <div class="ph"><!--foto:placard-02 sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px" alt="Pasillo vestidor con placares blancos enfrentados y piso de madera"--><!--/foto--></div>
+        <div class="txt"><span class="tag-seg">Hogar</span><h3>Placares y vestidores</h3><p>De piso a techo, en L o en U, con cajoneras, barrales y estantes donde los necesitás.</p><a class="btn solid" href="#presupuesto" data-proyecto="Placard o vestidor" data-cta="svc_placard">Cotizar mi placard</a></div>
+      </article>
+      <article class="svc" data-seg="ambos">
+        <div class="ph"><!--foto:bano-01 sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px" alt="Vanitory suspendido gris con nicho abierto, mueble de baño a medida"--><picture><source type="image/avif" srcset="img/bano-01-640.avif 640w, img/bano-01-1024.avif 1024w, img/bano-01-1600.avif 1600w" sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px"><source type="image/webp" srcset="img/bano-01-640.webp 640w, img/bano-01-1024.webp 1024w, img/bano-01-1600.webp 1600w" sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px"><img src="img/bano-01-1024.jpg" srcset="img/bano-01-640.jpg 640w, img/bano-01-1024.jpg 1024w, img/bano-01-1600.jpg 1600w" sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px" width="1024" height="768" alt="Vanitory suspendido gris con nicho abierto, mueble de baño a medida" loading="lazy" decoding="async"></picture><!--/foto--></div>
+        <div class="txt"><span class="tag-seg">Hogar y empresa</span><h3>Baños</h3><p>Vanitorys suspendidos o de piso y divisorias sanitarias, en materiales resistentes a la humedad.</p><a class="btn solid" href="#presupuesto" data-proyecto="Baño" data-cta="svc_bano">Cotizar mi baño</a></div>
+      </article>
+      <article class="svc" data-seg="empresa">
+        <div class="ph"><!--foto:oficina-01 sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px" alt="Puestos de trabajo tipo bench con divisores blancos, mobiliario de oficina a medida"--><!--/foto--></div>
+        <div class="txt"><span class="tag-seg">Empresa</span><h3>Oficinas</h3><p>Puestos de trabajo, recepciones, bibliotecas y archivos, iguales en cada piso.</p><a class="btn solid" href="#presupuesto" data-proyecto="Oficina" data-cta="svc_oficina">Cotizar mobiliario de oficina</a></div>
+      </article>
+      <article class="svc" data-seg="empresa">
+        <div class="ph"><!--foto:comercial-02 sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px" alt="Mesas exhibidoras de madera de distintas alturas en un local comercial"--><!--/foto--></div>
+        <div class="txt"><span class="tag-seg">Empresa</span><h3>Locales comerciales</h3><p>Mostradores, exhibidores y muebles de pared que ordenan el recorrido y venden el producto.</p><a class="btn solid" href="#presupuesto" data-proyecto="Local comercial" data-cta="svc_comercial">Cotizar mi local</a></div>
+      </article>
+      <article class="svc" data-seg="empresa">
+        <div class="ph"><!--foto:locker-01 sizes="(max-width:600px) 92vw, (max-width:960px) 46vw, 380px" alt="Muro de lockers en madera oscura con cerradura en cada puerta"--><!--/foto--></div>
+        <div class="txt"><span class="tag-seg">Empresa</span><h3>Lockers</h3><p>Para personal, gimnasios, colegios y coworkings, con la cantidad de puertas que necesites.</p><a class="btn solid" href="#presupuesto" data-proyecto="Lockers" data-cta="svc_locker">Cotizar lockers</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ GALERÍA ============================ -->
+<section class="sec" id="trabajos" aria-labelledby="gal-h">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Trabajos realizados</span>
+      <h2 id="gal-h">Muebles que ya están en uso</h2>
+      <p class="lead">Fotos de proyectos entregados e instalados por nuestro equipo. Tocá cualquier foto para verla en grande.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Filtrar trabajos por tipo" id="filters"></div>
+    <div class="grid" id="grid" aria-live="polite"></div>
+    <div class="more"><button type="button" class="btn" id="more" hidden>Ver más trabajos</button></div>
+
+    <!-- Casos destacados: estructura "el desafío / la solución". Reemplazar textos TODO_CAINCO con casos reales. -->
+    <h3 class="sr">Casos destacados</h3>
+    <div class="casos">
+      <article class="caso">
+        <div class="fotos">
+          <figure><!--foto:taller-02 sizes="(max-width:820px) 46vw, 300px" alt="Instalación de un muro de lockers oscuros en obra"--><!--/foto--><figcaption>Durante</figcaption></figure>
+          <figure><!--foto:locker-01 sizes="(max-width:820px) 46vw, 300px" alt="Muro de lockers terminado en madera oscura"--><!--/foto--><figcaption>Terminado</figcaption></figure>
+        </div>
+        <div class="txt">
+          <span class="eyebrow">Caso destacado · Empresa</span>
+          <!-- TODO_CAINCO: confirmar que ambas fotos son del mismo proyecto, nombre/rubro del cliente (si autoriza) y datos reales -->
+          <h3>Muro de lockers para <span class="todo">TODO_CAINCO: cliente / rubro</span></h3>
           <dl>
-            <dt>WhatsApp</dt><dd id="wa-num">+595 981429324</dd>
-            <dt>Email</dt><dd>contacto@cainco.com.py</dd>
-            <dt>Zona</dt><dd>Paraguay</dd>
-            <!-- TODO_CAINCO: agregar <dt>Dirección</dt><dd>calle, número, ciudad</dd> del taller o showroom (igual que en el JSON-LD) -->
-            <dt>Horario</dt><dd>Lunes a viernes, 8:00 a 17:00</dd>
+            <div><dt>El desafío</dt><dd><span class="todo">TODO_CAINCO: qué necesitaba el cliente (cantidad de lockers, espacio disponible, plazo)</span></dd></div>
+            <div><dt>La solución</dt><dd><span class="todo">TODO_CAINCO: qué se fabricó, material y cerraduras, cuánto tardó</span></dd></div>
           </dl>
         </div>
-      </div>
-      <form id="f" novalidate>
-        <label>Nombre<input id="f-name" name="name" autocomplete="name" placeholder="Tu nombre"></label>
-        <label>Teléfono<input id="f-phone" name="phone" autocomplete="tel" placeholder="09XX XXX XXX"></label>
-        <label class="full">Tipo de proyecto
-          <select id="f-type" name="type">
-            <option>Cocina</option><option>Placard o vestidor</option><option>Oficina</option>
-            <option>Local comercial</option><option>Lockers</option><option>Baño</option><option>Otro</option>
-          </select>
-        </label>
-        <label class="full">Contanos más<textarea id="f-msg" name="msg" placeholder="Medidas aproximadas, materiales que te gustan, fecha en que lo necesitás…"></textarea></label>
-        <div class="full" style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
-          <a class="btn solid" id="wa-link" href="#" target="_blank" rel="noopener">Enviar por WhatsApp</a>
-          <p class="note">Se abre WhatsApp con tu mensaje listo para enviar.</p>
+      </article>
+      <article class="caso">
+        <div class="fotos">
+          <figure><!--foto:comercial-01 sizes="(max-width:820px) 46vw, 300px" alt="Mesas exhibidoras de madera bajo una luminaria circular en un local comercial"--><picture><source type="image/avif" srcset="img/comercial-01-640.avif 640w, img/comercial-01-1024.avif 1024w, img/comercial-01-1600.avif 1600w" sizes="(max-width:820px) 46vw, 300px"><source type="image/webp" srcset="img/comercial-01-640.webp 640w, img/comercial-01-1024.webp 1024w, img/comercial-01-1600.webp 1600w" sizes="(max-width:820px) 46vw, 300px"><img src="img/comercial-01-1024.jpg" srcset="img/comercial-01-640.jpg 640w, img/comercial-01-1024.jpg 1024w, img/comercial-01-1600.jpg 1600w" sizes="(max-width:820px) 46vw, 300px" width="1024" height="1361" alt="Mesas exhibidoras de madera bajo una luminaria circular en un local comercial" loading="lazy" decoding="async"></picture><!--/foto--><figcaption>Sala de ventas</figcaption></figure>
+          <figure><!--foto:comercial-03 sizes="(max-width:820px) 46vw, 300px" alt="Exhibidores y mesa alta de madera para el mismo local"--><!--/foto--><figcaption>Detalle</figcaption></figure>
         </div>
-      </form>
+        <div class="txt">
+          <span class="eyebrow">Caso destacado · Local comercial</span>
+          <!-- TODO_CAINCO: confirmar que ambas fotos son del mismo local y completar con datos reales -->
+          <h3>Mobiliario para <span class="todo">TODO_CAINCO: nombre del local</span></h3>
+          <dl>
+            <div><dt>El desafío</dt><dd><span class="todo">TODO_CAINCO: qué pedía la marca (recorrido, exhibición, fecha de apertura)</span></dd></div>
+            <div><dt>La solución</dt><dd><span class="todo">TODO_CAINCO: piezas fabricadas, terminación, plazo de entrega</span></dd></div>
+          </dl>
+        </div>
+      </article>
     </div>
-  </section>
+  </div>
+</section>
+
+<!-- teaser para quien eligió "hogar" (la sección Empresas se oculta) -->
+<div class="wrap teaser-wrap">
+  <div class="teaser-emp">
+    <p><b>¿También necesitás muebles para una empresa?</b> Oficinas, locales y lockers en serie.</p>
+    <button type="button" class="btn" data-perfil-set="empresa">Ver soluciones para empresas</button>
+  </div>
 </div>
+
+<!-- ============================ EMPRESAS ============================ -->
+<section class="sec empresas" id="empresas" aria-labelledby="emp-h">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Para empresas, arquitectos y constructoras</span>
+      <h2 id="emp-h">Un proveedor que produce en serie y cumple la fecha</h2>
+      <p class="lead">Oficinas, comercios, clínicas, colegios, gimnasios y hoteles. Trabajamos sobre tus planos o los de tu arquitecto, y nos coordinamos con la obra.</p>
+    </div>
+    <div class="b2b">
+      <div><svg viewBox="0 0 30 30" aria-hidden="true"><rect x="3" y="4" width="10" height="10"/><rect x="17" y="4" width="10" height="10"/><rect x="3" y="17" width="10" height="10"/><rect x="17" y="17" width="10" height="10"/></svg><h3>Producción en serie</h3><p>Puestos de trabajo, lockers o mostradores repetidos, todos iguales, fabricados en nuestro taller.</p></div>
+      <div><svg viewBox="0 0 30 30" aria-hidden="true"><rect x="4" y="6" width="22" height="20"/><path d="M4 12h22M10 3v6M20 3v6"/></svg><h3>Plazos por contrato</h3><p><span class="todo">TODO_CAINCO: confirmar si el plazo se firma en contrato u orden de compra</span></p></div>
+      <div><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M7 3h16v24l-3-2-3 2-2-2-3 2-2-2-3 2z"/><path d="M11 10h8M11 15h8"/></svg><h3>Factura legal</h3><p><span class="todo">TODO_CAINCO: confirmar emisión de factura legal (crédito fiscal)</span></p></div>
+      <div><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M18 4a6 6 0 0 0-5.6 8.2L4 20.6V26h5.4l8.4-8.4A6 6 0 1 0 18 4z"/></svg><h3>Mantenimiento y postventa</h3><p><span class="todo">TODO_CAINCO: qué cubre la postventa y por cuánto tiempo</span></p></div>
+      <div><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M3 26h24M6 26V12l9-7 9 7v14M12 26v-8h6v8"/></svg><h3>Arquitectos y constructoras</h3><p>Fabricamos según el proyecto, verificamos medidas en obra y respetamos el cronograma de la obra.</p></div>
+      <div><svg viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="10" r="5"/><path d="M5 27c1.5-6 5.5-9 10-9s8.5 3 10 9"/></svg><h3>Un solo interlocutor</h3><p>Una persona responsable de tu proyecto, que te responde rápido <span class="todo">TODO_CAINCO: confirmar</span></p></div>
+    </div>
+    <!-- TODO_CAINCO: cifras reales (años, proyectos, unidades fabricadas). No publicar sin datos verificados. -->
+    <div class="cifras">
+      <div><b><span class="todo">TODO_CAINCO</span></b><span>años fabricando muebles</span></div>
+      <div><b><span class="todo">TODO_CAINCO</span></b><span>proyectos entregados</span></div>
+      <div><b><span class="todo">TODO_CAINCO</span></b><span>empresas que ya nos eligieron</span></div>
+    </div>
+    <!-- TODO_CAINCO: logos de clientes (con autorización), en SVG o PNG monocromo -->
+    <div class="logos" role="group" aria-label="Logos de clientes">
+      <div><span class="todo">Logo cliente</span></div><div><span class="todo">Logo cliente</span></div><div><span class="todo">Logo cliente</span></div>
+      <div><span class="todo">Logo cliente</span></div><div><span class="todo">Logo cliente</span></div><div><span class="todo">Logo cliente</span></div>
+    </div>
+    <div class="cta-row">
+      <a class="btn solid" href="#presupuesto" data-perfil-form="empresa" data-cta="empresas">Coordinar una visita técnica</a>
+      <p class="micro">Vamos a tu obra u oficina a medir y relevar</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PROCESO ============================ -->
+<section class="sec alt" id="proceso" aria-labelledby="proc-h">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Cómo trabajamos</span>
+      <h2 id="proc-h">Sabés qué pasa en cada paso, antes de pagar nada</h2>
+      <p class="lead">Un solo equipo se encarga de todo el recorrido: el mueble que se diseña es el mismo que se instala.</p>
+    </div>
+    <ol class="steps">
+      <li class="step"><span class="num">01</span><h3>Nos contás tu espacio</h3><p>Nos escribís por WhatsApp con fotos, medidas aproximadas o el plano. Te respondemos y coordinamos la visita.</p>
+        <div class="meta"><b>Tiempo</b><span><span class="todo">TODO_CAINCO: tiempo de respuesta</span></span><b>Recibís</b><span>Una primera orientación y fecha de visita.</span></div></li>
+      <li class="step"><span class="num">02</span><h3>Medimos en obra</h3><p>Vamos al lugar, tomamos medidas exactas y vemos enchufes, cañerías, columnas y cómo vas a usar el mueble.</p>
+        <div class="meta"><b>Tiempo</b><span><span class="todo">TODO_CAINCO: duración de la visita / costo</span></span><b>Recibís</b><span>Relevamiento con las medidas reales.</span></div></li>
+      <li class="step"><span class="num">03</span><h3>Diseño y presupuesto</h3><p>Te proponemos el diseño con materiales, colores y herrajes, y un presupuesto detallado. Fabricamos recién cuando lo aprobás.</p>
+        <div class="meta"><b>Tiempo</b><span><span class="todo">TODO_CAINCO: días hasta el presupuesto</span></span><b>Recibís</b><span>Presupuesto detallado y <span class="todo">TODO_CAINCO: ¿plano o render 3D?</span></span></div></li>
+      <li class="step"><span class="num">04</span><h3>Fabricación e instalación</h3><p>Fabricamos en nuestro taller, instalamos, nivelamos, ajustamos puertas y cajones, y entregamos el espacio limpio.</p>
+        <div class="meta"><b>Tiempo</b><span><span class="todo">TODO_CAINCO: plazo típico (ej. cocina)</span></span><b>Recibís</b><span>Tu mueble instalado y <span class="todo">TODO_CAINCO: garantía</span></span></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================ MATERIALES ============================ -->
+<section class="sec" id="materiales" aria-labelledby="mat-h">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Materiales y terminaciones</span>
+      <h2 id="mat-h">Materiales elegidos según el uso, para que duren</h2>
+      <p class="lead">Un mueble a medida se nota en los detalles que no se ven en la foto: el espesor del tablero, el canto y los herrajes. Te decimos qué lleva cada parte antes de fabricar.</p>
+    </div>
+    <div class="mats">
+      <div class="mat"><div class="sw" style="background:#f4f3ef"></div><div><h3>Melamina blanca <code>18 mm</code></h3><p>Cocinas y placares luminosos.</p><span class="why">Superficie fácil de limpiar que no se mancha con el uso diario.</span></div></div>
+      <div class="mat"><div class="sw" style="background:linear-gradient(90deg,#c69a68,#b58553 40%,#c69a68)"></div><div><h3>Melamina símil roble <code>18 mm</code></h3><p>La calidez de la madera.</p><span class="why">Mantenimiento mínimo: no hay que barnizar ni lustrar.</span></div></div>
+      <div class="mat"><div class="sw" style="background:linear-gradient(90deg,#4a3326,#5d4130 50%,#4a3326)"></div><div><h3>Nogal oscuro <code>18 mm</code></h3><p>Recepciones, vanitorys y lockers.</p><span class="why">Ideal para alto tránsito: disimula marcas y roces.</span></div></div>
+      <div class="mat"><div class="sw" style="background:#7a7d7c"></div><div><h3>Gris grafito <code>18 mm</code></h3><p>Muebles de pared y exhibidores.</p><span class="why">Estética sobria que deja protagonismo al producto.</span></div></div>
+      <div class="mat"><div class="sw" style="background:radial-gradient(circle at 30% 30%,#2b2d2e,#0e0f10)"></div><div><h3>Granito negro <code>2 cm</code></h3><p>Mesadas de cocina y baño.</p><span class="why">Resiste el calor, los cortes y la humedad del día a día.</span></div></div>
+      <div class="mat"><div class="sw" style="background:repeating-linear-gradient(90deg,#3a3f42 0 3px,#22262a 3px 9px)"></div><div><h3>Herrajes y cantos <code>ABS 2 mm</code></h3><p>Correderas telescópicas y bisagras con cierre suave.</p><span class="why">Cajones que abren completos y puertas que no golpean.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ TESTIMONIOS ============================ -->
+<!-- TODO_CAINCO: testimonios reales con permiso del cliente (nombre, tipo de proyecto, cita). No inventar. -->
+<section class="sec alt" id="testimonios" aria-labelledby="tes-h">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Clientes</span>
+      <h2 id="tes-h">Lo que dicen quienes ya tienen su mueble</h2>
+    </div>
+    <div class="testis">
+      <figure class="testi"><blockquote><span class="todo">TODO_CAINCO: cita real del cliente</span></blockquote><figcaption><b><span class="todo">TODO_CAINCO: nombre</span></b>Proyecto: <span class="todo">TODO_CAINCO: cocina / placard / oficina…</span></figcaption></figure>
+      <figure class="testi"><blockquote><span class="todo">TODO_CAINCO: cita real del cliente</span></blockquote><figcaption><b><span class="todo">TODO_CAINCO: nombre</span></b>Proyecto: <span class="todo">TODO_CAINCO: tipo de proyecto</span></figcaption></figure>
+      <figure class="testi"><blockquote><span class="todo">TODO_CAINCO: cita real del cliente (idealmente una empresa)</span></blockquote><figcaption><b><span class="todo">TODO_CAINCO: nombre y empresa</span></b>Proyecto: <span class="todo">TODO_CAINCO: tipo de proyecto</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="sec" id="faq" aria-labelledby="faq-h">
+  <div class="wrap">
+    <div class="head center">
+      <span class="eyebrow">Preguntas frecuentes</span>
+      <h2 id="faq-h">Antes de pedir tu presupuesto</h2>
+    </div>
+    <div class="faq">
+      <details><summary>¿Cobran la visita o la medición?</summary><div class="a"><p><!-- TODO_CAINCO --><span class="todo">TODO_CAINCO: confirmar si la visita de medición es sin cargo y si cambia fuera de Asunción.</span></p></div></details>
+      <details><summary>¿Cuánto tarda un mueble a medida?</summary><div class="a"><p>Depende del tamaño y de los materiales. Te damos el plazo antes de empezar. Como referencia, una cocina lleva <span class="todo">TODO_CAINCO: X semanas</span> desde que aprobás el diseño hasta la instalación.</p></div></details>
+      <details><summary>¿Trabajan con los planos de mi arquitecto?</summary><div class="a"><p>Sí. Trabajamos con arquitectos, interioristas y constructoras: tomamos el plano como base, verificamos las medidas en obra y ajustamos los detalles antes de fabricar.</p></div></details>
+      <details><summary>¿Qué zonas cubren?</summary><div class="a"><p>Asunción y alrededores. <span class="todo">TODO_CAINCO: listar ciudades de Gran Asunción y si viajan al interior (con o sin costo).</span></p></div></details>
+      <details><summary>¿Cuáles son las formas de pago?</summary><div class="a"><p><span class="todo">TODO_CAINCO: seña/anticipo, cuotas, transferencia, tarjeta.</span></p></div></details>
+      <details><summary>¿Los muebles tienen garantía?</summary><div class="a"><p><span class="todo">TODO_CAINCO: plazo y qué cubre la garantía (herrajes, estructura, instalación).</span></p></div></details>
+      <details><summary>¿Hacen factura?</summary><div class="a"><p><span class="todo">TODO_CAINCO: confirmar factura legal (contado/crédito) para particulares y empresas.</span></p></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FORMULARIO ============================ -->
+<section class="sec alt form-sec" id="presupuesto" aria-labelledby="form-h">
+  <div class="wrap grid2">
+    <div class="form-aside">
+      <span class="eyebrow">Presupuesto sin cargo</span>
+      <h2 id="form-h">Contanos tu espacio y te diseñamos la solución</h2>
+      <p class="lead">Tres pasos cortos. Al final se abre WhatsApp con tu mensaje listo para enviar a Cainco.</p>
+      <ul class="checks">
+        <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8.5l4 4 8-9"/></svg><span>Sin compromiso</span></li>
+        <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8.5l4 4 8-9"/></svg><span>Medición en obra y diseño a tu medida</span></li>
+        <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8.5l4 4 8-9"/></svg><span>Te respondemos por WhatsApp <span class="todo">TODO_CAINCO: ¿en el día?</span></span></li>
+      </ul>
+    </div>
+
+    <form class="quote" id="quote" novalidate aria-labelledby="form-h">
+      <div class="progress" aria-hidden="true">
+        <div class="lbl"><span id="q-lbl">Paso 1 de 3</span><span id="q-name">Tu proyecto</span></div>
+        <div class="track"><div class="bar" id="q-bar"></div></div>
+      </div>
+      <p class="sr" id="q-live" aria-live="polite"></p>
+
+      <!-- Paso 1 -->
+      <fieldset class="q-step" data-step="1">
+        <legend>¿Qué necesitás?</legend>
+        <div class="field" role="radiogroup" aria-labelledby="l-cliente" aria-describedby="e-cliente">
+          <span class="flabel" id="l-cliente">Es para…</span>
+          <div class="chips big">
+            <label class="chip"><input type="radio" name="cliente" value="Hogar"><span>Mi casa</span></label>
+            <label class="chip"><input type="radio" name="cliente" value="Empresa"><span>Mi empresa</span></label>
+          </div>
+          <p class="err" id="e-cliente" hidden>Elegí si es para tu casa o tu empresa.</p>
+        </div>
+        <div class="field" role="radiogroup" aria-labelledby="l-proyecto" aria-describedby="e-proyecto">
+          <span class="flabel" id="l-proyecto">Tipo de proyecto</span>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="proyecto" value="Cocina"><span>Cocina</span></label>
+            <label class="chip"><input type="radio" name="proyecto" value="Placard o vestidor"><span>Placard o vestidor</span></label>
+            <label class="chip"><input type="radio" name="proyecto" value="Oficina"><span>Oficina</span></label>
+            <label class="chip"><input type="radio" name="proyecto" value="Local comercial"><span>Local comercial</span></label>
+            <label class="chip"><input type="radio" name="proyecto" value="Lockers"><span>Lockers</span></label>
+            <label class="chip"><input type="radio" name="proyecto" value="Baño"><span>Baño</span></label>
+            <label class="chip"><input type="radio" name="proyecto" value="Otro"><span>Otro</span></label>
+          </div>
+          <p class="err" id="e-proyecto" hidden>Elegí el tipo de proyecto.</p>
+        </div>
+        <div class="q-nav"><button type="button" class="btn solid" data-next>Siguiente</button></div>
+      </fieldset>
+
+      <!-- Paso 2 -->
+      <fieldset class="q-step" data-step="2" hidden>
+        <legend>Sobre el lugar</legend>
+        <div class="field">
+          <label for="q-zona">Ciudad y barrio</label>
+          <input type="text" id="q-zona" name="zona" autocomplete="address-level2" placeholder="Ej.: Asunción, Villa Morra" aria-describedby="e-zona" required>
+          <p class="err" id="e-zona" hidden>Contanos en qué ciudad o barrio es.</p>
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label for="q-etapa">Etapa de la obra</label>
+            <select id="q-etapa" name="etapa" aria-describedby="e-etapa" required>
+              <option value="">Elegí una opción</option>
+              <option>Obra en construcción</option><option>Remodelación</option><option>Mudanza</option><option>Ya habitado / en funcionamiento</option>
+            </select>
+            <p class="err" id="e-etapa" hidden>Elegí la etapa.</p>
+          </div>
+          <div class="field">
+            <label for="q-plazo">¿Para cuándo lo necesitás?</label>
+            <select id="q-plazo" name="plazo" aria-describedby="e-plazo" required>
+              <option value="">Elegí una opción</option>
+              <option>Lo antes posible</option><option>En 1 mes</option><option>En 1 a 3 meses</option><option>En más de 3 meses</option><option>Solo estoy averiguando</option>
+            </select>
+            <p class="err" id="e-plazo" hidden>Elegí un plazo aproximado.</p>
+          </div>
+        </div>
+        <div class="row2" data-solo="empresa">
+          <div class="field"><label for="q-empresa">Empresa <span class="opt">(opcional)</span></label><input type="text" id="q-empresa" name="empresa" autocomplete="organization"></div>
+          <div class="field"><label for="q-cant">Cantidad aproximada <span class="opt">(opcional)</span></label><input type="text" id="q-cant" name="cantidad" placeholder="Ej.: 12 puestos, 40 lockers"></div>
+        </div>
+        <div class="field">
+          <label for="q-inv">Inversión estimada <span class="opt">(opcional)</span></label>
+          <!-- TODO_CAINCO: definir con Cainco los rangos de inversión (en guaraníes) que sirven para calificar -->
+          <select id="q-inv" name="inversion">
+            <option value="">Prefiero no decir</option>
+            <option>TODO_CAINCO: rango 1</option><option>TODO_CAINCO: rango 2</option><option>TODO_CAINCO: rango 3</option><option>TODO_CAINCO: rango 4</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="q-med">Medidas aproximadas <span class="opt">(opcional)</span></label>
+          <input type="text" id="q-med" name="medidas" placeholder="Ej.: pared de 3,20 m × 2,60 m de alto">
+        </div>
+        <div class="field">
+          <label for="q-com">Comentario <span class="opt">(opcional)</span></label>
+          <textarea id="q-com" name="comentario" placeholder="Colores o materiales que te gustan, qué necesitás guardar, dudas…"></textarea>
+        </div>
+        <div class="q-nav"><button type="button" class="btn back" data-prev>Atrás</button><button type="button" class="btn solid" data-next>Siguiente</button></div>
+      </fieldset>
+
+      <!-- Paso 3 -->
+      <fieldset class="q-step" data-step="3" hidden>
+        <legend>¿A quién le respondemos?</legend>
+        <div class="field">
+          <label for="q-nombre">Nombre</label>
+          <input type="text" id="q-nombre" name="nombre" autocomplete="name" aria-describedby="e-nombre" required>
+          <p class="err" id="e-nombre" hidden>Escribí tu nombre.</p>
+        </div>
+        <div class="field">
+          <label for="q-tel">Teléfono / WhatsApp</label>
+          <input type="tel" id="q-tel" name="telefono" autocomplete="tel" inputmode="tel" placeholder="09XX XXX XXX" aria-describedby="e-tel" required>
+          <p class="err" id="e-tel" hidden>Revisá el número: necesitamos al menos 9 dígitos.</p>
+        </div>
+        <p class="note">📎 Si tenés fotos o planos del espacio, mandalos en el chat de WhatsApp que se abre al enviar.</p>
+        <div class="q-nav"><button type="button" class="btn back" data-prev>Atrás</button><button type="submit" class="btn wa"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>Enviar por WhatsApp</button></div>
+      </fieldset>
+
+      <div class="done" id="q-done" hidden tabindex="-1">
+        <h3>¡Listo! Se abrió WhatsApp</h3>
+        <p>Si no se abrió, tocá el botón para enviar tu pedido.</p>
+        <a class="btn wa" id="q-open" href="#" target="_blank" rel="noopener">Abrir WhatsApp</a>
+        <button type="button" class="btn back" id="q-restart">Hacer otro pedido</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ CIERRE ============================ -->
+<section class="sec cierre" aria-labelledby="cierre-h">
+  <div class="wrap">
+    <h2 id="cierre-h">Tu espacio tiene medidas únicas. Tu mueble también debería.</h2>
+    <p class="lead">Escribinos, contanos qué necesitás y coordinamos la medición.</p>
+    <div class="ctas">
+      <a class="btn solid" href="#presupuesto" data-cta="cierre">Pedir presupuesto sin cargo</a>
+      <a class="btn wa js-wa" href="https://wa.me/595981429324" target="_blank" rel="noopener" data-cta="cierre_wa" data-wa-msg="Hola Cainco, quiero consultar por un mueble a medida."><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>Escribir por WhatsApp</a>
+    </div>
+  </div>
+</section>
 </main>
 
-<div class="wrap">
-  <footer>
-    <span>© <span id="yr">2026</span> Cainco · Muebles a medida</span>
-    <span>Diseño · Fabricación · Instalación</span>
-  </footer>
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a class="logo" href="#inicio" aria-label="Cainco, volver al inicio">
+          <svg viewBox="0 0 48 48" aria-hidden="true"><rect class="mark-b" x="4" y="4" width="40" height="8"/><rect class="mark-b" x="4" y="4" width="8" height="40"/><rect class="mark-b" x="4" y="36" width="40" height="8"/><rect class="mark-a" x="16" y="20" width="20" height="8"/></svg>
+          <span class="word"><span class="name" style="color:var(--on-stone)">CAINCO</span><span class="tag">Muebles a medida</span></span>
+        </a>
+        <p style="margin-top:14px">Diseño, fabricación e instalación de muebles a medida para hogares y empresas.</p>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <ul>
+          <li><a class="js-wa" href="https://wa.me/595981429324" target="_blank" rel="noopener" data-cta="footer_wa" data-wa-msg="Hola Cainco, quiero hacer una consulta.">WhatsApp +595&nbsp;981&nbsp;429&nbsp;324</a></li>
+          <li>Llamar: <a href="tel:+595981429324" data-cta="footer_tel">+595&nbsp;981&nbsp;429&nbsp;324</a></li>
+          <li><a href="mailto:contacto@cainco.com.py">contacto@cainco.com.py</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Horario y zona</h3>
+        <ul>
+          <li>Lunes a viernes, 8:00 a 17:00</li>
+          <li>Asunción y alrededores</li>
+          <!-- TODO_CAINCO: dirección del taller o showroom (igual que en el JSON-LD) -->
+          <li><span class="todo">TODO_CAINCO: dirección del taller</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Redes</h3>
+        <!-- TODO_CAINCO: URLs reales de Instagram, Facebook y LinkedIn (y actualizar sameAs en el JSON-LD) -->
+        <ul>
+          <li><span class="todo">TODO_CAINCO: Instagram</span></li>
+          <li><span class="todo">TODO_CAINCO: Facebook</span></li>
+          <li><span class="todo">TODO_CAINCO: LinkedIn</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal"><span>© <span id="yr">2026</span> Cainco · Muebles a medida en Asunción, Paraguay</span><span>Diseño · Fabricación · Instalación</span></div>
+  </div>
+</footer>
+
+<!-- WhatsApp flotante: el mensaje cambia según la sección visible -->
+<a class="wa-float" id="wa-float" href="https://wa.me/595981429324" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
+</a>
+
+<!-- Barra CTA fija en móvil (aparece al pasar el hero) -->
+<div class="mbar" id="mbar" aria-hidden="true">
+  <a class="btn solid" href="#presupuesto" data-cta="barra_movil" tabindex="-1">Pedir presupuesto</a>
+  <small>Sin compromiso · por WhatsApp</small>
 </div>
 
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Foto ampliada">
-  <button class="close" id="lb-close" aria-label="Cerrar">✕</button>
-  <img id="lb-img" alt="" width="963" height="1280">
+  <button class="close" id="lb-close" type="button" aria-label="Cerrar">✕</button>
   <div class="bar">
     <div><p id="lb-cap"></p><span id="lb-count"></span></div>
-    <div class="nav"><button id="lb-prev" aria-label="Foto anterior">←</button><button id="lb-next" aria-label="Foto siguiente">→</button></div>
+    <div class="nav"><button id="lb-prev" type="button" aria-label="Foto anterior">←</button><button id="lb-next" type="button" aria-label="Foto siguiente">→</button></div>
   </div>
 </div>
 
 <script>
-// Número de WhatsApp de Cainco en formato internacional, sin "+" ni espacios (reemplazar)
+(() => {
+"use strict";
+// Número de WhatsApp de Cainco (formato internacional, sin "+" ni espacios)
 const WHATSAPP = "595981429324";
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const root = document.documentElement;
 
-const CATS = {cocina:"Cocinas",placard:"Placares y vestidores",oficina:"Oficinas",comercial:"Locales comerciales",locker:"Lockers",bano:"Baños",taller:"Taller y obra"};
-// Complemento del alt por categoría (SEO): "<descripción>, <tipo de mueble>"
-const ALT = {cocina:"cocina a medida",placard:"placard a medida",oficina:"mueble de oficina a medida",comercial:"mobiliario comercial a medida",locker:"lockers a medida",bano:"mueble de baño a medida",taller:"taller de muebles Cainco"};
+/* ---------------------------- medición ---------------------------- */
+// track(evento, datos): envía a GA4 y/o Meta Pixel sólo si están configurados. Nunca rompe.
+function track(evento, datos = {}) {
+  const d = Object.assign({ perfil: root.dataset.perfil || "sin_perfil" }, datos);
+  try { if (window.CAINCO_GA4_ID && typeof window.gtag === "function") window.gtag("event", evento, d); } catch (_) {}
+  try {
+    if (window.CAINCO_PIXEL_ID && typeof window.fbq === "function") {
+      if (evento === "form_envio") window.fbq("track", "Lead", d);
+      else if (evento === "whatsapp_flotante") window.fbq("track", "Contact", d);
+      else window.fbq("trackCustom", evento, d);
+    }
+  } catch (_) {}
+  if (/[?&]debug=1/.test(location.search)) console.info("[track]", evento, d);
+}
+window.track = track;
+
+/* ------------------------------ UTM ------------------------------- */
+const params = new URLSearchParams(location.search);
+const UTM = {};
+["utm_source", "utm_medium", "utm_campaign"].forEach(k => {
+  let v = params.get(k);
+  try { if (v) sessionStorage.setItem(k, v); else v = sessionStorage.getItem(k); } catch (_) {}
+  if (v) UTM[k] = v.slice(0, 80);
+});
+function origen(extra) {
+  const parts = [];
+  parts.push("perfil=" + (root.dataset.perfil || "sin elegir"));
+  Object.entries(UTM).forEach(([k, v]) => parts.push(k + "=" + v));
+  if (extra) parts.push(extra);
+  return "Origen web: " + parts.join(" · ");
+}
+function waUrl(texto) { return "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(texto); }
+
+/* --------------------------- tema claro/oscuro --------------------------- */
+try { const t = localStorage.getItem("cainco-tema"); if (t === "light" || t === "dark") root.dataset.theme = t; } catch (_) {}
+$("#theme").addEventListener("click", () => {
+  const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  root.dataset.theme = dark ? "light" : "dark";
+  try { localStorage.setItem("cainco-tema", root.dataset.theme); } catch (_) {}
+});
+
+/* ------------------------------ fotos ------------------------------- */
+// Dimensiones y anchos disponibles: los escribe tools/actualizar_html.py desde tools/fotos.json
+/*FOTOS*/const FOTOS = {"bano-01":{"w":2560,"h":1920,"widths":[640,1024,1600],"score":0.625},"cocina-01":{"w":1611,"h":1611,"widths":[640,1024,1600],"score":0.734},"cocina-06":{"w":1902,"h":1548,"widths":[640,1024,1600],"score":0.221},"comercial-01":{"w":1926,"h":2560,"widths":[640,1024,1600],"score":0.734},"placard-04":{"w":1720,"h":2381,"widths":[640,1024,1600],"score":0.822}};/*/FOTOS*/
+function picture(id, alt, sizes, lazy = true) {
+  const f = FOTOS[id]; if (!f) return "";
+  const set = ext => f.widths.map(w => `img/${id}-${w}.${ext} ${w}w`).join(", ");
+  const fb = f.widths.includes(1024) ? 1024 : f.widths[f.widths.length - 1];
+  const h = Math.round(f.h * fb / f.w);
+  return `<picture><source type="image/avif" srcset="${set("avif")}" sizes="${sizes}"><source type="image/webp" srcset="${set("webp")}" sizes="${sizes}"><img src="img/${id}-${fb}.jpg" srcset="${set("jpg")}" sizes="${sizes}" width="${fb}" height="${h}" alt="${alt}"${lazy ? ' loading="lazy"' : ""} decoding="async"></picture>`;
+}
+function bestSrc(id) {
+  const f = FOTOS[id]; const w = f.widths.filter(x => x <= 1600).pop();
+  const avif = (() => { try { return document.createElement("canvas").toDataURL("image/avif").startsWith("data:image/avif"); } catch (_) { return false; } })();
+  return `img/${id}-${w}.${avif ? "avif" : "webp"}`;
+}
+
+/* ------------------------------ galería ------------------------------ */
+const CATS = { cocina: "Cocinas", placard: "Placares y vestidores", oficina: "Oficinas", comercial: "Locales comerciales", locker: "Lockers", bano: "Baños", taller: "Taller y obra" };
+const SEG = { cocina: "hogar", placard: "hogar", bano: "ambos", oficina: "empresa", comercial: "empresa", locker: "empresa", taller: "ambos" };
+const ALT = { cocina: "cocina a medida", placard: "placard a medida", oficina: "mueble de oficina a medida", comercial: "mobiliario comercial a medida", locker: "lockers a medida", bano: "mueble de baño a medida", taller: "taller de muebles Cainco" };
+// [id, pie de foto (ambiente + terminación visible)]. Materiales exactos: TODO_CAINCO (ver comentarios).
 const W = [
-  ["comercial-01","Mesas exhibidoras bajo luminaria circular",963,1280],
-  ["oficina-03","Recepción con mostrador curvo listonado",963,1280],
-  ["cocina-01","Cocina en L blanca con mesada de granito negro",716,716],
-  ["locker-01","Muro de lockers en madera oscura",960,1280],
-  ["placard-02","Pasillo vestidor con placares enfrentados",720,1280],
-  ["bano-01","Vanitory suspendido con mesada blanca",1280,960],
-  ["oficina-01","Puestos de trabajo bench con divisores",1032,774],
-  ["placard-03","Vestidor con estructura negra y frentes nogal",960,1280],
-  ["cocina-03","Cocina con alacena alta y mesada oscura",1152,864],
-  ["comercial-02","Mesas exhibidoras de distintas alturas",963,1280],
-  ["bano-02","Vanitory nogal con bacha de apoyo",960,1280],
-  ["oficina-04","Mostrador de atención en curva, en obra",960,1280],
-  ["cocina-04","Cocina con isla y mesada de granito",1032,774],
-  ["placard-01","Vestidor esquinero con cajonera y estantes",720,1280],
-  ["comercial-05","Mueble de pared con nichos en gris grafito",1152,648],
-  ["locker-02","Lockers de 12 puertas en madera clara",963,1280],
-  ["bano-06","Cabinas sanitarias de altura completa",1280,960],
-  ["oficina-05","Biblioteca con cajonera, roble y blanco",960,1280],
-  ["comercial-03","Exhibidores y mesa alta para local",963,1280],
-  ["cocina-06","Bajo mesada con cajonera y granito",1032,774],
-  ["placard-04","Frente de placard de piso a techo",960,1280],
-  ["bano-03","Mesada de baño suspendida en nogal",1280,960],
-  ["oficina-02","Mesa de trabajo compartida con divisor central",1032,774],
-  ["comercial-06","Mueble de pared con nichos, vista frontal",1152,648],
-  ["cocina-05","Bajo mesada y alacena en blanco",774,1032],
-  ["bano-04","Divisorias sanitarias en blanco",960,1280],
-  ["placard-05","Vestidor esquinero, vista completa",720,1280],
-  ["comercial-04","Mesa exhibidora y atril",963,1280],
-  ["oficina-06","Archivo bajo con puertas corredizas",1152,560],
-  ["bano-05","Divisorias para mingitorios",960,1280],
-  ["cocina-07","Bajo mesada y alacena compacta",581,1032],
-  ["bano-07","Bajo mesada de baño, interior",1280,960],
-  ["taller-01","Módulos en producción en el taller",960,1280],
-  ["taller-02","Instalación de lockers en obra",960,1280],
-].map(([id,cap,w,h])=>({id,cap,w,h,cat:id.split("-")[0]}));
+  ["oficina-03", "Recepción con mostrador curvo listonado"],              // TODO_CAINCO: material del listonado
+  ["comercial-01", "Mesas exhibidoras de madera bajo luminaria circular"], // TODO_CAINCO: material / terminación
+  ["bano-01", "Vanitory suspendido gris con nicho abierto"],
+  ["locker-01", "Muro de lockers en tono madera oscura"],
+  ["cocina-01", "Cocina en L blanca con mesada de granito negro"],
+  ["placard-02", "Pasillo vestidor con placares enfrentados"],
+  ["oficina-02", "Puestos de trabajo en tono roble con divisores blancos"],
+  ["placard-03", "Vestidor con estructura negra y frentes tono nogal"],
+  ["bano-02", "Mueble bajo bacha con frentes tono nogal"],
+  ["comercial-03", "Exhibidores y mesa alta para local"],
+  ["oficina-05", "Biblioteca con cajonera, roble y blanco"],
+  ["placard-01", "Vestidor esquinero con cajonera y estantes"],
+  ["cocina-04", "Cocina con isla y mesada de granito"],
+  ["comercial-02", "Mesas exhibidoras de distintas alturas"],
+  ["oficina-01", "Puestos de trabajo bench con divisores"],
+  ["bano-03", "Vanitory suspendido tono nogal"],
+  ["placard-04", "Placard de piso a techo con puertas corredizas"],      // TODO_CAINCO: confirmar tipo de puertas
+  ["cocina-03", "Cocina con columna de horno y mesada oscura"],
+  ["oficina-04", "Escritorio curvo de atención, durante la instalación"],
+  ["bano-06", "Cabinas sanitarias de altura completa"],
+  ["locker-02", "Lockers de 12 puertas en madera clara"],               // TODO_CAINCO: ¿OSB o melamina símil OSB?
+  ["cocina-06", "Bajo mesada con cajonera y granito"],
+  ["placard-05", "Vestidor esquinero, vista completa"],
+  ["bano-04", "Divisorias sanitarias en blanco"],
+  ["comercial-05", "Mueble de pared con nichos en gris grafito"],
+  ["oficina-06", "Archivo bajo con puertas corredizas"],
+  ["cocina-05", "Bajo mesada y alacena en blanco"],
+  ["bano-05", "Divisorias para mingitorios"],
+  ["comercial-06", "Mueble de pared con nichos, vista frontal"],
+  ["cocina-07", "Bajo mesada y alacena compacta"],
+  ["bano-07", "Interior de mueble bajo bacha"],
+  ["comercial-04", "Mesa exhibidora y atril"],
+  ["taller-01", "Módulos en producción en nuestro taller"],
+  ["taller-02", "Instalación de lockers en obra"]
+].filter(([id]) => FOTOS[id]).map(([id, cap], i) => ({ id, cap, cat: id.split("-")[0], seg: SEG[id.split("-")[0]], q: (FOTOS[id].score || 0), i }));
 
-const grid=document.getElementById("grid"), filters=document.getElementById("filters");
-let current="todos", visible=W;
-
-function renderFilters(){
-  const counts={todos:W.length}; W.forEach(p=>counts[p.cat]=(counts[p.cat]||0)+1);
-  const opts=[["todos","Todos"],...Object.entries(CATS)];
-  filters.innerHTML=opts.map(([k,l])=>`<button type="button" data-k="${k}" aria-pressed="${k===current}">${l}<span class="n">${counts[k]||0}</span></button>`).join("");
+const grid = $("#grid"), filters = $("#filters"), moreBtn = $("#more");
+const PAGE = 9;
+let current = "todos", visible = [], expanded = false;
+function ordered() {
+  const p = root.dataset.perfil;
+  const rank = x => (p && x.seg !== "ambos" && x.seg !== p ? 1 : 0);
+  return W.slice().sort((a, b) => rank(a) - rank(b) || a.i - b.i);
 }
-function renderGrid(){
-  visible = current==="todos" ? W : W.filter(p=>p.cat===current);
-  grid.innerHTML=visible.map((p,i)=>`<button type="button" class="tile" data-i="${i}" aria-label="${p.cap} ${CATS[p.cat]}, ampliar foto">
-    <picture><source type="image/webp" srcset="${p.w>640?`img/${p.id}-640.webp 640w, `:""}img/${p.id}.webp ${p.w}w" sizes="(max-width: 560px) 100vw, (max-width: 860px) 50vw, 390px"><img src="img/${p.id}.jpg" alt="${p.cap}, ${ALT[p.cat]}" width="${p.w}" height="${p.h}" loading="lazy" decoding="async"></picture>
-    <span class="cap"><b>${p.cap}</b> <i>${CATS[p.cat]}</i></span></button>`).join("");
+function renderFilters() {
+  const counts = { todos: W.length }; W.forEach(p => counts[p.cat] = (counts[p.cat] || 0) + 1);
+  const opts = [["todos", "Todos"], ...Object.entries(CATS).filter(([k]) => counts[k])];
+  filters.innerHTML = opts.map(([k, l]) => `<button type="button" data-k="${k}" aria-pressed="${k === current}">${l}<span class="n">${counts[k] || 0}</span></button>`).join("");
 }
-filters.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;current=b.dataset.k;try{localStorage.setItem("cainco-f",current)}catch(_){}renderFilters();renderGrid();});
-try{const s=localStorage.getItem("cainco-f");if(s&&(s==="todos"||CATS[s]))current=s}catch(_){}
-renderFilters();renderGrid();
-
-// lightbox
-const lb=document.getElementById("lb"),lbImg=document.getElementById("lb-img"),lbCap=document.getElementById("lb-cap"),lbCount=document.getElementById("lb-count");
-let idx=0,lastFocus=null;
-function show(i){idx=(i+visible.length)%visible.length;const p=visible[idx];lbImg.width=p.w;lbImg.height=p.h;lbImg.src=`img/${p.id}.webp`;lbImg.alt=`${p.cap}, ${ALT[p.cat]}`;lbCap.textContent=p.cap;lbCount.textContent=`${CATS[p.cat]} · ${idx+1} / ${visible.length}`;}
-function open(i){lastFocus=document.activeElement;show(i);lb.hidden=false;document.body.style.overflow="hidden";document.getElementById("lb-close").focus();}
-function close(){lb.hidden=true;document.body.style.overflow="";lastFocus&&lastFocus.focus();}
-grid.addEventListener("click",e=>{const t=e.target.closest(".tile");if(t)open(+t.dataset.i)});
-document.getElementById("lb-close").onclick=close;
-document.getElementById("lb-prev").onclick=()=>show(idx-1);
-document.getElementById("lb-next").onclick=()=>show(idx+1);
-lb.addEventListener("click",e=>{if(e.target===lb)close()});
-document.addEventListener("keydown",e=>{if(lb.hidden)return;if(e.key==="Escape")close();if(e.key==="ArrowLeft")show(idx-1);if(e.key==="ArrowRight")show(idx+1);});
-let tx=null;lb.addEventListener("touchstart",e=>{tx=e.touches[0].clientX},{passive:true});
-lb.addEventListener("touchend",e=>{if(tx==null)return;const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50)show(idx+(dx<0?1:-1));tx=null});
-
-// WhatsApp message builder
-const ids=["f-name","f-phone","f-type","f-msg"], link=document.getElementById("wa-link");
-function buildLink(){
-  const [n,ph,t,m]=ids.map(id=>document.getElementById(id).value.trim());
-  const txt=`Hola Cainco, quiero pedir un presupuesto.\nProyecto: ${t}`+(n?`\nNombre: ${n}`:"")+(ph?`\nTeléfono: ${ph}`:"")+(m?`\n\n${m}`:"");
-  link.href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(txt)}`;
+function renderGrid() {
+  const all = current === "todos" ? ordered() : ordered().filter(p => p.cat === current);
+  visible = expanded ? all : all.slice(0, PAGE);
+  grid.innerHTML = visible.map((p, i) => `<button type="button" class="tile" data-i="${i}" aria-label="Ampliar foto: ${p.cap}"><span class="ph">${picture(p.id, `${p.cap}, ${ALT[p.cat]} por Cainco`, "(max-width:600px) 92vw, (max-width:960px) 46vw, 380px")}</span><span class="cap">${p.cap}<i>${CATS[p.cat]}</i></span></button>`).join("");
+  moreBtn.hidden = expanded || all.length <= PAGE;
+  moreBtn.textContent = `Ver más trabajos (${all.length - PAGE})`;
 }
-ids.forEach(id=>document.getElementById(id).addEventListener("input",buildLink));
-document.getElementById("f").addEventListener("submit",e=>e.preventDefault());
-buildLink();
-document.getElementById("yr").textContent=new Date().getFullYear();
+filters.addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; current = b.dataset.k; renderFilters(); renderGrid(); track("galeria_filtro", { filtro: current }); });
+moreBtn.addEventListener("click", () => { const n = visible.length; expanded = true; renderGrid(); const t = grid.querySelectorAll(".tile")[n]; t && t.focus(); track("galeria_ver_mas"); });
+
+/* ------------------------------ lightbox ------------------------------ */
+const lb = $("#lb"), lbImg = document.createElement("img"), lbCap = $("#lb-cap"), lbCount = $("#lb-count");
+lbImg.id = "lb-img"; lbImg.alt = ""; lbImg.width = 1600; lbImg.height = 1200; lb.insertBefore(lbImg, $(".bar", lb));
+let idx = 0, lastFocus = null;
+function show(i) {
+  idx = (i + visible.length) % visible.length; const p = visible[idx], f = FOTOS[p.id];
+  const w = f.widths.filter(x => x <= 1600).pop();
+  lbImg.width = w; lbImg.height = Math.round(f.h * w / f.w);
+  lbImg.src = bestSrc(p.id); lbImg.alt = `${p.cap}, ${ALT[p.cat]}`;
+  lbCap.textContent = p.cap; lbCount.textContent = `${CATS[p.cat]} · ${idx + 1} / ${visible.length}`;
+}
+function openLb(i) { lastFocus = document.activeElement; show(i); lb.hidden = false; document.body.style.overflow = "hidden"; $("#lb-close").focus(); track("galeria_foto", { foto: visible[idx].id }); }
+function closeLb() { lb.hidden = true; document.body.style.overflow = ""; lastFocus && lastFocus.focus(); }
+grid.addEventListener("click", e => { const t = e.target.closest(".tile"); if (t) openLb(+t.dataset.i); });
+$("#lb-close").onclick = closeLb; $("#lb-prev").onclick = () => show(idx - 1); $("#lb-next").onclick = () => show(idx + 1);
+lb.addEventListener("click", e => { if (e.target === lb) closeLb(); });
+document.addEventListener("keydown", e => {
+  if (lb.hidden) return;
+  if (e.key === "Escape") closeLb();
+  if (e.key === "ArrowLeft") show(idx - 1);
+  if (e.key === "ArrowRight") show(idx + 1);
+  if (e.key === "Tab") { // trampa de foco dentro del diálogo
+    const f = $$("button", lb), first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  }
+});
+let tx = null;
+lb.addEventListener("touchstart", e => { tx = e.touches[0].clientX; }, { passive: true });
+lb.addEventListener("touchend", e => { if (tx == null) return; const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) show(idx + (dx < 0 ? 1 : -1)); tx = null; });
+
+/* ------------------------------ perfil ------------------------------ */
+const form = $("#quote");
+function setPerfil(p, opts = {}) {
+  if (p !== "hogar" && p !== "empresa") { delete root.dataset.perfil; p = ""; }
+  else root.dataset.perfil = p;
+  $$("[data-perfil-set]").forEach(b => b.hasAttribute("aria-pressed") && b.setAttribute("aria-pressed", String(b.dataset.perfilSet === p)));
+  const url = new URL(location.href);
+  if (p) url.searchParams.set("perfil", p); else url.searchParams.delete("perfil");
+  history.replaceState(null, "", url);
+  if (p) { const r = form.querySelector(`input[name=cliente][value=${p === "hogar" ? "Hogar" : "Empresa"}]`); if (r && !opts.keepForm) r.checked = true; }
+  renderGrid();
+  if (opts.user) {
+    track("perfil_elegido", { perfil: p });
+    $("#solucion").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+  }
+}
+document.addEventListener("click", e => { const b = e.target.closest("[data-perfil-set]"); if (b) setPerfil(b.dataset.perfilSet, { user: true }); });
+
+/* ------------------------------ CTAs ------------------------------ */
+document.addEventListener("click", e => {
+  const a = e.target.closest("[data-cta]"); if (!a) return;
+  track("cta_click", { cta: a.dataset.cta });
+  if (a.dataset.proyecto) { const r = form.querySelector(`input[name=proyecto][value="${a.dataset.proyecto}"]`); if (r) r.checked = true; }
+  if (a.dataset.perfilForm) { const r = form.querySelector(`input[name=cliente][value=${a.dataset.perfilForm === "hogar" ? "Hogar" : "Empresa"}]`); if (r) r.checked = true; }
+});
+$$(".js-wa").forEach(a => a.addEventListener("click", () => { a.href = waUrl(a.dataset.waMsg + "\n\n" + origen()); }));
+
+/* ------------------------------ formulario ------------------------------ */
+const steps = $$(".q-step", form), names = ["Tu proyecto", "El lugar", "Tus datos"];
+let step = 1, started = false;
+function goStep(n, focus = true) {
+  step = n;
+  steps.forEach(s => s.hidden = +s.dataset.step !== n);
+  $("#q-bar").style.width = (n / 3 * 100) + "%";
+  $("#q-lbl").textContent = `Paso ${n} de 3`; $("#q-name").textContent = names[n - 1];
+  $("#q-live").textContent = `Paso ${n} de 3: ${names[n - 1]}`;
+  if (focus) { const l = steps[n - 1].querySelector("legend"); l.setAttribute("tabindex", "-1"); l.focus({ preventScroll: true }); form.scrollIntoView({ block: "start", behavior: "auto" }); }
+}
+function setErr(id, bad, field) {
+  $("#e-" + id).hidden = !bad;
+  const el = field || $("#q-" + id);
+  if (el) el.setAttribute("aria-invalid", bad ? "true" : "false");
+  return bad;
+}
+function val(name) { const el = form.elements[name]; return el ? (el.value || "").trim() : ""; }
+function validate(n) {
+  const bad = [];
+  if (n === 1) {
+    if (setErr("cliente", !val("cliente"), null)) bad.push(form.querySelector("input[name=cliente]"));
+    if (setErr("proyecto", !val("proyecto"), null)) bad.push(form.querySelector("input[name=proyecto]"));
+  }
+  if (n === 2) {
+    if (setErr("zona", val("zona").length < 2)) bad.push($("#q-zona"));
+    if (setErr("etapa", !val("etapa"))) bad.push($("#q-etapa"));
+    if (setErr("plazo", !val("plazo"))) bad.push($("#q-plazo"));
+  }
+  if (n === 3) {
+    if (setErr("nombre", val("nombre").length < 2)) bad.push($("#q-nombre"));
+    if (setErr("tel", val("telefono").replace(/\D/g, "").length < 9)) bad.push($("#q-tel"));
+  }
+  if (bad.length) bad[0].focus();
+  return !bad.length;
+}
+form.addEventListener("input", e => {
+  if (!started) { started = true; track("form_inicio"); }
+  const t = e.target;
+  if (t.name === "cliente") { setErr("cliente", false, null); setPerfil(t.value === "Hogar" ? "hogar" : "empresa", { keepForm: true }); }
+  if (t.name === "proyecto") setErr("proyecto", false, null);
+  const map = { zona: "zona", etapa: "etapa", plazo: "plazo", nombre: "nombre", telefono: "tel" };
+  if (map[t.name] && t.getAttribute("aria-invalid") === "true") setErr(map[t.name], false);
+});
+form.addEventListener("click", e => {
+  if (e.target.closest("[data-next]")) { if (validate(step)) { track("form_paso", { paso: step }); goStep(step + 1); } }
+  if (e.target.closest("[data-prev]")) goStep(step - 1);
+});
+function mensaje() {
+  const L = [];
+  L.push("Hola Cainco, quiero pedir un presupuesto.");
+  L.push("");
+  L.push("*Para:* " + val("cliente"));
+  L.push("*Proyecto:* " + val("proyecto"));
+  if (val("empresa")) L.push("*Empresa:* " + val("empresa"));
+  if (val("cantidad")) L.push("*Cantidad:* " + val("cantidad"));
+  L.push("*Zona:* " + val("zona"));
+  L.push("*Etapa:* " + val("etapa"));
+  L.push("*Plazo:* " + val("plazo"));
+  if (val("inversion")) L.push("*Inversión estimada:* " + val("inversion"));
+  if (val("medidas")) L.push("*Medidas aprox.:* " + val("medidas"));
+  if (val("comentario")) L.push("*Comentario:* " + val("comentario"));
+  L.push("");
+  L.push("*Nombre:* " + val("nombre"));
+  L.push("*Teléfono:* " + val("telefono"));
+  L.push("");
+  L.push("Si tengo fotos o planos, los mando en este chat.");
+  L.push("");
+  L.push("_" + origen("formulario") + "_");
+  return L.join("\n");
+}
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  if (!validate(3)) return;
+  const url = waUrl(mensaje());
+  track("form_paso", { paso: 3 });
+  track("form_envio", { proyecto: val("proyecto"), cliente: val("cliente"), ...UTM });
+  $("#q-open").href = url;
+  steps.forEach(s => s.hidden = true); $(".progress", form).hidden = true;
+  $("#q-done").hidden = false; $("#q-done").focus();
+  window.open(url, "_blank", "noopener");
+});
+$("#q-restart").addEventListener("click", () => { form.reset(); $(".progress", form).hidden = false; $("#q-done").hidden = true; setPerfil(root.dataset.perfil || "", { keepForm: false }); goStep(1); });
+window.__cainco = { mensaje, waUrl }; // usado por las pruebas automáticas
+
+/* ---------------- WhatsApp flotante (mensaje según la sección) + barra móvil ---------------- */
+const MSG = {
+  inicio: "Hola Cainco, quiero consultar por un mueble a medida.",
+  perfil: "Hola Cainco, quiero consultar por un mueble a medida.",
+  solucion: "Hola Cainco, quiero consultar por un mueble a medida.",
+  servicios: "Hola Cainco, quiero cotizar un mueble a medida.",
+  trabajos: "Hola Cainco, vi sus trabajos en la web y quiero consultar por un proyecto.",
+  empresas: "Hola Cainco, escribo por un proyecto para mi empresa. ¿Podemos coordinar una visita técnica?",
+  proceso: "Hola Cainco, quiero saber cómo es el proceso para un mueble a medida.",
+  materiales: "Hola Cainco, quiero consultar por materiales y terminaciones.",
+  testimonios: "Hola Cainco, quiero consultar por un mueble a medida.",
+  faq: "Hola Cainco, tengo una consulta antes de pedir presupuesto.",
+  presupuesto: "Hola Cainco, quiero pedir un presupuesto."
+};
+let secActual = "inicio";
+const fl = $("#wa-float");
+fl.addEventListener("click", () => { fl.href = waUrl(MSG[secActual] + "\n\n" + origen("botón flotante")); track("whatsapp_flotante", { seccion: secActual }); });
+if ("IntersectionObserver" in window) {
+  const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) secActual = en.target.id; }), { rootMargin: "-45% 0px -50% 0px" });
+  $$("main > section[id]").forEach(s => io.observe(s));
+  const body = document.body, mq = matchMedia("(max-width:899px)");
+  let heroOut = false, formIn = false, footIn = false;
+  const upd = () => {
+    const on = mq.matches && heroOut && !formIn && !footIn;
+    body.classList.toggle("bar-on", on);
+    root.style.setProperty("--bar-h", on ? "69px" : "0px");
+    fl.classList.toggle("off", formIn);   // en el formulario no tapa el botón de envío
+  };
+  new IntersectionObserver(([en]) => { heroOut = !en.isIntersecting; upd(); }).observe($("#inicio"));
+  new IntersectionObserver(([en]) => { formIn = en.isIntersecting; upd(); }, { rootMargin: "0px 0px -20% 0px" }).observe($("#presupuesto"));
+  new IntersectionObserver(([en]) => { footIn = en.isIntersecting; upd(); }).observe($("footer"));
+  mq.addEventListener("change", upd);
+}
+
+/* ------------------------- FAQ → JSON-LD FAQPage ------------------------- */
+const faq = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": $$("#faq details").map(d => ({
+  "@type": "Question", "name": d.querySelector("summary").textContent.trim(),
+  "acceptedAnswer": { "@type": "Answer", "text": d.querySelector(".a").textContent.trim().replace(/\s+/g, " ") } })) };
+const s = document.createElement("script"); s.type = "application/ld+json"; s.id = "faq-ld"; s.textContent = JSON.stringify(faq); document.head.appendChild(s);
+$$("#faq details").forEach(d => d.addEventListener("toggle", () => d.open && track("faq_abierta", { pregunta: d.querySelector("summary").textContent.trim() })));
+
+/* ------------------------------ init ------------------------------ */
+renderFilters();
+setPerfil(params.get("perfil") || "", {});
+if (!params.get("perfil")) { const r = form.querySelector("input[name=cliente]:checked"); r && r.checked && (r.checked = false); }
+$("#yr").textContent = new Date().getFullYear();
+})();
 </script>
-
-</body></html>
+</body>
+</html>

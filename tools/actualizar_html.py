@@ -61,7 +61,7 @@ def main():
     s = re.sub(r"<!--foto:([\w-]+)((?:(?!-->).)*)-->.*?<!--/foto-->", rep, s, flags=re.S)
 
     hid = HERO["id"]
-    pre = (f'<link rel="preload" as="image" type="image/avif" imagesrcset="{srcset(hid, "avif")}" '
+    pre = (f'<link rel="preload" as="image" type="image/avif" href="img/{hid}-1024.avif" imagesrcset="{srcset(hid, "avif")}" '
            f'imagesizes="100vw" fetchpriority="high">')
     s = re.sub(r"<!--preload-hero-->.*?<!--/preload-hero-->",
                lambda m: f"<!--preload-hero-->\n{pre}\n<!--/preload-hero-->", s, flags=re.S)

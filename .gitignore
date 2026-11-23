@@ -2,5 +2,7 @@
 img/_originales/
 # Caché de super-resolución
 tools/.cache-sr/
+# Capturas de verificación (Playwright / Lighthouse)
+tools/.verificacion/
 __pycache__/
 node_modules/
